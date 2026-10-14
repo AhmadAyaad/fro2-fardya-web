@@ -38,7 +38,7 @@ export const siteConfigAr: SiteConfig = {
   subtitle: "مركز لدعم الأطفال في التخاطب وصعوبات التعلم وتنمية المهارات",
   description:
     "في فروق فردية نتعرّف على احتياجات طفلك بهدوء، ونضع له خطة تناسب أسلوبه وقدراته، ونمشي معكم خطوة بخطوة في التخاطب وصعوبات التعلم وتنمية المهارات للأطفال من عمر سنتين فأكثر.",
-  url: "https://for2fardya.com",
+  url: "https://amazing-alfajores-181c7c.netlify.app",
   ogImage: "/images/for2-fardya-logo.jpg",
   contact: {
     phone: "[رقم الهاتف]",
@@ -105,7 +105,7 @@ export const siteConfigEn: SiteConfig = {
     "A specialized center supporting children in Speech Therapy, Learning Difficulties, and Skills Development",
   description:
     "At Forooq Fardya, we calmly identify your child's needs, design an individualized plan suited to their abilities and pace, and guide you step by step in speech therapy, learning difficulties, and skills development for children aged 2 and above.",
-  url: "https://for2fardya.com",
+  url: "https://amazing-alfajores-181c7c.netlify.app",
   ogImage: "/images/for2-fardya-logo.jpg",
   contact: {
     phone: "[Phone Number]",
