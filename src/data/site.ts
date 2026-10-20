@@ -32,13 +32,16 @@ export interface SiteConfig {
   };
 }
 
+const siteBaseUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://fro2-fardya-web.vercel.app";
+
 export const siteConfigAr: SiteConfig = {
   name: "فروق فردية",
   title: "فروق فردية — مركز تأهيل وتنمية مهارات الطفل",
   subtitle: "مركز لدعم الأطفال في التخاطب وصعوبات التعلم وتنمية المهارات",
   description:
     "في فروق فردية نتعرّف على احتياجات طفلك بهدوء، ونضع له خطة تناسب أسلوبه وقدراته، ونمشي معكم خطوة بخطوة في التخاطب وصعوبات التعلم وتنمية المهارات للأطفال من عمر سنتين فأكثر.",
-  url: "https://amazing-alfajores-181c7c.netlify.app",
+  url: siteBaseUrl,
   ogImage: "/images/for2-fardya-logo.jpg",
   contact: {
     phone: "01554778990",
@@ -47,7 +50,7 @@ export const siteConfigAr: SiteConfig = {
     whatsappDisplay: "01554778990",
     address: "مدينة ٦ أكتوبر — الحي الرابع",
     workingHours: "السبت إلى الخميس — من ١٢:٠٠ ظهرًا حتى ٩:٠٠ مساءً",
-    email: "contact@for2fardya.com",
+    email: "contact@forooqfardaya.com",
   },
   disclaimer: "المحتوى للتوعية العامة فقط ولا يغني عن التقييم الفردي لدى المختص.",
   copyright: "© ٢٠٢٦ فروق فردية. جميع الحقوق محفوظة.",
@@ -115,7 +118,7 @@ export const siteConfigEn: SiteConfig = {
     "A specialized center supporting children in Speech Therapy, Learning Difficulties, and Skills Development",
   description:
     "At Forooq Fardya, we calmly identify your child's needs, design an individualized plan suited to their abilities and pace, and guide you step by step in speech therapy, learning difficulties, and skills development for children aged 2 and above.",
-  url: "https://amazing-alfajores-181c7c.netlify.app",
+  url: siteBaseUrl,
   ogImage: "/images/for2-fardya-logo.jpg",
   contact: {
     phone: "01554778990",
@@ -124,7 +127,7 @@ export const siteConfigEn: SiteConfig = {
     whatsappDisplay: "01554778990",
     address: "6th of October City — 4th District",
     workingHours: "Saturday to Thursday — 12:00 PM to 9:00 PM",
-    email: "contact@for2fardya.com",
+    email: "contact@forooqfardaya.com",
   },
   disclaimer:
     "All content is for general educational awareness and does not substitute for an individual clinical assessment.",

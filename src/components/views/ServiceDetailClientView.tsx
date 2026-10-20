@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getServiceBySlug, getServices } from "@/data/services";
+import { getSiteConfig } from "@/data/site";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { SenseNode } from "@/components/ui/SenseNode";
@@ -55,6 +56,8 @@ export const ServiceDetailClientView: React.FC<ServiceDetailClientViewProps> = (
         return null;
     }
   };
+
+  const site = getSiteConfig(locale);
 
   const copy = {
     specialtyBadge: isAr ? "خدمة تخصصية" : "Specialized Clinical Service",

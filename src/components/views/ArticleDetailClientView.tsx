@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getArticleBySlug, getArticles } from "@/data/articles";
+import { getSiteConfig } from "@/data/site";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Badge } from "@/components/ui/Badge";
@@ -32,6 +33,7 @@ export const ArticleDetailClientView: React.FC<ArticleDetailClientViewProps> = (
   }
 
   const isAr = locale === "ar";
+  const site = getSiteConfig(locale);
   const allArticles = getArticles(locale);
   const otherArticles = allArticles.filter((a) => a.slug !== article.slug);
 

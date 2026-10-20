@@ -390,6 +390,10 @@ export const IconArrowStart: React.FC<IconProps> = ({ size = 24, color = "curren
   </svg>
 );
 
+export const IconArrowEnd: React.FC<IconProps> = (props) => (
+  <IconArrowStart {...props} />
+);
+
 export const IconGlobe: React.FC<IconProps> = ({ size = 24, color = "currentColor", className = "", ...props }) => (
   <svg
     width={size}

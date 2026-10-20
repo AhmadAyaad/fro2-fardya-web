@@ -151,6 +151,146 @@ export const articlesAr: Article[] = [
         "الاستمرارية في الأنشطة البسيطة هي المفتاح. خصصوا ١٥ دقيقة يوميًا من اللعب التفاعلي المركز الخالي من الشاشات، وستشهدون تطورًا ملحوظًا في مهارات طفلكم.",
     },
   },
+  {
+    slug: "causes-of-speech-delay-in-children",
+    title: "أسباب تأخر الكلام عند الأطفال وطرق تحفيز النطق في البيت",
+    category: "التخاطب",
+    categorySlug: "speech-therapy",
+    readTime: "٦ دقائق قراءة",
+    date: "٢٠٢٦",
+    excerpt:
+      "دليل شامل ومطمئن للأمهات والآباء للتعرف على الأسباب البيئية والنمائية لتأخر النطق، وكيفية بناء بيئة لغوية محفزة للطفل في البيت.",
+    themeColor: "cyan",
+    content: {
+      lead: "يعد تأخر الكلام من أكثر المواضيع التي تشغل بال الأمهات والآباء في السنوات الأولى من عمر الطفل. والخبر المطمئن هو أن معظم حالات التأخر اللغوي البسيط تستجيب بشكل ملحوظ وسريع بمجرد تحديد الأسباب وتقديم التحفيز المناسب في البيت والمركز.",
+      sections: [
+        {
+          heading: "١ · ما الفرق بين تأخر الكلام وصعوبات النطق؟",
+          paragraphs: [
+            "من المهم أن نميز بين أمرين مختلفين: تأخر الكلام (تأخر في تكوين الكلمات أو قلة الحصيلة اللغوية مقارنة بالعمر)، وصعوبات النطق أو اللدغات (حيث يتكلم الطفل بجمل كاملة لكنه ينطق بعض الحروف مثل الراء أو الكاف أو السين بطريقة غير دقيقة). التقييم الدقيق يحدد أيهما يحتاجه طفلك.",
+          ],
+        },
+        {
+          heading: "٢ · أبرز أسباب تأخر الكلام عند الأطفال",
+          paragraphs: [
+            "تتعدد أسباب تأخر النطق، ولكنها تنقسم غالبًا إلى عوامل بيئية وعوامل نمائية:",
+          ],
+          listItems: [
+            "التعرض المفرط للشاشات والهواتف الذكية في سن مبكرة: استقبال سلبي للصوت والصورة دون تفاعل متبادل يضعف الرغبة في التواصل اللفظي.",
+            "قلة الحوار المباشر داخل البيت: انشغال الأهل أو عدم التحدث مع الطفل بشكل متكرر وتسمية الأشياء المحيطة به.",
+            "تلبية طلبات الطفل بالإشارة أو البكاء دون تشجيعه على المحاولة اللفظية: حين يحصل الطفل على ما يريد بمجرد الإشارة، يقل الحافز للكلام.",
+            "التهابات الأذن الوسطى المتكررة أو تجمع السوائل: تؤثر مؤقتًا على وضوح سماع الطفل للأصوات ومخارج الحروف.",
+            "أسباب نمائية أو وراثية: مثل وجود تاريخ عائلي لتأخر النطق، أو سمات نمائية تتطلب تدخلاً متخصصًا.",
+          ],
+        },
+        {
+          heading: "٣ · خطوات عملية لتحفيز النطق يوميًا في البيت",
+          paragraphs: [
+            "يمكن للأهل إحداث فارق كبير من خلال تعديل عادات التواصل اليومية:",
+          ],
+          listItems: [
+            "علّقوا بصوت مسموع على ما يفعل الطفل: تحدثوا عن أفعاله وكأنكم معلق رياضي («نضع المكعب الأحمر فوق المكعب الأزرق»)، مما يثري قاموسه السمعي.",
+            "اقرأوا قصصًا مصورة تفاعلية يوميًا: ليس الهدف قراءة النص حرفيًا، بل الإشارة للصور وتسمية الحيوانات والألوان وسؤال الطفل عنها.",
+            "قدّموا له خيارات ثنائية بدل الأسئلة المغلقة: اسألوه «تحب تشرب ماء ولا عصير؟» بدل «عايز تشرب؟»، لإتاحة فرصة نطق الكلمة.",
+            "أوقفوا تمامًا الشاشات التفاعلية قبل سن سنتين، وقللوها لأقل من ساعة في اليوم بعد ذلك مع المشاهدة المشتركة.",
+          ],
+        },
+        {
+          heading: "٤ · متى تستشيرون أخصائي تخاطب؟",
+          paragraphs: [
+            "إذا أتم الطفل سنتين دون نطق كلمات مفردة واضحة، أو أتم ٣ سنوات دون تكوين جمل بسيطة من كلمتين إلى ٣ كلمات، فإن جلسة التقييم المبدئي تمنحكم خطة مريحة وواضحة ترشدكم لما يحتاجه طفلكم بالضبط.",
+          ],
+        },
+      ],
+      conclusion:
+        "كل طفل يمتلك إيقاعه الخاص. التدخل الهادئ المبكر والبيئة المحفزة هما أفضل استثمار يمنح طفلكم الثقة والقدرة على التعبير بسلاسة.",
+    },
+  },
+  {
+    slug: "difference-between-learning-difficulties-and-slow-learning",
+    title: "الفرق بين صعوبات التعلم وبطء التعلم والتأخر الدراسي",
+    category: "صعوبات التعلم",
+    categorySlug: "learning-difficulties",
+    readTime: "٥ دقائق قراءة",
+    date: "٢٠٢٦",
+    excerpt:
+      "توضيح الفروق الجوهرية بين المفاهيم الثلاثة من حيث نسبة الذكاء وطريقة التدخل، لمساعدة الأهل على اختيار الدعم الأكاديمي والتربوي الصحيح لطفلهم.",
+    themeColor: "purple",
+    content: {
+      lead: "كثيرًا ما يخلط أولياء الأمور بين مصطلحات «صعوبات التعلم»، «بطء التعلم»، و«التأخر الدراسي»، مما قد يؤدي إلى اتباع أساليب تدريسية لا تناسب طبيعة الطفل وتزيد من إحباطه. فهم الفروق الحقيقية هو المفتاح لاختيار الطريق الصحيح للدعم.",
+      sections: [
+        {
+          heading: "١ · صعوبات التعلم المحددة (Specific Learning Difficulties)",
+          paragraphs: [
+            "الأطفال ذوو صعوبات التعلم يتمتعون بنسبة ذكاء طبيعية تمامًا أو حتى فوق المتوسطة (عباقرة في جوانب أخرى كالرسم أو الفك والتركيب). المشكلة تنحصر في طريقة معالجة الدماغ لمعلومات محددة، مثل عسر القراءة (الديسلكسيا) أو عسر الحساب (الديسكلكوليا).",
+            "يحتاج الطفل هنا إلى استراتيجيات تعليمية تعويضية متعددة الحواس تساعده على تجاوز هذه الفجوة الأكاديمية بنجاح.",
+          ],
+        },
+        {
+          heading: "٢ · بطء التعلم (Slow Learner)",
+          paragraphs: [
+            "تكون قدرات الطفل العقلية العامة في المدى الحدي (أقل قليلاً من المتوسط الطبيعي). يواجه الطفل صعوبة في جميع المواد الدراسية بشكل عام وليس في مادة واحدة فقط، ويحتاج إلى وقت أطول وتكرار أكبر لاستيعاب أي مفهوم دراسي جديد.",
+          ],
+        },
+        {
+          heading: "٣ · التأخر الدراسي (Academic Underachievement)",
+          paragraphs: [
+            "الطفل يمتلك قدرات عقلية سليمة وطبيعية، ولا يعاني من صعوبات تعلم نمائية، لكن درجاته المدرسية منخفضة بسبب ظروف خارجية: مثل الإهمال، الغياب المتكرر، المشكلات الأسرية، أو قلة الدافعية وفقدان الشغف بالدراسة.",
+          ],
+        },
+        {
+          heading: "٤ · كيف نحدد نوع التحدي بدقة؟",
+          paragraphs: [
+            "التقييم التربوي والنفسي المتخصص واختبارات الذكاء المقننة (مثل مقياس ستانفورد بينيه) هي الوسيلة العلمية الوحيدة لتحديد موقع طفلك بدقة، ووضع برنامج دعم يناسب قدراته دون لوم أو مقارنات.",
+          ],
+        },
+      ],
+      conclusion:
+        "حين نفهم قدرات طفلنا الحقيقية ونتقبلها، يتحول وقت المذاكرة من عبء وتوتر إلى مساحة للتطور المستمر وبناء الثقة بالنفس.",
+    },
+  },
+  {
+    slug: "adhd-and-attention-how-to-help-your-child",
+    title: "فرط الحركة وتشتت الانتباه: كيف تدعم طفلك لتنظيم تركيزه وسلوكه؟",
+    category: "تنمية المهارات",
+    categorySlug: "skills-development",
+    readTime: "٥ دقائق قراءة",
+    date: "٢٠٢٦",
+    excerpt:
+      "استراتيجيات علمية هادئة للتعامل مع صعوبات التركيز وكثرة الحركة عند الأطفال، وتحويل طاقتهم إلى إنجازات وتفاعل إيجابي.",
+    themeColor: "green",
+    content: {
+      lead: "الطفل كثير الحركة وسريع التشتت لا يقصد إزعاج من حوله أو إفساد النظام؛ فدماغه يبحث باستمرار عن محفزات حسية تساعده على البقاء يقظًا. عندما يفهم الأهل والمدرسون هذه الطبيعة، يصبح التعامل معه رحلة شيقة وناجحة.",
+      sections: [
+        {
+          heading: "١ · مؤشرات تدل على صعوبة تنظيم الانتباه",
+          paragraphs: [
+            "قد يظهر على الطفل صعوبة مستمرة في الجلوس لفترات قصيرة، الانتقال السريع بين الألعاب دون إكمال واحدة، النسيان المتكرر للأدوات المدرسية، والاندفاع في الإجابة قبل انتهاء السؤال.",
+          ],
+        },
+        {
+          heading: "٢ · استراتيجيات منزلية أثبتت فعاليتها",
+          paragraphs: [
+            "خطوات عملية بسيطة تصنع فرقًا هائلاً في روتين طفلك:",
+          ],
+          listItems: [
+            "قسّموا المهام الكبيرة إلى خطوات بصرية صغيرة: استخدموا قائمة مصورة أو بطاقات بالألوان لترتيب خطوات الصباح أو حل الواجبات.",
+            "فرّغوا الطاقة الحركية قبل المهام الذهنية: ١٠ دقائق من القفز أو الجري أو التمارين الحركية الخفيفة تساعد دماغه على الاستقرار قبل المذاكرة.",
+            "استخدموا المؤقت البصري: رؤية الوقت وهو ينقضي بوضوح يساعد الطفل على الصبر والتركيز حتى انتهاء المدة المتفق عليها.",
+            "تواصلوا بالعين ولمس الكتف برفق عند إعطاء التعليمات: تأكدوا من انتباهه البصري الكامل قبل التحدث.",
+          ],
+        },
+        {
+          heading: "٣ · دور جلسات تنمية المهارات والتكامل الحسي",
+          paragraphs: [
+            "تساعد جلسات تنمية المهارات المتخصصة في المركز على تدريب الدماغ على إطالة مدة الانتباه، والتحكم في الاندفاعية، وتنظيم الاستجابات للمثيرات الخارجية من خلال أنشطة حسية حركية ممتعة وموجهة.",
+          ],
+        },
+      ],
+      conclusion:
+        "طاقة طفلك وحيويته ليست عيبًا، بل هي ميزة قيادية وإبداعية هائلة إذا تم توجيهها بالصبر والاستراتيجيات الصحيحة والتدريب المتخصص.",
+    },
+  },
 ];
 
 export const articlesEn: Article[] = [
@@ -284,6 +424,146 @@ export const articlesEn: Article[] = [
       ],
       conclusion:
         "Consistency in small daily moments is the true key. Dedicating 15 screen-free minutes a day to interactive, focused play yields remarkable improvements in your child's functional abilities.",
+    },
+  },
+  {
+    slug: "causes-of-speech-delay-in-children",
+    title: "Causes of Speech Delay in Children & Practical Home Speech Activities",
+    category: "Speech Therapy",
+    categorySlug: "speech-therapy",
+    readTime: "6 min read",
+    date: "2026",
+    excerpt:
+      "A comprehensive, reassuring guide for parents exploring developmental and environmental causes of speech delay, and how to create a rich speech-stimulating environment at home.",
+    themeColor: "cyan",
+    content: {
+      lead: "Speech delay is one of the most frequent developmental concerns for parents of young toddlers. The reassuring truth is that most cases of early speech delay respond remarkably well once underlying triggers are identified and purposeful stimulation begins.",
+      sections: [
+        {
+          heading: "1 · Speech Delay vs. Articulation Difficulties",
+          paragraphs: [
+            "It is important to distinguish between two different challenges: speech delay (a lag in acquiring first words and building age-appropriate vocabulary) and articulation differences or phonological difficulties (where a child speaks fluently in full sentences but struggles producing specific consonant sounds such as R, K, or S). A clinical evaluation pinpoints exactly what your child needs.",
+          ],
+        },
+        {
+          heading: "2 · Common Underlying Causes of Speech Delays",
+          paragraphs: [
+            "Speech delays generally arise from a blend of environmental and developmental factors:",
+          ],
+          listItems: [
+            "Early screen exposure and passive device use: One-way screen consumption limits conversational turn-taking, dampening the motivation for verbal dialogue.",
+            "Limited interactive dialogue at home: Busy schedules can unintentionally reduce conversational narration, questions, and labeling of everyday objects.",
+            "Anticipating every wish: Fulfilling needs instantly when the child points or whimpers reduces their necessity to produce words.",
+            "Recurrent middle-ear fluid or ear infections: Fluctuating hearing levels can muffle consonant sounds during critical phonetic learning windows.",
+            "Neurodevelopmental factors: Family history of late talkers or specific developmental profiles requiring dedicated clinical support.",
+          ],
+        },
+        {
+          heading: "3 · Everyday Strategies to Stimulate Speech at Home",
+          paragraphs: [
+            "Parents can trigger huge developmental leaps through simple adjustments to daily interactions:",
+          ],
+          listItems: [
+            "Narrate everyday actions: Speak aloud about what your child is doing ('We are putting the red block on top of the blue block'), immersing them in rich descriptive vocabulary.",
+            "Shared picture book reading: Point at pictures, make playful sound effects, and ask simple open-ended questions rather than merely reading the text verbatim.",
+            "Offer binary choices: Ask 'Do you want water or juice?' rather than 'Are you thirsty?', giving them a clear word model to repeat.",
+            "Strictly eliminate screens before age two, limiting them to under an hour of co-viewing thereafter.",
+          ],
+        },
+        {
+          heading: "4 · When Should You Consult a Speech-Language Pathologist?",
+          paragraphs: [
+            "If your child has reached age 2 without consistent single words, or age 3 without connecting words into 2- to 3-word phrases, an initial evaluation provides reassurance and an individualized roadmap tailored to their unique pace.",
+          ],
+        },
+      ],
+      conclusion:
+        "Every child develops along their own timeline. Calm, early targeted support and a linguistically rich home environment empower your child to speak with ease and confidence.",
+    },
+  },
+  {
+    slug: "difference-between-learning-difficulties-and-slow-learning",
+    title: "The Difference Between Learning Difficulties, Slow Learning & Academic Delay",
+    category: "Learning Difficulties",
+    categorySlug: "learning-difficulties",
+    readTime: "5 min read",
+    date: "2026",
+    excerpt:
+      "Clarifying the fundamental distinctions between learning difficulties, slow learning, and academic delay regarding cognitive profiles and intervention methods.",
+    themeColor: "purple",
+    content: {
+      lead: "Parents frequently conflate learning difficulties, slow learning, and academic underachievement. This confusion can lead to teaching approaches mismatched with the child's true cognitive profile. Understanding the real differences is key to offering the right support.",
+      sections: [
+        {
+          heading: "1 · Specific Learning Difficulties (SpLD)",
+          paragraphs: [
+            "Children with specific learning difficulties possess typical or above-average general intelligence (often showing exceptional gifts in spatial reasoning, mechanics, or art). The obstacle lies strictly in how their brain processes specific symbolic information—such as in dyslexia (reading) or dyscalculia (mathematics).",
+            "These children require multi-sensory compensatory strategies rather than simply repeating standard drills.",
+          ],
+        },
+        {
+          heading: "2 · Slow Learning Profiles",
+          paragraphs: [
+            "A child with a slow learning profile exhibits cognitive functioning in the borderline range across all academic disciplines, not just one isolated subject. They require additional processing time, reduced task complexity, and structured repetition to master new concepts.",
+          ],
+        },
+        {
+          heading: "3 · Academic Delay (Underachievement)",
+          paragraphs: [
+            "Here, cognitive faculties and neurological processing are completely sound, yet school marks suffer due to external circumstances: prolonged absence, family stress, emotional anxiety, or lost academic motivation.",
+          ],
+        },
+        {
+          heading: "4 · How Clinical Assessment Establishes Clarity",
+          paragraphs: [
+            "Standardized psycho-educational evaluations and accredited cognitive scales (such as Stanford-Binet) objectively identify your child's cognitive strengths and obstacles, replacing guesswork and frustration with targeted intervention.",
+          ],
+        },
+      ],
+      conclusion:
+        "When we understand our children's genuine abilities and respect their unique learning style, study time transforms from stressful friction into an empowering journey of self-confidence.",
+    },
+  },
+  {
+    slug: "adhd-and-attention-how-to-help-your-child",
+    title: "ADHD & Attention Regulation: How to Support Your Child's Focus and Behavior",
+    category: "Skills Development",
+    categorySlug: "skills-development",
+    readTime: "5 min read",
+    date: "2026",
+    excerpt:
+      "Evidence-based strategies for navigating focus challenges and hyperactivity in children, turning high energy into positive engagement and accomplishment.",
+    themeColor: "green",
+    content: {
+      lead: "A hyperactive, easily distracted child is not willfully defying parents or teachers; their nervous system is naturally seeking sensory stimulation to maintain alertness. When adults recognize this developmental drive, guidance becomes a collaborative, joyful partnership.",
+      sections: [
+        {
+          heading: "1 · Recognizing Common Signs of Attention Regulation Struggles",
+          paragraphs: [
+            "Indicators often include difficulty remaining seated for age-appropriate intervals, rapidly abandoning toys halfway through, frequent forgetfulness with school supplies, and answering impulsively before a question is completed.",
+          ],
+        },
+        {
+          heading: "2 · Tested Home Strategies That Create Real Impact",
+          paragraphs: [
+            "Practical environmental tweaks transform your child's daily routine:",
+          ],
+          listItems: [
+            "Deconstruct complex routines into visual steps: Utilize pictorial checklists or color-coded charts for morning routines and homework.",
+            "Active physical discharge before seated work: 10 minutes of jumping, running, or sensory-motor exercises calms the nervous system prior to study time.",
+            "Visual timers: Being able to physically see time elapse helps children maintain focus until an agreed milestone is reached.",
+            "Touch and direct eye contact: Ensure full visual connection and a gentle shoulder touch before delivering multi-step instructions.",
+          ],
+        },
+        {
+          heading: "3 · The Role of Skills Development & Sensory Integration",
+          paragraphs: [
+            "Specialized developmental sessions train the brain to lengthen attention span, regulate impulsive responses, and organize sensory input through engaging, structured play activities.",
+          ],
+        },
+      ],
+      conclusion:
+        "Your child's exuberant energy is not a flaw; it is a remarkable creative and leadership asset when guided by patient, evidence-based developmental support.",
     },
   },
 ];

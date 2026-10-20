@@ -100,6 +100,11 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
+                <Link href="/october" className="text-accent-yellow hover:text-white hover:underline transition-colors block py-0.5 font-medium">
+                  {locale === "ar" ? "📍 فرع مدينة ٦ أكتوبر" : "📍 6th of October Branch"}
+                </Link>
+              </li>
+              <li>
                 <Link href="/articles" className="hover:text-white hover:underline transition-colors block py-0.5">
                   {t.nav.articles}
                 </Link>
@@ -138,7 +143,9 @@ export const Footer: React.FC = () => {
               </li>
               <li className="flex items-start gap-2.5">
                 <IconPin size={18} className="text-accent-yellow shrink-0 mt-0.5" />
-                <span>{site.contact.address}</span>
+                <Link href="/october" className="hover:text-white hover:underline transition-colors">
+                  {site.contact.address}
+                </Link>
               </li>
               <li className="flex items-start gap-2.5">
                 <IconClock size={18} className="text-accent-yellow shrink-0 mt-0.5" />

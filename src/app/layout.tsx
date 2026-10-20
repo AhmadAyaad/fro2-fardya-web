@@ -6,6 +6,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
 import { LanguageProvider } from "@/i18n/LanguageContext";
+import { generateLocalBusinessSchema, generateWebSiteSchema } from "@/lib/seo";
 
 const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
   subsets: ["arabic", "latin"],
@@ -29,21 +30,52 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   keywords: [
+    // Core Arabic keywords
     "فروق فردية",
     "تخاطب",
+    "تخاطب أطفال",
+    "جلسات تخاطب",
+    "أخصائي تخاطب",
+    "مركز تخاطب",
+    "علاج تأخر الكلام",
     "صعوبات تعلم",
+    "صعوبات التعلم عند الأطفال",
     "تنمية مهارات",
+    "تنمية مهارات الأطفال",
     "تأهيل أطفال",
     "تقييم أطفال",
+    "تأسيس أطفال",
+    "إرشاد أولياء الأمور",
+    "تعديل سلوك أطفال",
+    // Location-based Arabic keywords (critical for local SEO)
+    "مركز تخاطب في أكتوبر",
+    "مركز تخاطب في ٦ أكتوبر",
+    "مركز تخاطب في الجيزة",
+    "أخصائي تخاطب في أكتوبر",
+    "مركز تنمية مهارات أكتوبر",
+    "صعوبات تعلم أكتوبر",
+    // Core English keywords
     "Speech Therapy",
+    "Speech Therapy Egypt",
     "Learning Difficulties",
     "Skills Development",
+    "Child Rehabilitation",
+    "Forooq Fardya",
+    "6th of October City",
   ],
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
+  alternates: {
+    canonical: siteConfig.url,
+    languages: {
+      ar: siteConfig.url,
+      en: siteConfig.url,
+      "x-default": siteConfig.url,
+    },
+  },
   openGraph: {
     type: "website",
-    locale: "ar_AR",
+    locale: "ar_EG",
     url: siteConfig.url,
     title: siteConfig.title,
     description: siteConfig.description,
@@ -88,6 +120,18 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <link
+          rel="alternate"
+          type="text/plain"
+          href="/llms.txt"
+          title="LLM Context Summary (llms.txt)"
+        />
+        <link
+          rel="alternate"
+          type="text/plain"
+          href="/llms-full.txt"
+          title="LLM Full Context (llms-full.txt)"
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var l=localStorage.getItem('fro2_locale');if(l==='en'||l==='ar'){document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';}}catch(e){}})();`,
@@ -96,23 +140,13 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "MedicalBusiness",
-              name: siteConfig.name,
-              description: siteConfig.description,
-              url: siteConfig.url,
-              image: `${siteConfig.url}/images/for2-fardya-logo.jpg`,
-              telephone: siteConfig.contact.phone,
-              address: {
-                "@type": "PostalAddress",
-                addressCountry: "EG",
-                addressRegion: "Giza",
-                addressLocality: "6th of October City",
-                streetAddress: siteConfig.contact.address,
-              },
-              openingHours: "Sa-Th 12:00-21:00",
-            }),
+            __html: JSON.stringify(generateWebSiteSchema()),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateLocalBusinessSchema()),
           }}
         />
       </head>
