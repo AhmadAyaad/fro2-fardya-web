@@ -147,140 +147,153 @@ export const Header: React.FC = () => {
 
         {/* Desktop Navigation Links */}
         <nav
-          className="hidden lg:flex items-center gap-1 xl:gap-2 text-sm xl:text-[15px] font-medium text-brand-text"
-          aria-label={t.nav.menuOpen}
+          className="hidden lg:flex items-center text-sm xl:text-[15px] font-medium text-brand-text"
+          aria-label={locale === "ar" ? "التنقل الرئيسي" : "Main Navigation"}
         >
-          {/* Services with Dropdown */}
-          <div
-            className="relative"
-            ref={dropdownRef}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            <button
-              onClick={() => setServicesDropdownOpen((prev) => !prev)}
-              aria-expanded={servicesDropdownOpen}
-              aria-haspopup="true"
-              className={`flex items-center gap-1.5 px-3 py-2 rounded-full whitespace-nowrap transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary cursor-pointer ${
-                isServicesActive
-                  ? "text-primary font-bold bg-primary/10 shadow-xs"
-                  : servicesDropdownOpen
-                  ? "text-primary bg-brand-bg-alt/80"
-                  : "text-brand-text hover:text-primary hover:bg-black/[0.03]"
-              }`}
-            >
-              <span>{t.nav.services}</span>
-              <IconChevronDown
-                size={14}
-                className={`transition-transform duration-200 ${
-                  servicesDropdownOpen ? "rotate-180 text-primary" : "opacity-60"
-                }`}
-              />
-            </button>
+          <ul className="flex items-center gap-1 xl:gap-2 list-none p-0 m-0">
+            {/* Services with Dropdown */}
+            <li>
+              <div
+                className="relative"
+                ref={dropdownRef}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                <button
+                  onClick={() => setServicesDropdownOpen((prev) => !prev)}
+                  aria-expanded={servicesDropdownOpen}
+                  aria-haspopup="true"
+                  className={`flex items-center gap-1.5 px-3 py-2 rounded-full whitespace-nowrap transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary cursor-pointer ${
+                    isServicesActive
+                      ? "text-primary font-bold bg-primary/10 shadow-xs"
+                      : servicesDropdownOpen
+                      ? "text-primary bg-brand-bg-alt/80"
+                      : "text-brand-text hover:text-primary hover:bg-black/[0.03]"
+                  }`}
+                >
+                  <span>{t.nav.services}</span>
+                  <IconChevronDown
+                    size={14}
+                    className={`transition-transform duration-200 ${
+                      servicesDropdownOpen ? "rotate-180 text-primary" : "opacity-60"
+                    }`}
+                  />
+                </button>
 
-            {/* Dropdown Menu */}
-            {servicesDropdownOpen && (
-              <div className="absolute start-0 top-full mt-2 w-[340px] bg-white rounded-2xl border border-brand-border shadow-[0_14px_38px_rgba(44,56,77,0.15)] p-2 z-50 animate-fadeIn">
-                <div className="px-3 py-2 border-b border-brand-border/50 flex items-center justify-between">
-                  <span className="text-[11px] font-bold text-brand-text-muted tracking-wider uppercase">
-                    {t.servicesSection.tag}
-                  </span>
-                  <span className="text-[11px] font-medium text-brand-text-muted/70">
-                    {locale === "ar" ? `${currentServices.length} خدمات متخصصة` : `${currentServices.length} Specialized Services`}
-                  </span>
-                </div>
-                <div className="py-1 space-y-1">
-                  {currentServices.map((service) => (
-                    <Link
-                      key={service.slug}
-                      href={`/services/${service.slug}`}
-                      onClick={() => setServicesDropdownOpen(false)}
-                      className="group flex items-start gap-3 p-2.5 rounded-xl hover:bg-brand-bg transition-all duration-150"
-                    >
-                      <div
-                        className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 mt-0.5 transition-transform duration-150 group-hover:scale-105 shadow-xs"
-                        style={{
-                          backgroundColor: service.colors.soft,
-                          color: service.colors.border,
-                        }}
+                {/* Dropdown Menu */}
+                {servicesDropdownOpen && (
+                  <div className="absolute start-0 top-full mt-2 w-[340px] bg-white rounded-2xl border border-brand-border shadow-[0_14px_38px_rgba(44,56,77,0.15)] p-2 z-50 animate-fadeIn">
+                    <div className="px-3 py-2 border-b border-brand-border/50 flex items-center justify-between">
+                      <span className="text-[11px] font-bold text-brand-text-muted tracking-wider uppercase">
+                        {t.servicesSection.tag}
+                      </span>
+                      <span className="text-[11px] font-medium text-brand-text-muted/70">
+                        {locale === "ar" ? `${currentServices.length} خدمات متخصصة` : `${currentServices.length} Specialized Services`}
+                      </span>
+                    </div>
+                    <ul className="py-1 space-y-1 list-none p-0 m-0">
+                      {currentServices.map((service) => (
+                        <li key={service.slug}>
+                          <Link
+                            href={`/services/${service.slug}`}
+                            onClick={() => setServicesDropdownOpen(false)}
+                            className="group flex items-start gap-3 p-2.5 rounded-xl hover:bg-brand-bg transition-all duration-150"
+                          >
+                            <div
+                              className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 mt-0.5 transition-transform duration-150 group-hover:scale-105 shadow-xs"
+                              style={{
+                                backgroundColor: service.colors.soft,
+                                color: service.colors.border,
+                              }}
+                            >
+                              {getServiceIcon(service.iconName, 18, service.colors.border)}
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="font-bold text-sm text-brand-text group-hover:text-primary transition-colors flex items-center justify-between">
+                                <span className="truncate">{service.title}</span>
+                                <span
+                                  className="w-2 h-2 rounded-full shrink-0 ms-2"
+                                  style={{ backgroundColor: service.colors.fill }}
+                                />
+                              </div>
+                              <div className="text-xs text-brand-text-muted mt-0.5 line-clamp-1">
+                                {service.tagline}
+                              </div>
+                            </div>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="pt-2 px-3 pb-1 border-t border-brand-border/50">
+                      <Link
+                        href="/services"
+                        onClick={() => setServicesDropdownOpen(false)}
+                        className="group text-xs font-bold text-primary hover:text-primary-hover flex items-center justify-between py-1.5 transition-colors"
                       >
-                        {getServiceIcon(service.iconName, 18, service.colors.border)}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="font-bold text-sm text-brand-text group-hover:text-primary transition-colors flex items-center justify-between">
-                          <span className="truncate">{service.title}</span>
-                          <span
-                            className="w-2 h-2 rounded-full shrink-0 ms-2"
-                            style={{ backgroundColor: service.colors.fill }}
-                          />
-                        </div>
-                        <div className="text-xs text-brand-text-muted mt-0.5 line-clamp-1">
-                          {service.tagline}
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-                <div className="pt-2 px-3 pb-1 border-t border-brand-border/50">
-                  <Link
-                    href="/services"
-                    onClick={() => setServicesDropdownOpen(false)}
-                    className="group text-xs font-bold text-primary hover:text-primary-hover flex items-center justify-between py-1.5 transition-colors"
-                  >
-                    <span>{t.footer.allServicesLink}</span>
-                    <IconArrowStart
-                      size={14}
-                      className="transition-transform duration-200 group-hover:translate-x-1"
-                    />
-                  </Link>
-                </div>
+                        <span>{t.footer.allServicesLink}</span>
+                        <IconArrowStart
+                          size={14}
+                          className="transition-transform duration-200 group-hover:translate-x-1"
+                        />
+                      </Link>
+                    </div>
+                  </div>
+                )}
               </div>
-            )}
-          </div>
+            </li>
 
-          <Link
-            href="/about"
-            className={`px-3 py-2 rounded-full whitespace-nowrap transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary ${
-              isAboutActive
-                ? "text-primary font-bold bg-primary/10 shadow-xs"
-                : "text-brand-text hover:text-primary hover:bg-black/[0.03]"
-            }`}
-          >
-            {t.nav.about}
-          </Link>
+            <li>
+              <Link
+                href="/about"
+                className={`px-3 py-2 rounded-full whitespace-nowrap transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary block ${
+                  isAboutActive
+                    ? "text-primary font-bold bg-primary/10 shadow-xs"
+                    : "text-brand-text hover:text-primary hover:bg-black/[0.03]"
+                }`}
+              >
+                {t.nav.about}
+              </Link>
+            </li>
 
-          <Link
-            href="/articles"
-            className={`px-3 py-2 rounded-full whitespace-nowrap transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary ${
-              isArticlesActive
-                ? "text-primary font-bold bg-primary/10 shadow-xs"
-                : "text-brand-text hover:text-primary hover:bg-black/[0.03]"
-            }`}
-          >
-            {t.nav.articles}
-          </Link>
+            <li>
+              <Link
+                href="/articles"
+                className={`px-3 py-2 rounded-full whitespace-nowrap transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary block ${
+                  isArticlesActive
+                    ? "text-primary font-bold bg-primary/10 shadow-xs"
+                    : "text-brand-text hover:text-primary hover:bg-black/[0.03]"
+                }`}
+              >
+                {t.nav.articles}
+              </Link>
+            </li>
 
-          <Link
-            href="/faq"
-            className={`px-3 py-2 rounded-full whitespace-nowrap transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary ${
-              isFaqActive
-                ? "text-primary font-bold bg-primary/10 shadow-xs"
-                : "text-brand-text hover:text-primary hover:bg-black/[0.03]"
-            }`}
-          >
-            {t.nav.faq}
-          </Link>
+            <li>
+              <Link
+                href="/faq"
+                className={`px-3 py-2 rounded-full whitespace-nowrap transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary block ${
+                  isFaqActive
+                    ? "text-primary font-bold bg-primary/10 shadow-xs"
+                    : "text-brand-text hover:text-primary hover:bg-black/[0.03]"
+                }`}
+              >
+                {t.nav.faq}
+              </Link>
+            </li>
 
-          <Link
-            href="/contact"
-            className={`px-3 py-2 rounded-full whitespace-nowrap transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary ${
-              isContactActive
-                ? "text-primary font-bold bg-primary/10 shadow-xs"
-                : "text-brand-text hover:text-primary hover:bg-black/[0.03]"
-            }`}
-          >
-            {t.nav.contact}
-          </Link>
+            <li>
+              <Link
+                href="/contact"
+                className={`px-3 py-2 rounded-full whitespace-nowrap transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary block ${
+                  isContactActive
+                    ? "text-primary font-bold bg-primary/10 shadow-xs"
+                    : "text-brand-text hover:text-primary hover:bg-black/[0.03]"
+                }`}
+              >
+                {t.nav.contact}
+              </Link>
+            </li>
+          </ul>
         </nav>
 
         {/* Right Actions: Language Switcher, Desktop CTA & Mobile Toggle */}
@@ -321,7 +334,10 @@ export const Header: React.FC = () => {
 
       {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (
-        <div className="fixed inset-x-0 bottom-0 top-[65px] sm:top-[73px] z-50 bg-[#FBF5E2] flex flex-col lg:hidden overflow-y-auto px-5 py-6 animate-fadeIn pb-32">
+        <nav
+          aria-label={locale === "ar" ? "قائمة التنقل للأجهزة الذكية" : "Mobile Navigation"}
+          className="fixed inset-x-0 bottom-0 top-[65px] sm:top-[73px] z-50 bg-[#FBF5E2] flex flex-col lg:hidden overflow-y-auto px-5 py-6 animate-fadeIn pb-32"
+        >
           <div className="w-full max-w-lg mx-auto flex flex-col gap-4">
             {/* Mobile Language Switcher Card */}
             <div className="p-3.5 bg-white rounded-2xl border border-brand-border shadow-xs flex items-center justify-between">
@@ -350,37 +366,38 @@ export const Header: React.FC = () => {
               <div className="text-xs font-bold text-brand-text-muted uppercase tracking-wider">
                 {t.nav.services}
               </div>
-              <div className="space-y-2">
+              <ul className="space-y-2 list-none p-0 m-0">
                 {currentServices.map((service) => (
-                  <Link
-                    key={service.slug}
-                    href={`/services/${service.slug}`}
-                    className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-brand-bg transition-colors group"
-                  >
-                    <div
-                      className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 shadow-xs"
-                      style={{
-                        backgroundColor: service.colors.soft,
-                        color: service.colors.border,
-                      }}
+                  <li key={service.slug}>
+                    <Link
+                      href={`/services/${service.slug}`}
+                      className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-brand-bg transition-colors group"
                     >
-                      {getServiceIcon(service.iconName, 18, service.colors.border)}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="font-bold text-sm text-brand-text group-hover:text-primary transition-colors flex items-center justify-between">
-                        <span>{service.title}</span>
-                        <span
-                          className="w-2 h-2 rounded-full"
-                          style={{ backgroundColor: service.colors.fill }}
-                        />
+                      <div
+                        className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 shadow-xs"
+                        style={{
+                          backgroundColor: service.colors.soft,
+                          color: service.colors.border,
+                        }}
+                      >
+                        {getServiceIcon(service.iconName, 18, service.colors.border)}
                       </div>
-                      <div className="text-xs text-brand-text-muted line-clamp-1">
-                        {service.tagline}
+                      <div className="flex-1 min-w-0">
+                        <div className="font-bold text-sm text-brand-text group-hover:text-primary transition-colors flex items-center justify-between">
+                          <span>{service.title}</span>
+                          <span
+                            className="w-2 h-2 rounded-full"
+                            style={{ backgroundColor: service.colors.fill }}
+                          />
+                        </div>
+                        <div className="text-xs text-brand-text-muted line-clamp-1">
+                          {service.tagline}
+                        </div>
                       </div>
-                    </div>
-                  </Link>
+                    </Link>
+                  </li>
                 ))}
-                <div className="pt-2 border-t border-brand-border/60">
+                <li className="pt-2 border-t border-brand-border/60">
                   <Link
                     href="/services"
                     className="flex items-center justify-between text-xs font-bold text-primary hover:text-primary-hover py-1"
@@ -388,48 +405,56 @@ export const Header: React.FC = () => {
                     <span>{t.footer.allServicesLink}</span>
                     <IconArrowStart size={14} />
                   </Link>
-                </div>
-              </div>
+                </li>
+              </ul>
             </div>
 
             {/* Main Links Card */}
-            <div className="p-3 bg-white rounded-2xl border border-brand-border shadow-xs flex flex-col divide-y divide-brand-border/50">
-              <Link
-                href="/about"
-                className={`py-3 px-3 rounded-xl hover:bg-brand-bg transition-colors font-semibold text-base ${
-                  isAboutActive ? "text-primary font-bold bg-primary/5" : "text-brand-text"
-                }`}
-              >
-                {t.nav.about}
-              </Link>
+            <ul className="p-3 bg-white rounded-2xl border border-brand-border shadow-xs flex flex-col divide-y divide-brand-border/50 list-none m-0">
+              <li>
+                <Link
+                  href="/about"
+                  className={`block py-3 px-3 rounded-xl hover:bg-brand-bg transition-colors font-semibold text-base ${
+                    isAboutActive ? "text-primary font-bold bg-primary/5" : "text-brand-text"
+                  }`}
+                >
+                  {t.nav.about}
+                </Link>
+              </li>
 
-              <Link
-                href="/articles"
-                className={`py-3 px-3 rounded-xl hover:bg-brand-bg transition-colors font-semibold text-base ${
-                  isArticlesActive ? "text-primary font-bold bg-primary/5" : "text-brand-text"
-                }`}
-              >
-                {t.nav.articles}
-              </Link>
+              <li>
+                <Link
+                  href="/articles"
+                  className={`block py-3 px-3 rounded-xl hover:bg-brand-bg transition-colors font-semibold text-base ${
+                    isArticlesActive ? "text-primary font-bold bg-primary/5" : "text-brand-text"
+                  }`}
+                >
+                  {t.nav.articles}
+                </Link>
+              </li>
 
-              <Link
-                href="/faq"
-                className={`py-3 px-3 rounded-xl hover:bg-brand-bg transition-colors font-semibold text-base ${
-                  isFaqActive ? "text-primary font-bold bg-primary/5" : "text-brand-text"
-                }`}
-              >
-                {t.nav.faq}
-              </Link>
+              <li>
+                <Link
+                  href="/faq"
+                  className={`block py-3 px-3 rounded-xl hover:bg-brand-bg transition-colors font-semibold text-base ${
+                    isFaqActive ? "text-primary font-bold bg-primary/5" : "text-brand-text"
+                  }`}
+                >
+                  {t.nav.faq}
+                </Link>
+              </li>
 
-              <Link
-                href="/contact"
-                className={`py-3 px-3 rounded-xl hover:bg-brand-bg transition-colors font-semibold text-base ${
-                  isContactActive ? "text-primary font-bold bg-primary/5" : "text-brand-text"
-                }`}
-              >
-                {t.nav.contact}
-              </Link>
-            </div>
+              <li>
+                <Link
+                  href="/contact"
+                  className={`block py-3 px-3 rounded-xl hover:bg-brand-bg transition-colors font-semibold text-base ${
+                    isContactActive ? "text-primary font-bold bg-primary/5" : "text-brand-text"
+                  }`}
+                >
+                  {t.nav.contact}
+                </Link>
+              </li>
+            </ul>
 
             {/* Mobile CTA Buttons */}
             <div className="space-y-2.5 pt-2">
@@ -455,11 +480,11 @@ export const Header: React.FC = () => {
               </a>
             </div>
 
-            <div className="pt-4 text-center text-xs text-brand-text-muted leading-relaxed">
+            <small className="block pt-4 text-center text-xs text-brand-text-muted leading-relaxed">
               {site.disclaimer}
-            </div>
+            </small>
           </div>
-        </div>
+        </nav>
       )}
     </header>
   );

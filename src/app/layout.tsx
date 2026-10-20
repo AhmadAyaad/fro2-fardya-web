@@ -63,6 +63,22 @@ export const metadata: Metadata = {
     "Forooq Fardya",
     "6th of October City",
   ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  formatDetection: {
+    telephone: true,
+    email: true,
+    address: true,
+  },
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
   alternates: {
@@ -123,15 +139,17 @@ export default function RootLayout({
         <link
           rel="alternate"
           type="text/plain"
-          href="/llms.txt"
+          href={`${siteConfig.url}/llms.txt`}
           title="LLM Context Summary (llms.txt)"
         />
         <link
           rel="alternate"
           type="text/plain"
-          href="/llms-full.txt"
+          href={`${siteConfig.url}/llms-full.txt`}
           title="LLM Full Context (llms-full.txt)"
         />
+        <link rel="author" href={`${siteConfig.url}/about/`} />
+        <link rel="help" href={`${siteConfig.url}/faq/`} />
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var l=localStorage.getItem('fro2_locale');if(l==='en'||l==='ar'){document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';}}catch(e){}})();`,

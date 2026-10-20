@@ -74,17 +74,20 @@ export const EvaluationForm: React.FC<EvaluationFormProps> = ({
       className={`bg-white rounded-lg border border-brand-border p-6 sm:p-8 shadow-card space-y-6 ${className}`}
       noValidate
     >
-      <div className="border-b border-brand-border/60 pb-4">
-        <h3 className="text-xl sm:text-2xl font-bold text-brand-text">
+      <header className="border-b border-brand-border/60 pb-4">
+        <h2 className="text-xl sm:text-2xl font-bold text-brand-text">
           {t.form.title}
-        </h3>
+        </h2>
         <p className="text-sm text-brand-text-muted mt-1 leading-relaxed">
           {t.form.subtitle}
         </p>
-      </div>
+      </header>
 
-      {/* Parent Name */}
-      <div>
+      <fieldset className="border-none p-0 m-0 space-y-6">
+        <legend className="sr-only">{t.form.title}</legend>
+
+        {/* Parent Name */}
+        <div>
         <label
           htmlFor="parentName"
           className="block text-sm font-bold text-brand-text mb-2"
@@ -227,6 +230,7 @@ export const EvaluationForm: React.FC<EvaluationFormProps> = ({
           </p>
         )}
       </div>
+      </fieldset>
 
       {/* Submit Button */}
       <div className="pt-2">
@@ -239,9 +243,9 @@ export const EvaluationForm: React.FC<EvaluationFormProps> = ({
         </button>
       </div>
 
-      <div className="text-center text-xs text-brand-text-muted pt-1">
+      <small className="block text-center text-xs text-brand-text-muted pt-1">
         🔒 {locale === "ar" ? "لن يتم تخزين أو مشاركة بياناتكم إطلاقًا. المحادثة مباشرة مع رقم المركز الرسمي." : "Your data is never stored on servers or shared. Direct chat with our official line."}
-      </div>
+      </small>
     </form>
   );
 };

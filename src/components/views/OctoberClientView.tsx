@@ -172,7 +172,7 @@ export const OctoberClientView: React.FC<OctoberClientViewProps> = () => {
   ];
 
   return (
-    <div className="pb-16 md:pb-0">
+    <article className="pb-16 md:pb-0">
       {/* ── SEO JSON-LD Schemas ───────────────────────────────────── */}
       <script
         type="application/ld+json"
@@ -202,7 +202,7 @@ export const OctoberClientView: React.FC<OctoberClientViewProps> = () => {
       />
 
       {/* ── Top Hero Section ──────────────────────────────────────── */}
-      <section className="relative overflow-hidden pt-8 pb-14 md:pt-12 md:pb-20 bg-gradient-to-b from-[#FBF8EF] via-white to-brand-bg border-b border-brand-border/40">
+      <header className="relative overflow-hidden pt-8 pb-14 md:pt-12 md:pb-20 bg-gradient-to-b from-[#FBF8EF] via-white to-brand-bg border-b border-brand-border/40">
         <div className="max-w-[1200px] mx-auto px-5 sm:px-6">
           <Breadcrumbs items={breadcrumbs} className="mb-6" />
 
@@ -279,7 +279,7 @@ export const OctoberClientView: React.FC<OctoberClientViewProps> = () => {
             </div>
 
             {/* Quick Location Snapshot Card */}
-            <div className="lg:col-span-4">
+            <address className="lg:col-span-4 not-italic">
               <div className="bg-white rounded-2xl border border-brand-border shadow-card p-6 sm:p-7 space-y-5 text-start relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-24 h-24 bg-[#E03875]/5 rounded-bl-full pointer-events-none" />
 
@@ -294,7 +294,7 @@ export const OctoberClientView: React.FC<OctoberClientViewProps> = () => {
 
                 <div className="space-y-3.5 text-sm text-brand-text">
                   <div className="flex items-start gap-3">
-                    <div className="p-2 rounded-lg bg-[#FAF7F0] text-brand-primary shrink-0 mt-0.5">
+                    <div className="p-2 rounded-lg bg-[#FAF7F0] text-brand-primary shrink-0 mt-0.5" aria-hidden="true">
                       <IconPin size={18} />
                     </div>
                     <div>
@@ -308,7 +308,7 @@ export const OctoberClientView: React.FC<OctoberClientViewProps> = () => {
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <div className="p-2 rounded-lg bg-[#FAF7F0] text-brand-primary shrink-0 mt-0.5">
+                    <div className="p-2 rounded-lg bg-[#FAF7F0] text-brand-primary shrink-0 mt-0.5" aria-hidden="true">
                       <IconClock size={18} />
                     </div>
                     <div>
@@ -322,7 +322,7 @@ export const OctoberClientView: React.FC<OctoberClientViewProps> = () => {
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <div className="p-2 rounded-lg bg-[#FAF7F0] text-brand-primary shrink-0 mt-0.5">
+                    <div className="p-2 rounded-lg bg-[#FAF7F0] text-brand-primary shrink-0 mt-0.5" aria-hidden="true">
                       <IconPhone size={18} />
                     </div>
                     <div>
@@ -346,10 +346,10 @@ export const OctoberClientView: React.FC<OctoberClientViewProps> = () => {
                   </a>
                 </div>
               </div>
-            </div>
+            </address>
           </div>
         </div>
-      </section>
+      </header>
 
       {/* ── Neighborhoods Coverage Bar ────────────────────────────── */}
       <section className="py-7 bg-white border-b border-brand-border/30">
@@ -376,7 +376,7 @@ export const OctoberClientView: React.FC<OctoberClientViewProps> = () => {
       {/* ── Services Section ──────────────────────────────────────── */}
       <section className="py-14 sm:py-20 bg-brand-bg">
         <div className="max-w-[1200px] mx-auto px-5 sm:px-6 text-start">
-          <div className="max-w-2xl mb-12">
+          <header className="max-w-2xl mb-12">
             <Badge variant="yellow" className="mb-3">
               {isAr ? "خدماتنا في فرع أكتوبر" : "October Branch Services"}
             </Badge>
@@ -390,43 +390,44 @@ export const OctoberClientView: React.FC<OctoberClientViewProps> = () => {
                 ? "كل جلسة في مركز فروق فردية بمدينة ٦ أكتوبر تُبنى على تقييم دقيق، بخطة فردية واضحة الأهداف بدون قوالب جاهزة."
                 : "Every session at Forooq Fardya Center in 6th of October is built on a careful assessment, with clear goals without rigid molds."}
             </p>
-          </div>
+          </header>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 list-none p-0 m-0">
             {servicesList.map((service) => (
-              <div
-                key={service.slug}
-                className={`bg-white rounded-2xl border p-6 sm:p-7 shadow-xs hover:shadow-card transition-all duration-300 flex flex-col justify-between ${service.accent}`}
-              >
-                <div className="space-y-4">
-                  <div className="w-12 h-12 rounded-xl bg-brand-bg flex items-center justify-center border border-brand-border/50">
-                    {service.icon}
+              <li key={service.slug}>
+                <article
+                  className={`bg-white rounded-2xl border p-6 sm:p-7 shadow-xs hover:shadow-card transition-all duration-300 flex flex-col justify-between h-full ${service.accent}`}
+                >
+                  <div className="space-y-4">
+                    <div className="w-12 h-12 rounded-xl bg-brand-bg flex items-center justify-center border border-brand-border/50">
+                      {service.icon}
+                    </div>
+                    <h3 className="text-xl font-bold text-brand-text">{service.title}</h3>
+                    <p className="text-sm sm:text-base text-brand-text-body leading-relaxed">
+                      {service.desc}
+                    </p>
                   </div>
-                  <h3 className="text-xl font-bold text-brand-text">{service.title}</h3>
-                  <p className="text-sm sm:text-base text-brand-text-body leading-relaxed">
-                    {service.desc}
-                  </p>
-                </div>
 
-                <div className="pt-6 mt-4 border-t border-brand-border/40">
-                  <Link
-                    href={`/services/${service.slug}/`}
-                    className="inline-flex items-center gap-2 text-sm font-bold text-brand-primary hover:underline"
-                  >
-                    <span>{isAr ? "تفاصيل الخدمة وكيف نعمل" : "Service Details"}</span>
-                    <IconArrowStart size={16} />
-                  </Link>
-                </div>
-              </div>
+                  <footer className="pt-6 mt-4 border-t border-brand-border/40">
+                    <Link
+                      href={`/services/${service.slug}/`}
+                      className="inline-flex items-center gap-2 text-sm font-bold text-brand-primary hover:underline"
+                    >
+                      <span>{isAr ? "تفاصيل الخدمة وكيف نعمل" : "Service Details"}</span>
+                      <IconArrowStart size={16} />
+                    </Link>
+                  </footer>
+                </article>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
       {/* ── Why Choose Us in October ──────────────────────────────── */}
       <section className="py-14 sm:py-20 bg-white border-y border-brand-border/40">
         <div className="max-w-[1200px] mx-auto px-5 sm:px-6">
-          <div className="text-center max-w-2xl mx-auto mb-14">
+          <header className="text-center max-w-2xl mx-auto mb-14">
             <Badge variant="cyan" className="mb-3">
               {isAr ? "لماذا فروق فردية؟" : "Why Choose Us"}
             </Badge>
@@ -440,11 +441,11 @@ export const OctoberClientView: React.FC<OctoberClientViewProps> = () => {
                 ? "نحرص على أن تكون تجربة طفلك وأسرتك مريحة وهادئة من اللحظة الأولى."
                 : "We ensure that your child and family's experience is calm and reassuring from the very first visit."}
             </p>
-          </div>
+          </header>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-start">
-            <div className="p-7 rounded-2xl bg-brand-bg border border-brand-border/60 space-y-3">
-              <div className="w-10 h-10 rounded-lg bg-[#E03875]/10 text-brand-primary flex items-center justify-center font-bold text-lg">
+          <ol className="grid grid-cols-1 md:grid-cols-3 gap-8 text-start list-none p-0 m-0">
+            <li className="p-7 rounded-2xl bg-brand-bg border border-brand-border/60 space-y-3">
+              <div className="w-10 h-10 rounded-lg bg-[#E03875]/10 text-brand-primary flex items-center justify-center font-bold text-lg" aria-hidden="true">
                 ١
               </div>
               <h3 className="text-lg font-bold text-brand-text">
@@ -455,10 +456,10 @@ export const OctoberClientView: React.FC<OctoberClientViewProps> = () => {
                   ? "كل طفل يحصل على اهتمام الأخصائي كاملًا في غرفة مجهزة تراعي الحواس وتمنع التشتت والضوضاء."
                   : "Every child gets undivided specialist attention in a sensory-friendly room designed to avoid distraction."}
               </p>
-            </div>
+            </li>
 
-            <div className="p-7 rounded-2xl bg-brand-bg border border-brand-border/60 space-y-3">
-              <div className="w-10 h-10 rounded-lg bg-[#F8D940]/25 text-[#9C7100] flex items-center justify-center font-bold text-lg">
+            <li className="p-7 rounded-2xl bg-brand-bg border border-brand-border/60 space-y-3">
+              <div className="w-10 h-10 rounded-lg bg-[#F8D940]/25 text-[#9C7100] flex items-center justify-center font-bold text-lg" aria-hidden="true">
                 ٢
               </div>
               <h3 className="text-lg font-bold text-brand-text">
@@ -469,10 +470,10 @@ export const OctoberClientView: React.FC<OctoberClientViewProps> = () => {
                   ? "نشارككم كل خطوة بتوجيهات عملية وتمارين بسيطة يمكن تطبيقها في البيت بتلقائية لدعم تقدم الطفل."
                   : "We share home guidance and simple everyday routines so you can naturally reinforce skills at home."}
               </p>
-            </div>
+            </li>
 
-            <div className="p-7 rounded-2xl bg-brand-bg border border-brand-border/60 space-y-3">
-              <div className="w-10 h-10 rounded-lg bg-[#B1DD30]/20 text-[#517B11] flex items-center justify-center font-bold text-lg">
+            <li className="p-7 rounded-2xl bg-brand-bg border border-brand-border/60 space-y-3">
+              <div className="w-10 h-10 rounded-lg bg-[#B1DD30]/20 text-[#517B11] flex items-center justify-center font-bold text-lg" aria-hidden="true">
                 ٣
               </div>
               <h3 className="text-lg font-bold text-brand-text">
@@ -483,15 +484,15 @@ export const OctoberClientView: React.FC<OctoberClientViewProps> = () => {
                   ? "موقع هادئ في الحي الرابع بالقرب من المحاور الرئيسية، يسهل الوصول إليه من مختلف أحياء أكتوبر والشيخ زايد."
                   : "A calm 4th District setting close to main arteries, making visits stress-free with convenient parking."}
               </p>
-            </div>
-          </div>
+            </li>
+          </ol>
         </div>
       </section>
 
       {/* ── Local FAQs Section ────────────────────────────────────── */}
       <section className="py-14 sm:py-20 bg-brand-bg">
         <div className="max-w-[900px] mx-auto px-5 sm:px-6 text-start">
-          <div className="text-center max-w-xl mx-auto mb-12">
+          <header className="text-center max-w-xl mx-auto mb-12">
             <Badge variant="purple" className="mb-3">
               {isAr ? "أسئلة أولياء الأمور" : "Parent FAQs"}
             </Badge>
@@ -500,7 +501,7 @@ export const OctoberClientView: React.FC<OctoberClientViewProps> = () => {
                 ? "الأسئلة الشائعة حول فرع مدينة ٦ أكتوبر"
                 : "Frequently Asked Questions About Our October Branch"}
             </h2>
-          </div>
+          </header>
 
           <Accordion
             items={octoberFaqs.map((faq, index) => ({
@@ -510,10 +511,10 @@ export const OctoberClientView: React.FC<OctoberClientViewProps> = () => {
             }))}
           />
 
-          <div className="mt-10 p-6 rounded-2xl bg-white border border-brand-border text-center space-y-3">
-            <h4 className="font-bold text-brand-text">
+          <aside aria-label="استفسار إضافي" className="mt-10 p-6 rounded-2xl bg-white border border-brand-border text-center space-y-3">
+            <h3 className="font-bold text-brand-text">
               {isAr ? "هل لديكم استفسار آخر لم تجدوا إجابته؟" : "Have another specific question?"}
-            </h4>
+            </h3>
             <p className="text-sm text-brand-text-body max-w-md mx-auto">
               {isAr
                 ? "فريق الاستقبال لدينا جاهز للإجابة عن أي استفسار يخص طفلكم مباشرة عبر واتساب."
@@ -530,7 +531,7 @@ export const OctoberClientView: React.FC<OctoberClientViewProps> = () => {
                 <span>{isAr ? "تواصل معنا مباشرة عبر واتساب" : "Chat on WhatsApp"}</span>
               </a>
             </div>
-          </div>
+          </aside>
         </div>
       </section>
 
@@ -547,6 +548,6 @@ export const OctoberClientView: React.FC<OctoberClientViewProps> = () => {
             : "Schedule an initial evaluation session to discover your child's strengths and design their custom roadmap."
         }
       />
-    </div>
+    </article>
   );
 };

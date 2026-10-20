@@ -1,7 +1,6 @@
 import { siteConfig } from "@/data/site";
 import type { Service, ServiceFAQ } from "@/data/services";
-
-// ── Local Business / Organization ────────────────────────────────
+import type { Article } from "@/data/articles";
 
 // ── WebSite Schema ───────────────────────────────────────────────
 
@@ -22,6 +21,14 @@ export function generateWebSiteSchema() {
       url: siteConfig.url,
       logo: `${siteConfig.url}/images/logo.jpg`,
     },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${siteConfig.url}/articles/?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
   };
 }
 
@@ -30,10 +37,15 @@ export function generateWebSiteSchema() {
 export function generateLocalBusinessSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": ["MedicalBusiness", "LocalBusiness"],
+    "@type": ["MedicalBusiness", "LocalBusiness", "MedicalClinic"],
     "@id": `${siteConfig.url}/#organization`,
     name: siteConfig.name,
-    alternateName: ["Forooq Fardya", "مركز فروق فردية", "فروق فردية للتخاطب وتنمية المهارات"],
+    alternateName: [
+      "Forooq Fardya",
+      "مركز فروق فردية",
+      "فروق فردية للتخاطب وتنمية المهارات",
+      "Forooq Fardya Child Rehabilitation Center",
+    ],
     description: siteConfig.description,
     url: siteConfig.url,
     logo: `${siteConfig.url}/images/logo.jpg`,
@@ -43,11 +55,21 @@ export function generateLocalBusinessSchema() {
     ],
     telephone: siteConfig.contact.phone,
     email: siteConfig.contact.email,
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: siteConfig.contact.phone,
+        contactType: "customer service",
+        areaServed: "EG",
+        availableLanguage: ["ar", "en"],
+      },
+    ],
     address: {
       "@type": "PostalAddress",
       streetAddress: siteConfig.contact.address,
       addressLocality: "6th of October City",
       addressRegion: "Giza",
+      postalCode: "12566",
       addressCountry: "EG",
     },
     geo: {
@@ -82,7 +104,7 @@ export function generateLocalBusinessSchema() {
     ],
     priceRange: "$$",
     currenciesAccepted: "EGP",
-    paymentAccepted: ["Cash", "Mobile Payment"],
+    paymentAccepted: ["Cash", "Mobile Payment", "InstaPay", "Vodafone Cash"],
     isAcceptingNewPatients: true,
     potentialAction: {
       "@type": "ReserveAction",
@@ -149,6 +171,7 @@ export function generateLocalBusinessSchema() {
     medicalSpecialty: [
       "Speech-Language Pathology",
       "Pediatric Rehabilitation",
+      "Child Development",
     ],
     availableService: [
       {
@@ -177,6 +200,52 @@ export function generateLocalBusinessSchema() {
         url: `${siteConfig.url}/services/parent-guidance/`,
       },
     ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "خدمات تأهيل وتنمية مهارات الأطفال",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "MedicalTherapy",
+            name: "جلسات التخاطب والنطق وتأخر الكلام",
+            url: `${siteConfig.url}/services/speech-therapy/`,
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "MedicalTherapy",
+            name: "علاج وتأهيل صعوبات التعلم الأكاديمية والنمائية",
+            url: `${siteConfig.url}/services/learning-difficulties/`,
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "MedicalTherapy",
+            name: "تنمية مهارات الانتباه والتركيز وفرط الحركة",
+            url: `${siteConfig.url}/services/skills-development/`,
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "MedicalTherapy",
+            name: "التهيئة والتأسيس الأكاديمي لمرحلة ما قبل المدرسة",
+            url: `${siteConfig.url}/services/foundation/`,
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "MedicalTherapy",
+            name: "إرشاد ودعم أولياء الأمور وتعديل سلوك الأطفال",
+            url: `${siteConfig.url}/services/parent-guidance/`,
+          },
+        },
+      ],
+    },
   };
 }
 
@@ -185,7 +254,7 @@ export function generateLocalBusinessSchema() {
 export function generateOctoberBranchSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": ["MedicalBusiness", "LocalBusiness"],
+    "@type": ["MedicalBusiness", "LocalBusiness", "MedicalClinic"],
     "@id": `${siteConfig.url}/october/#branch`,
     name: "مركز فروق فردية — فرع مدينة ٦ أكتوبر الحي الرابع",
     alternateName: "Forooq Fardya Center — 6th of October Branch",
@@ -197,9 +266,10 @@ export function generateOctoberBranchSchema() {
     telephone: siteConfig.contact.phone,
     address: {
       "@type": "PostalAddress",
-      streetAddress: "الحي الرابع، بالقرب من المحاور الرئيسية وميدان الحصري",
+      streetAddress: "الحي الرابع، بالقرب من المحاور الرئيسية وميدان الحصري ووصلة دهشور",
       addressLocality: "مدينة ٦ أكتوبر",
       addressRegion: "محافظة الجيزة",
+      postalCode: "12566",
       addressCountry: "EG",
     },
     geo: {
@@ -224,6 +294,7 @@ export function generateOctoberBranchSchema() {
     ],
     priceRange: "$$",
     currenciesAccepted: "EGP",
+    paymentAccepted: ["Cash", "Mobile Payment", "InstaPay", "Vodafone Cash"],
     isAcceptingNewPatients: true,
     areaServed: [
       "مدينة ٦ أكتوبر",
@@ -241,12 +312,14 @@ export function generateOctoberBranchSchema() {
 export function generateServiceSchema(service: Service) {
   return {
     "@context": "https://schema.org",
-    "@type": "MedicalTherapy",
+    "@type": ["MedicalTherapy", "Service"],
     name: `${service.title} — ${service.tagline}`,
     description: service.purpose,
+    serviceType: service.title,
     url: `${siteConfig.url}/services/${service.slug}/`,
     provider: {
       "@type": "MedicalBusiness",
+      "@id": `${siteConfig.url}/#organization`,
       name: siteConfig.name,
       url: siteConfig.url,
       telephone: siteConfig.contact.phone,
@@ -257,6 +330,23 @@ export function generateServiceSchema(service: Service) {
         addressRegion: "Giza",
         addressCountry: "EG",
       },
+    },
+    audience: {
+      "@type": "PeopleAudience",
+      suggestedMinAge: 2,
+      audienceType: "الأطفال من سن سنتين وأولياء أمورهم",
+    },
+    areaServed: [
+      { "@type": "City", name: "مدينة ٦ أكتوبر" },
+      { "@type": "City", name: "الشيخ زايد" },
+      { "@type": "City", name: "حدائق أكتوبر" },
+      { "@type": "AdministrativeArea", name: "محافظة الجيزة" },
+    ],
+    offers: {
+      "@type": "Offer",
+      availability: "https://schema.org/InStock",
+      priceCurrency: "EGP",
+      url: `${siteConfig.url}/services/${service.slug}/`,
     },
   };
 }
@@ -295,34 +385,124 @@ export function generateBreadcrumbSchema(
   };
 }
 
-// ── Article Schema ───────────────────────────────────────────────
+// ── Collection / ItemList Schema ─────────────────────────────────
 
-export function generateArticleSchema(article: {
+export function generateCollectionSchema(
+  name: string,
+  description: string,
+  items: { name: string; url: string; description?: string }[]
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name,
+    description,
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: items.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: item.name,
+        url: item.url,
+        description: item.description,
+      })),
+    },
+  };
+}
+
+// ── ContactPage Schema ───────────────────────────────────────────
+
+export function generateContactPageSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "@id": `${siteConfig.url}/contact/#webpage`,
+    name: "تواصل مع مركز فروق فردية واحجز تقييمًا لطفلك",
+    description:
+      "احجز موعد تقييم واستشارات التخاطب وصعوبات التعلم وتنمية المهارات بمدينة ٦ أكتوبر.",
+    url: `${siteConfig.url}/contact/`,
+    mainEntity: {
+      "@type": ["MedicalBusiness", "LocalBusiness"],
+      "@id": `${siteConfig.url}/#organization`,
+      name: siteConfig.name,
+      telephone: siteConfig.contact.phone,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: siteConfig.contact.address,
+        addressLocality: "مدينة ٦ أكتوبر",
+        addressRegion: "الجيزة",
+        addressCountry: "EG",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 29.9602,
+        longitude: 30.9274,
+      },
+    },
+  };
+}
+
+// ── Article Schema (Enriched for Search Engines & LLM Context) ───
+
+export function generateArticleSchema(article: Article | {
   title: string;
   excerpt: string;
   slug: string;
   date: string;
+  category?: string;
+  content?: {
+    lead?: string;
+    sections?: {
+      heading: string;
+      paragraphs: string[];
+      listItems?: string[];
+    }[];
+    conclusion?: string;
+  };
 }) {
+  // Synthesize full article body text for AI crawler scraping
+  let bodyText = article.excerpt;
+  if ("content" in article && article.content) {
+    const parts: string[] = [];
+    if (article.content.lead) parts.push(article.content.lead);
+    if (article.content.sections) {
+      for (const section of article.content.sections) {
+        parts.push(section.heading);
+        parts.push(...section.paragraphs);
+        if (section.listItems) parts.push(...section.listItems);
+      }
+    }
+    if (article.content.conclusion) parts.push(article.content.conclusion);
+    bodyText = parts.join(" ");
+  }
+
+  const wordCount = bodyText.split(/\s+/).filter(Boolean).length;
+
   return {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: article.title,
     description: article.excerpt,
+    articleBody: bodyText,
+    wordCount,
+    articleSection: "category" in article ? article.category : "تأهيل وتنمية مهارات الأطفال",
+    inLanguage: "ar",
     url: `${siteConfig.url}/articles/${article.slug}/`,
     image: [
       `${siteConfig.url}/images/for2-fardya-logo.jpg`,
       `${siteConfig.url}/images/logo.jpg`,
     ],
-    inLanguage: "ar",
     datePublished: "2026-01-01",
     dateModified: new Date().toISOString().split("T")[0],
     author: {
       "@type": "Organization",
+      "@id": `${siteConfig.url}/#organization`,
       name: siteConfig.name,
       url: siteConfig.url,
     },
     publisher: {
       "@type": "Organization",
+      "@id": `${siteConfig.url}/#organization`,
       name: siteConfig.name,
       logo: {
         "@type": "ImageObject",
@@ -332,6 +512,10 @@ export function generateArticleSchema(article: {
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": `${siteConfig.url}/articles/${article.slug}/`,
+    },
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "p", "article"],
     },
   };
 }

@@ -41,9 +41,9 @@ export const PrivacyClientView: React.FC = () => {
   };
 
   return (
-    <div className="pb-16 text-start">
+    <article className="pb-16 text-start">
       {/* Header & Breadcrumb */}
-      <section className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-8 pb-8">
+      <header className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-8 pb-8">
         <Breadcrumbs items={[{ title: t.common.privacy }]} className="mb-6" />
 
         <div className="max-w-3xl">
@@ -57,40 +57,40 @@ export const PrivacyClientView: React.FC = () => {
             {copy.intro}
           </p>
         </div>
-      </section>
+      </header>
 
       {/* Main Privacy Content */}
-      <section className="max-w-[800px] mx-auto px-5 sm:px-6 py-4 space-y-8 text-base sm:text-lg text-brand-text-body leading-[2]">
-        <div className="bg-white rounded-xl border border-brand-border p-6 sm:p-8 space-y-4 shadow-sm">
-          <h2 className="text-xl sm:text-2xl font-bold text-brand-text">
+      <div className="max-w-[800px] mx-auto px-5 sm:px-6 py-4 space-y-8 text-base sm:text-lg text-brand-text-body leading-[2]">
+        <section aria-labelledby="privacy-sec-1" className="bg-white rounded-xl border border-brand-border p-6 sm:p-8 space-y-4 shadow-sm">
+          <h2 id="privacy-sec-1" className="text-xl sm:text-2xl font-bold text-brand-text">
             {copy.sec1Title}
           </h2>
           <p>{copy.sec1Desc}</p>
-        </div>
+        </section>
 
-        <div className="bg-white rounded-xl border border-brand-border p-6 sm:p-8 space-y-4 shadow-sm">
-          <h2 className="text-xl sm:text-2xl font-bold text-brand-text">
+        <section aria-labelledby="privacy-sec-2" className="bg-white rounded-xl border border-brand-border p-6 sm:p-8 space-y-4 shadow-sm">
+          <h2 id="privacy-sec-2" className="text-xl sm:text-2xl font-bold text-brand-text">
             {copy.sec2Title}
           </h2>
           <p>{copy.sec2Desc}</p>
-        </div>
+        </section>
 
-        <div className="bg-white rounded-xl border border-brand-border p-6 sm:p-8 space-y-4 shadow-sm">
-          <h2 className="text-xl sm:text-2xl font-bold text-brand-text">
+        <section aria-labelledby="privacy-sec-3" className="bg-white rounded-xl border border-brand-border p-6 sm:p-8 space-y-4 shadow-sm">
+          <h2 id="privacy-sec-3" className="text-xl sm:text-2xl font-bold text-brand-text">
             {copy.sec3Title}
           </h2>
           <p>{copy.sec3Desc}</p>
-        </div>
+        </section>
 
-        <div className="bg-white rounded-xl border border-brand-border p-6 sm:p-8 space-y-4 shadow-sm">
-          <h2 className="text-xl sm:text-2xl font-bold text-brand-text">
+        <section aria-labelledby="privacy-sec-4" className="bg-white rounded-xl border border-brand-border p-6 sm:p-8 space-y-4 shadow-sm">
+          <h2 id="privacy-sec-4" className="text-xl sm:text-2xl font-bold text-brand-text">
             {copy.sec4Title}
           </h2>
           <p>{copy.sec4Desc}</p>
-        </div>
+        </section>
 
-        <div className="bg-white rounded-xl border border-brand-border p-6 sm:p-8 space-y-4 shadow-sm">
-          <h2 className="text-xl sm:text-2xl font-bold text-brand-text">
+        <section aria-labelledby="privacy-sec-5" className="bg-white rounded-xl border border-brand-border p-6 sm:p-8 space-y-4 shadow-sm">
+          <h2 id="privacy-sec-5" className="text-xl sm:text-2xl font-bold text-brand-text">
             {copy.sec5Title}
           </h2>
           <p>
@@ -103,8 +103,8 @@ export const PrivacyClientView: React.FC = () => {
             </a>{" "}
             {copy.sec5Suffix}
           </p>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </article>
   );
 };

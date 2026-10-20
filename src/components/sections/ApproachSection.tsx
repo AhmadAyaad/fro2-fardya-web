@@ -37,7 +37,7 @@ export const ApproachSection: React.FC = () => {
     >
       <div className="max-w-[1200px] mx-auto px-5 sm:px-6">
         {/* Section Header */}
-        <div className="max-w-2xl text-start">
+        <header className="max-w-2xl text-start">
           <span className="text-primary font-bold text-sm tracking-wide block mb-2">
             {t.approach.tag}
           </span>
@@ -50,12 +50,12 @@ export const ApproachSection: React.FC = () => {
           <p className="mt-4 text-base sm:text-lg text-brand-text-body leading-[1.85]">
             {t.approach.description}
           </p>
-        </div>
+        </header>
 
         {/* 3 Pillar Cards */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+        <ul className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 list-none p-0 m-0">
           {pillars.map((pillar, idx) => (
-            <div
+            <li
               key={idx}
               className="bg-brand-bg rounded-lg border border-brand-border p-6 sm:p-7 flex flex-col items-start hover:border-brand-border-strong hover:shadow-card transition-all duration-200"
             >
@@ -68,9 +68,9 @@ export const ApproachSection: React.FC = () => {
               <p className="text-base text-brand-text-body leading-[1.85]">
                 {pillar.desc}
               </p>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

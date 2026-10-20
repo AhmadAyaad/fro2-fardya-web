@@ -38,7 +38,7 @@ export const WhyUsSection: React.FC = () => {
     >
       <div className="max-w-[1200px] mx-auto px-5 sm:px-6">
         {/* Section Header */}
-        <div className="max-w-2xl text-start">
+        <header className="max-w-2xl text-start">
           <span className="text-accent-yellow font-bold text-sm tracking-wide block mb-2">
             {t.whyUs.tag}
           </span>
@@ -51,17 +51,17 @@ export const WhyUsSection: React.FC = () => {
           <p className="mt-4 text-base sm:text-lg text-[#D4DAE5] leading-[1.85]">
             {t.whyUs.description}
           </p>
-        </div>
+        </header>
 
         {/* 4 Cards Grid */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <ul className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 list-none p-0 m-0">
           {reasons.map((item, idx) => (
-            <div
+            <li
               key={idx}
               className="bg-white/5 border border-white/10 rounded-lg p-6 sm:p-7 flex flex-col justify-between hover:bg-white/10 hover:border-white/20 transition-all duration-200"
             >
               <div>
-                <div className="w-12 h-12 rounded-full bg-white/10 border border-white/15 flex items-center justify-center mb-5 shrink-0">
+                <div className="w-12 h-12 rounded-full bg-white/10 border border-white/15 flex items-center justify-center mb-5 shrink-0" aria-hidden="true">
                   {item.icon}
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">
@@ -71,9 +71,9 @@ export const WhyUsSection: React.FC = () => {
                   {item.desc}
                 </p>
               </div>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

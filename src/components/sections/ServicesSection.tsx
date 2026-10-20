@@ -45,7 +45,7 @@ export const ServicesSection: React.FC = () => {
     >
       <div className="max-w-[1200px] mx-auto px-5 sm:px-6">
         {/* Section Header */}
-        <div className="max-w-2xl text-start">
+        <header className="max-w-2xl text-start">
           <span className="text-primary font-bold text-sm tracking-wide block mb-2">
             {t.servicesSection.tag}
           </span>
@@ -58,10 +58,10 @@ export const ServicesSection: React.FC = () => {
           <p className="mt-4 text-base sm:text-lg text-brand-text-body leading-[1.85]">
             {t.servicesSection.description}
           </p>
-        </div>
+        </header>
 
         {/* 5 Service Cards */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 sm:gap-8">
+        <ul className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 sm:gap-8 list-none p-0 m-0">
           {currentServices.map((service, index) => {
             const colSpanClasses =
               index === 3
@@ -71,45 +71,46 @@ export const ServicesSection: React.FC = () => {
                 : "lg:col-span-2";
 
             return (
-              <div
-                key={service.slug}
-                className={`bg-white rounded-lg border border-brand-border p-6 sm:p-8 flex flex-col justify-between hover:border-brand-border-strong hover:shadow-card transition-all duration-200 group ${colSpanClasses}`}
-              >
-              <div>
-                <SenseNode
-                  type={service.themeColor}
-                  size={64}
-                  className="mb-6 group-hover:scale-105 transition-transform"
+              <li key={service.slug} className={`flex ${colSpanClasses}`}>
+                <article
+                  className="w-full bg-white rounded-lg border border-brand-border p-6 sm:p-8 flex flex-col justify-between hover:border-brand-border-strong hover:shadow-card transition-all duration-200 group"
                 >
-                  {getIcon(service.iconName)}
-                </SenseNode>
+                  <div>
+                    <SenseNode
+                      type={service.themeColor}
+                      size={64}
+                      className="mb-6 group-hover:scale-105 transition-transform"
+                    >
+                      {getIcon(service.iconName)}
+                    </SenseNode>
 
-                <h3 className="text-2xl font-bold text-brand-text mb-2">
-                  {service.title}
-                </h3>
+                    <h3 className="text-2xl font-bold text-brand-text mb-2">
+                      {service.title}
+                    </h3>
 
-                <p className="text-xs font-semibold text-brand-text-muted mb-4">
-                  {service.tagline}
-                </p>
+                    <p className="text-xs font-semibold text-brand-text-muted mb-4">
+                      {service.tagline}
+                    </p>
 
-                <p className="text-base text-brand-text-body leading-[1.85] mb-6">
-                  {service.summary}
-                </p>
-              </div>
+                    <p className="text-base text-brand-text-body leading-[1.85] mb-6">
+                      {service.summary}
+                    </p>
+                  </div>
 
-              <div className="pt-4 border-t border-brand-border/60">
-                <Link
-                  href={`/services/${service.slug}`}
-                  className="inline-flex items-center gap-2 text-base font-bold text-primary hover:text-primary-hover group-hover:translate-x-[-4px] transition-transform"
-                >
-                  <span>{t.servicesSection.learnMore}</span>
-                  <IconArrowStart size={18} />
-                </Link>
-              </div>
-            </div>
+                  <footer className="pt-4 border-t border-brand-border/60">
+                    <Link
+                      href={`/services/${service.slug}`}
+                      className="inline-flex items-center gap-2 text-base font-bold text-primary hover:text-primary-hover group-hover:translate-x-[-4px] transition-transform"
+                    >
+                      <span>{t.servicesSection.learnMore}</span>
+                      <IconArrowStart size={18} />
+                    </Link>
+                  </footer>
+                </article>
+              </li>
             );
           })}
-        </div>
+        </ul>
 
         {/* Explore all services link */}
         <div className="mt-10 text-center sm:text-start">

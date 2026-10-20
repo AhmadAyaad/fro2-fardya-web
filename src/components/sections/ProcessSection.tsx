@@ -37,7 +37,7 @@ export const ProcessSection: React.FC = () => {
     >
       <div className="max-w-[1200px] mx-auto px-5 sm:px-6">
         {/* Section Header */}
-        <div className="max-w-2xl text-start">
+        <header className="max-w-2xl text-start">
           <span className="text-primary font-bold text-sm tracking-wide block mb-2">
             {t.process.tag}
           </span>
@@ -50,7 +50,7 @@ export const ProcessSection: React.FC = () => {
           <p className="mt-4 text-base sm:text-lg text-brand-text-body leading-[1.85]">
             {t.process.description}
           </p>
-        </div>
+        </header>
 
         {/* 4 Steps Container */}
         <div className="mt-14 relative">
@@ -60,14 +60,14 @@ export const ProcessSection: React.FC = () => {
             aria-hidden="true"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+          <ol className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10 list-none p-0 m-0">
             {steps.map((step, idx) => (
-              <div
+              <li
                 key={idx}
                 className="bg-brand-bg lg:bg-transparent rounded-lg lg:rounded-none p-6 lg:p-0 border lg:border-none border-brand-border flex flex-col items-start"
               >
                 {/* Step Number Circle */}
-                <div className="w-14 h-14 rounded-full bg-white border-4 border-brand-border-strong flex items-center justify-center text-xl font-bold text-brand-text shadow-sm mb-5 shrink-0">
+                <div className="w-14 h-14 rounded-full bg-white border-4 border-brand-border-strong flex items-center justify-center text-xl font-bold text-brand-text shadow-sm mb-5 shrink-0" aria-hidden="true">
                   {step.num}
                 </div>
 
@@ -78,9 +78,9 @@ export const ProcessSection: React.FC = () => {
                 <p className="text-base text-brand-text-body leading-[1.85]">
                   {step.desc}
                 </p>
-              </div>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </div>
     </section>

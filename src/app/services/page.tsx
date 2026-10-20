@@ -1,7 +1,8 @@
 import React from "react";
 import type { Metadata } from "next";
 import { siteConfig } from "@/data/site";
-import { generateBreadcrumbSchema } from "@/lib/seo";
+import { services } from "@/data/services";
+import { generateBreadcrumbSchema, generateCollectionSchema } from "@/lib/seo";
 import { ServicesClientView } from "@/components/views/ServicesClientView";
 
 export const metadata: Metadata = {
@@ -48,11 +49,25 @@ export default function ServicesPage() {
     { name: "الخدمات", url: `${siteConfig.url}/services/` },
   ]);
 
+  const collectionSchema = generateCollectionSchema(
+    "خدمات مركز فروق فردية للتأهيل وتنمية مهارات الطفل",
+    "قائمة خدمات التأهيل المتخصصة للأطفال من عمر سنتين بمدينة ٦ أكتوبر",
+    services.map((s) => ({
+      name: `${s.title} — ${s.tagline}`,
+      url: `${siteConfig.url}/services/${s.slug}/`,
+      description: s.summary,
+    }))
+  );
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
       />
       <ServicesClientView />
     </>

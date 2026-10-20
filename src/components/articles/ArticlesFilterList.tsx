@@ -52,13 +52,18 @@ export const ArticlesFilterList: React.FC = () => {
   return (
     <div>
       {/* Search & Category Filter Controls */}
-      <div className="bg-white rounded-xl border border-brand-border p-4 sm:p-6 mb-10 shadow-sm space-y-4">
+      <form
+        role="search"
+        aria-label={locale === "ar" ? "بحث وتصفية المقالات" : "Search and filter articles"}
+        onSubmit={(e) => e.preventDefault()}
+        className="bg-white rounded-xl border border-brand-border p-4 sm:p-6 mb-10 shadow-sm space-y-4"
+      >
         {/* Search Input */}
         <div className="relative max-w-md">
           <label htmlFor="search-articles" className="sr-only">
             {locale === "ar" ? "ابحث في المقالات" : "Search articles"}
           </label>
-          <div className="absolute inset-y-0 start-0 flex items-center ps-4 pointer-events-none text-brand-text-muted">
+          <div className="absolute inset-y-0 start-0 flex items-center ps-4 pointer-events-none text-brand-text-muted" aria-hidden="true">
             <IconSearch size={20} />
           </div>
           <input
@@ -76,65 +81,76 @@ export const ArticlesFilterList: React.FC = () => {
         </div>
 
         {/* Category Pills */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-1 pt-2 select-none">
-          {categories.map((cat) => (
-            <button
-              key={cat.slug}
-              onClick={() => setSelectedCategorySlug(cat.slug)}
-              className={`px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-all cursor-pointer ${
-                selectedCategorySlug === cat.slug
-                  ? "bg-primary text-white shadow-sm"
-                  : "bg-brand-bg text-brand-text border border-brand-border hover:bg-brand-bg-alt"
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </div>
-      </div>
+        <fieldset className="border-none p-0 m-0">
+          <legend className="sr-only">
+            {locale === "ar" ? "تصنيفات المقالات" : "Article Categories"}
+          </legend>
+          <div className="flex items-center gap-2 overflow-x-auto pb-1 pt-2 select-none">
+            {categories.map((cat) => (
+              <button
+                key={cat.slug}
+                type="button"
+                onClick={() => setSelectedCategorySlug(cat.slug)}
+                className={`px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-all cursor-pointer ${
+                  selectedCategorySlug === cat.slug
+                    ? "bg-primary text-white shadow-sm"
+                    : "bg-brand-bg text-brand-text border border-brand-border hover:bg-brand-bg-alt"
+                }`}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+        </fieldset>
+      </form>
 
       {/* Articles Grid */}
       {filteredArticles.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 list-none p-0 m-0">
           {filteredArticles.map((article) => (
-            <article
-              key={article.slug}
-              className="bg-white rounded-lg border border-brand-border p-6 sm:p-7 flex flex-col justify-between hover:border-brand-border-strong hover:shadow-card transition-all group text-start"
-            >
-              <div>
-                <div className="flex items-center justify-between gap-4 mb-5">
-                  <SenseNode type={article.themeColor} size={54}>
-                    {getIcon(article.categorySlug)}
-                  </SenseNode>
-                  <Badge variant={article.themeColor} className="text-xs">
-                    {article.category}
-                  </Badge>
+            <li key={article.slug} className="flex">
+              <article
+                className="w-full bg-white rounded-lg border border-brand-border p-6 sm:p-7 flex flex-col justify-between hover:border-brand-border-strong hover:shadow-card transition-all group text-start"
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-4 mb-5">
+                    <SenseNode type={article.themeColor} size={54}>
+                      {getIcon(article.categorySlug)}
+                    </SenseNode>
+                    <Badge variant={article.themeColor} className="text-xs">
+                      {article.category}
+                    </Badge>
+                  </div>
+
+                  <h2 className="text-xl font-bold text-brand-text mb-3 leading-snug group-hover:text-primary transition-colors">
+                    <Link href={`/articles/${article.slug}`}>
+                      {article.title}
+                    </Link>
+                  </h2>
+
+                  <p className="text-sm text-brand-text-body leading-[1.85] mb-5">
+                    {article.excerpt}
+                  </p>
                 </div>
 
-                <h2 className="text-xl font-bold text-brand-text mb-3 leading-snug group-hover:text-primary transition-colors">
-                  <Link href={`/articles/${article.slug}`}>
-                    {article.title}
+                <footer className="pt-4 border-t border-brand-border/60 flex items-center justify-between text-xs text-brand-text-muted">
+                  <span className="flex items-center gap-1.5">
+                    <time dateTime="2026">{article.date}</time>
+                    <span aria-hidden="true">•</span>
+                    <span>{article.readTime}</span>
+                  </span>
+                  <Link
+                    href={`/articles/${article.slug}`}
+                    className="font-bold text-primary hover:underline flex items-center gap-1"
+                  >
+                    <span>{t.articlesSection.readArticle}</span>
+                    <IconArrowStart size={14} />
                   </Link>
-                </h2>
-
-                <p className="text-sm text-brand-text-body leading-[1.85] mb-5">
-                  {article.excerpt}
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-brand-border/60 flex items-center justify-between text-xs text-brand-text-muted">
-                <span>{article.readTime}</span>
-                <Link
-                  href={`/articles/${article.slug}`}
-                  className="font-bold text-primary hover:underline flex items-center gap-1"
-                >
-                  <span>{t.articlesSection.readArticle}</span>
-                  <IconArrowStart size={14} />
-                </Link>
-              </div>
-            </article>
+                </footer>
+              </article>
+            </li>
           ))}
-        </div>
+        </ul>
       ) : (
         <div className="text-center py-16 bg-white rounded-xl border border-brand-border">
           <p className="text-lg font-semibold text-brand-text">

@@ -86,9 +86,9 @@ export const ServicesClientView: React.FC = () => {
   };
 
   return (
-    <div className="pb-16 md:pb-0">
+    <article className="pb-16 md:pb-0">
       {/* Page Header & Breadcrumb */}
-      <section className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-8 pb-4">
+      <header className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-8 pb-4">
         <Breadcrumbs items={[{ title: t.nav.services }]} className="mb-6" />
 
         <div className="max-w-2xl text-start">
@@ -102,94 +102,97 @@ export const ServicesClientView: React.FC = () => {
             {copy.intro}
           </p>
         </div>
-      </section>
+      </header>
 
-      {/* 3 Detailed Service Cards */}
+      {/* Detailed Service Cards */}
       <section
-        className="max-w-[1200px] mx-auto px-5 sm:px-6 py-10 space-y-8"
+        className="max-w-[1200px] mx-auto px-5 sm:px-6 py-10"
         aria-label={copy.title}
       >
-        {currentServices.map((service) => (
-          <article
-            key={service.slug}
-            id={service.slug}
-            className="bg-white rounded-xl border border-brand-border p-6 sm:p-8 md:p-10 shadow-sm hover:border-brand-border-strong hover:shadow-card transition-all"
-          >
-            <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-8">
-              {/* Left/Start side: Title & Description */}
-              <div className="flex-1 text-start">
-                <div className="flex items-center gap-4 mb-4">
-                  <SenseNode type={service.themeColor} size={64}>
-                    {getIcon(service.iconName)}
-                  </SenseNode>
-                  <div>
-                    <h2 className="text-2xl sm:text-3xl font-bold text-brand-text">
-                      {service.title}
-                    </h2>
-                    <span className="text-sm font-semibold text-brand-text-muted">
-                      {service.tagline}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="mt-4 space-y-3">
-                  <h3 className="text-lg font-bold text-brand-text">
-                    {copy.purposeTitle}
-                  </h3>
-                  <p className="text-base text-brand-text-body leading-[1.85] max-w-2xl">
-                    {service.purpose}
-                  </p>
-                </div>
-
-                {/* Common signs */}
-                <div className="mt-6">
-                  <h3 className="text-base font-bold text-brand-text mb-3">
-                    {copy.indicationsTitle}
-                  </h3>
-                  <ul className="space-y-2.5 max-w-2xl">
-                    {service.indications.slice(0, 3).map((ind, i) => (
-                      <li key={i} className="flex items-start gap-2.5 text-sm sm:text-base text-brand-text-body">
-                        <span className="shrink-0 mt-1 text-primary">
-                          <IconCheck size={18} />
+        <ul className="space-y-8 list-none p-0 m-0">
+          {currentServices.map((service) => (
+            <li key={service.slug}>
+              <article
+                id={service.slug}
+                className="bg-white rounded-xl border border-brand-border p-6 sm:p-8 md:p-10 shadow-sm hover:border-brand-border-strong hover:shadow-card transition-all"
+              >
+                <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-8">
+                  {/* Left/Start side: Title & Description */}
+                  <div className="flex-1 text-start">
+                    <div className="flex items-center gap-4 mb-4">
+                      <SenseNode type={service.themeColor} size={64}>
+                        {getIcon(service.iconName)}
+                      </SenseNode>
+                      <div>
+                        <h2 className="text-2xl sm:text-3xl font-bold text-brand-text">
+                          {service.title}
+                        </h2>
+                        <span className="text-sm font-semibold text-brand-text-muted">
+                          {service.tagline}
                         </span>
-                        <span>{ind}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+                      </div>
+                    </div>
 
-              {/* Right/End side: Action Box */}
-              <div className="lg:w-72 shrink-0 bg-brand-bg-alt rounded-lg border border-brand-border p-6 flex flex-col justify-between gap-6">
-                <div>
-                  <Badge variant={service.themeColor} className="text-xs mb-3">
-                    {copy.planBadge}
-                  </Badge>
-                  <p className="text-xs text-brand-text-muted leading-relaxed">
-                    {copy.planNotice}
-                  </p>
-                </div>
+                    <div className="mt-4 space-y-3">
+                      <h3 className="text-lg font-bold text-brand-text">
+                        {copy.purposeTitle}
+                      </h3>
+                      <p className="text-base text-brand-text-body leading-[1.85] max-w-2xl">
+                        {service.purpose}
+                      </p>
+                    </div>
 
-                <div className="space-y-2.5">
-                  <Link
-                    href={`/services/${service.slug}`}
-                    className="w-full py-3 text-center text-sm font-bold text-white bg-primary hover:bg-primary-hover rounded-full shadow-cta flex items-center justify-center gap-2 transition-transform active:scale-[0.98]"
-                  >
-                    <span>{copy.viewDetails}</span>
-                    <IconArrowStart size={16} />
-                  </Link>
+                    {/* Common signs */}
+                    <div className="mt-6">
+                      <h3 className="text-base font-bold text-brand-text mb-3">
+                        {copy.indicationsTitle}
+                      </h3>
+                      <ul className="space-y-2.5 max-w-2xl">
+                        {service.indications.slice(0, 3).map((ind, i) => (
+                          <li key={i} className="flex items-start gap-2.5 text-sm sm:text-base text-brand-text-body">
+                            <span className="shrink-0 mt-1 text-primary">
+                              <IconCheck size={18} />
+                            </span>
+                            <span>{ind}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
 
-                  <Link
-                    href="/contact"
-                    className="w-full py-2.5 text-center text-sm font-semibold text-brand-text bg-white border border-brand-border hover:bg-brand-bg rounded-full block transition-colors"
-                  >
-                    {copy.requestAssessment}
-                  </Link>
+                  {/* Right/End side: Action Box */}
+                  <aside aria-label={service.title} className="lg:w-72 shrink-0 bg-brand-bg-alt rounded-lg border border-brand-border p-6 flex flex-col justify-between gap-6">
+                    <div>
+                      <Badge variant={service.themeColor} className="text-xs mb-3">
+                        {copy.planBadge}
+                      </Badge>
+                      <p className="text-xs text-brand-text-muted leading-relaxed">
+                        {copy.planNotice}
+                      </p>
+                    </div>
+
+                    <div className="space-y-2.5">
+                      <Link
+                        href={`/services/${service.slug}`}
+                        className="w-full py-3 text-center text-sm font-bold text-white bg-primary hover:bg-primary-hover rounded-full shadow-cta flex items-center justify-center gap-2 transition-transform active:scale-[0.98]"
+                      >
+                        <span>{copy.viewDetails}</span>
+                        <IconArrowStart size={16} />
+                      </Link>
+
+                      <Link
+                        href="/contact"
+                        className="w-full py-2.5 text-center text-sm font-semibold text-brand-text bg-white border border-brand-border hover:bg-brand-bg rounded-full block transition-colors"
+                      >
+                        {copy.requestAssessment}
+                      </Link>
+                    </div>
+                  </aside>
                 </div>
-              </div>
-            </div>
-          </article>
-        ))}
+              </article>
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* "Not sure which service?" Guidance Section */}
@@ -211,15 +214,15 @@ export const ServicesClientView: React.FC = () => {
           </div>
 
           {/* Educational notice card */}
-          <div className="bg-[#FEF7D9] border border-[#F0DC8A] rounded-lg p-5 sm:p-6 mb-10 text-start">
+          <aside aria-label="تنبيه توعوي" className="bg-[#FEF7D9] border border-[#F0DC8A] rounded-lg p-5 sm:p-6 mb-10 text-start">
             <p className="text-sm sm:text-base text-[#604818] leading-relaxed font-medium">
               {copy.notice}
             </p>
-          </div>
+          </aside>
 
           {/* 3 Step Evaluation Journey */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-brand-bg rounded-lg border border-brand-border p-6 text-start">
+          <ol className="grid grid-cols-1 md:grid-cols-3 gap-6 list-none p-0 m-0">
+            <li className="bg-brand-bg rounded-lg border border-brand-border p-6 text-start">
               <span className="text-2xl font-bold text-primary block mb-2">{copy.step1Num}</span>
               <h3 className="text-lg font-bold text-brand-text mb-2">
                 {copy.step1Title}
@@ -227,9 +230,9 @@ export const ServicesClientView: React.FC = () => {
               <p className="text-sm text-brand-text-body leading-relaxed">
                 {copy.step1Desc}
               </p>
-            </div>
+            </li>
 
-            <div className="bg-brand-bg rounded-lg border border-brand-border p-6 text-start">
+            <li className="bg-brand-bg rounded-lg border border-brand-border p-6 text-start">
               <span className="text-2xl font-bold text-primary block mb-2">{copy.step2Num}</span>
               <h3 className="text-lg font-bold text-brand-text mb-2">
                 {copy.step2Title}
@@ -237,9 +240,9 @@ export const ServicesClientView: React.FC = () => {
               <p className="text-sm text-brand-text-body leading-relaxed">
                 {copy.step2Desc}
               </p>
-            </div>
+            </li>
 
-            <div className="bg-brand-bg rounded-lg border border-brand-border p-6 text-start">
+            <li className="bg-brand-bg rounded-lg border border-brand-border p-6 text-start">
               <span className="text-2xl font-bold text-primary block mb-2">{copy.step3Num}</span>
               <h3 className="text-lg font-bold text-brand-text mb-2">
                 {copy.step3Title}
@@ -247,8 +250,8 @@ export const ServicesClientView: React.FC = () => {
               <p className="text-sm text-brand-text-body leading-relaxed">
                 {copy.step3Desc}
               </p>
-            </div>
-          </div>
+            </li>
+          </ol>
         </div>
       </section>
 
@@ -260,6 +263,6 @@ export const ServicesClientView: React.FC = () => {
 
       {/* Mobile Sticky Booking Bar */}
       <StickyBookingBar />
-    </div>
+    </article>
   );
 };

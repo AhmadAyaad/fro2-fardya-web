@@ -66,7 +66,7 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Col 2: Services (2 cols on lg) */}
-          <div className="lg:col-span-2 space-y-3">
+          <nav aria-label={t.footer.servicesTitle} className="lg:col-span-2 space-y-3">
             <h3 className="text-base font-bold text-accent-yellow">{t.footer.servicesTitle}</h3>
             <ul className="space-y-2 text-sm text-[#D4DAE5]">
               {currentServices.map((service) => (
@@ -88,10 +88,10 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
             </ul>
-          </div>
+          </nav>
 
           {/* Col 3: Center Links (2 cols on lg) */}
-          <div className="lg:col-span-2 space-y-3">
+          <nav aria-label={t.footer.quickLinksTitle} className="lg:col-span-2 space-y-3">
             <h3 className="text-base font-bold text-accent-yellow">{t.footer.quickLinksTitle}</h3>
             <ul className="space-y-2 text-sm text-[#D4DAE5]">
               <li>
@@ -124,11 +124,22 @@ export const Footer: React.FC = () => {
                   {t.nav.contact}
                 </Link>
               </li>
+              <li>
+                <a
+                  href="/llms.txt"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white hover:underline transition-colors block py-0.5 text-xs text-[#A8B2C2]"
+                  title="LLM Context & Knowledge Base (llms.txt)"
+                >
+                  {locale === "ar" ? "ملف الذكاء الاصطناعي (llms.txt)" : "AI Context (llms.txt)"}
+                </a>
+              </li>
             </ul>
-          </div>
+          </nav>
 
           {/* Col 4: Contact details (3 cols on lg) */}
-          <div className="lg:col-span-3 space-y-3">
+          <address className="not-italic lg:col-span-3 space-y-3">
             <h3 className="text-base font-bold text-accent-yellow">{t.footer.contactTitle}</h3>
             <ul className="space-y-2.5 text-sm text-[#D4DAE5]">
               <li className="flex items-start gap-2.5">
@@ -152,12 +163,12 @@ export const Footer: React.FC = () => {
                 <span>{site.contact.workingHours}</span>
               </li>
             </ul>
-          </div>
+          </address>
         </div>
 
         {/* Bottom Bar: Copyright & Disclaimer & Language Toggle */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#A8B2C2] text-center sm:text-start">
-          <p>{site.copyright}</p>
+          <small className="text-xs text-[#A8B2C2] block sm:inline">{site.copyright}</small>
           <div className="flex items-center gap-4">
             <button
               type="button"
@@ -169,7 +180,7 @@ export const Footer: React.FC = () => {
                 {locale === "ar" ? "English" : "العربية"}
               </span>
             </button>
-            <p className="max-w-md hidden md:block">{site.disclaimer}</p>
+            <small className="max-w-md hidden md:block text-xs text-[#A8B2C2]">{site.disclaimer}</small>
           </div>
         </div>
       </div>

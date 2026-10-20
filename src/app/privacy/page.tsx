@@ -1,6 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import { siteConfig } from "@/data/site";
+import { generateBreadcrumbSchema } from "@/lib/seo";
 import { PrivacyClientView } from "@/components/views/PrivacyClientView";
 
 export const metadata: Metadata = {
@@ -22,5 +23,18 @@ export const metadata: Metadata = {
 };
 
 export default function PrivacyPage() {
-  return <PrivacyClientView />;
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "الرئيسية", url: `${siteConfig.url}/` },
+    { name: "سياسة الخصوصية", url: `${siteConfig.url}/privacy/` },
+  ]);
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <PrivacyClientView />
+    </>
+  );
 }

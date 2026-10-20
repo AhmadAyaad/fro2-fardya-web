@@ -56,6 +56,7 @@ export const SenseNode: React.FC<SenseNodeProps> = ({
 
   return (
     <div
+      aria-hidden="true"
       className={`relative rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 ${className}`}
       style={{
         width: sizePx,

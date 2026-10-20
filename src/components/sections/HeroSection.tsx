@@ -27,8 +27,8 @@ export const HeroSection: React.FC = () => {
       aria-labelledby="hero-title"
       className="max-w-[1200px] mx-auto px-5 sm:px-6 py-12 sm:py-16 md:py-20 flex flex-col lg:flex-row items-center gap-12 lg:gap-16"
     >
-      {/* Text Column */}
-      <div className="flex-1 min-w-0 text-start">
+      {/* Text Column Header */}
+      <header className="flex-1 min-w-0 text-start">
         {/* Age Badge */}
         <Badge
           variant="yellow"
@@ -44,9 +44,9 @@ export const HeroSection: React.FC = () => {
           className="text-4xl sm:text-5xl lg:text-[56px] font-bold leading-[1.3] text-brand-text tracking-normal"
         >
           {t.hero.titlePart1}
-          <span className="text-primary relative inline-block">
+          <strong className="text-primary font-bold relative inline-block">
             {t.hero.titleHighlight}
-          </span>
+          </strong>
         </h1>
 
         {/* Lead Paragraph */}
@@ -55,7 +55,10 @@ export const HeroSection: React.FC = () => {
         </p>
 
         {/* Action Buttons */}
-        <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+        <nav
+          aria-label={locale === "ar" ? "إجراءات البدء السريع" : "Quick action links"}
+          className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5"
+        >
           <Link
             href="/contact"
             className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 text-lg font-semibold text-white bg-primary hover:bg-primary-hover rounded-full shadow-cta transition-transform active:scale-[0.98] min-h-[52px]"
@@ -70,7 +73,7 @@ export const HeroSection: React.FC = () => {
           >
             {t.hero.ghostCta}
           </Link>
-        </div>
+        </nav>
 
         {/* Direct WhatsApp Prompt */}
         <p className="mt-6 text-sm sm:text-base text-brand-text-muted flex items-center gap-2 flex-wrap">
@@ -85,12 +88,20 @@ export const HeroSection: React.FC = () => {
             {t.hero.whatsappLink}
           </a>
         </p>
-      </div>
+      </header>
 
       {/* Constellation Illustration Column */}
-      <div className="flex-1 w-full flex justify-center items-center">
+      <figure
+        aria-label={locale === "ar" ? "رسم توضيحي لمنظومة الحواس وتنمية المهارات" : "Illustration of sensory and developmental skill nodes"}
+        className="flex-1 w-full flex flex-col justify-center items-center m-0"
+      >
         <Constellation />
-      </div>
+        <figcaption className="sr-only">
+          {locale === "ar"
+            ? "رسم توضيحي تفاعلي يربط بين مهارات السمع والبصر واللمس والتذوق والشم والحركة والتواصل لدعم الفروق الفردية للطفل"
+            : "Interactive illustration connecting sensory, motor, speech, and communication skill nodes honoring each child's individual differences"}
+        </figcaption>
+      </figure>
     </section>
   );
 };

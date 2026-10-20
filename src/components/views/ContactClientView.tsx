@@ -77,9 +77,9 @@ export const ContactClientView: React.FC = () => {
   };
 
   return (
-    <div className="pb-16">
+    <article className="pb-16">
       {/* Header & Breadcrumb */}
-      <section className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-8 pb-8 text-start">
+      <header className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-8 pb-8 text-start">
         <Breadcrumbs items={[{ title: t.nav.contact }]} className="mb-6" />
 
         <div className="max-w-2xl">
@@ -93,7 +93,7 @@ export const ContactClientView: React.FC = () => {
             {copy.intro}
           </p>
         </div>
-      </section>
+      </header>
 
       {/* Main Grid: Form on one side, Contact channels on other */}
       <section className="max-w-[1200px] mx-auto px-5 sm:px-6 py-6">
@@ -106,7 +106,7 @@ export const ContactClientView: React.FC = () => {
           {/* Contact Details & Info Column (5 cols on lg) */}
           <div className="lg:col-span-5 space-y-6 text-start">
             {/* Direct WhatsApp Big Card */}
-            <div className="bg-[#E4F8FA] border border-[#83DDE6] rounded-xl p-6 sm:p-7 shadow-sm">
+            <aside aria-label={copy.whatsappCardTitle} className="bg-[#E4F8FA] border border-[#83DDE6] rounded-xl p-6 sm:p-7 shadow-sm">
               <span className="text-xs font-bold text-[#327790] uppercase block mb-1">
                 {copy.fastTrack}
               </span>
@@ -125,10 +125,10 @@ export const ContactClientView: React.FC = () => {
                 <IconWhatsapp size={22} />
                 <span>{copy.openWhatsapp}</span>
               </a>
-            </div>
+            </aside>
 
             {/* Official Center Details Card */}
-            <div className="bg-white border border-brand-border rounded-xl p-6 sm:p-7 shadow-sm space-y-5">
+            <address className="not-italic bg-white border border-brand-border rounded-xl p-6 sm:p-7 shadow-sm space-y-5 block">
               <h2 className="text-lg font-bold text-brand-text border-b border-brand-border/60 pb-3">
                 {copy.officialDetailsTitle}
               </h2>
@@ -187,11 +187,11 @@ export const ContactClientView: React.FC = () => {
                   </span>
                 </div>
               </div>
-            </div>
+            </address>
 
             {/* What happens next? (3 Steps) */}
-            <div className="bg-brand-bg-alt border border-brand-border rounded-xl p-6 sm:p-7 text-start">
-              <h2 className="text-base font-bold text-brand-text mb-4">
+            <aside aria-labelledby="next-steps-title" className="bg-brand-bg-alt border border-brand-border rounded-xl p-6 sm:p-7 text-start">
+              <h2 id="next-steps-title" className="text-base font-bold text-brand-text mb-4">
                 {copy.nextStepsTitle}
               </h2>
               <ol className="space-y-3.5 text-sm text-brand-text-body">
@@ -204,10 +204,10 @@ export const ContactClientView: React.FC = () => {
                   </li>
                 ))}
               </ol>
-            </div>
+            </aside>
           </div>
         </div>
       </section>
-    </div>
+    </article>
   );
 };

@@ -91,9 +91,9 @@ export const ServiceDetailClientView: React.FC<ServiceDetailClientViewProps> = (
   };
 
   return (
-    <div className="pb-16 md:pb-0">
+    <article className="pb-16 md:pb-0">
       {/* 1. Header & Overview Section */}
-      <section className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-8 pb-12">
+      <header className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-8 pb-12">
         <Breadcrumbs
           items={[
             { title: t.nav.services, href: "/services" },
@@ -126,7 +126,7 @@ export const ServiceDetailClientView: React.FC<ServiceDetailClientViewProps> = (
             </p>
           </div>
 
-          <div className="w-full lg:w-72 shrink-0 bg-brand-bg-alt rounded-lg border border-brand-border p-6 flex flex-col gap-4">
+          <aside aria-label={copy.readyTitle} className="w-full lg:w-72 shrink-0 bg-brand-bg-alt rounded-lg border border-brand-border p-6 flex flex-col gap-4">
             <span className="text-sm font-bold text-brand-text">
               {copy.readyTitle}
             </span>
@@ -139,9 +139,9 @@ export const ServiceDetailClientView: React.FC<ServiceDetailClientViewProps> = (
             >
               {copy.bookBtn}
             </Link>
-          </div>
+          </aside>
         </div>
-      </section>
+      </header>
 
       {/* 2. Common Situations Where Parents Seek Support */}
       <section
@@ -162,27 +162,27 @@ export const ServiceDetailClientView: React.FC<ServiceDetailClientViewProps> = (
           </div>
 
           {/* Educational notice */}
-          <div className="bg-[#FEF7D9] border border-[#F0DC8A] rounded-lg p-4 sm:p-5 mb-8 text-start max-w-3xl">
+          <aside aria-label="تنبيه توعوي" className="bg-[#FEF7D9] border border-[#F0DC8A] rounded-lg p-4 sm:p-5 mb-8 text-start max-w-3xl">
             <p className="text-xs sm:text-sm text-[#604818] leading-relaxed">
               ℹ {service.indicationsNotice}
             </p>
-          </div>
+          </aside>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl">
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl list-none p-0 m-0">
             {service.indications.map((item, idx) => (
-              <div
+              <li
                 key={idx}
                 className="bg-brand-bg rounded-lg border border-brand-border p-5 flex items-start gap-3.5 text-start"
               >
-                <span className="shrink-0 mt-0.5 text-primary">
+                <span className="shrink-0 mt-0.5 text-primary" aria-hidden="true">
                   <IconCheck size={20} />
                 </span>
                 <span className="text-sm sm:text-base text-brand-text-body leading-[1.8]">
                   {item}
                 </span>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
@@ -194,21 +194,21 @@ export const ServiceDetailClientView: React.FC<ServiceDetailClientViewProps> = (
             <h2 className="text-2xl sm:text-3xl font-bold text-brand-text mb-6 leading-[1.4]">
               {copy.howItWorksTitle}
             </h2>
-            <div className="space-y-4">
+            <ol className="space-y-4 list-none p-0 m-0">
               {service.howItWorks.map((step, idx) => (
-                <div
+                <li
                   key={idx}
                   className="bg-white border border-brand-border rounded-lg p-5 flex items-start gap-4 shadow-sm"
                 >
-                  <span className="w-8 h-8 rounded-full bg-brand-bg-alt border border-brand-border flex items-center justify-center font-bold text-sm text-brand-text shrink-0 mt-0.5">
+                  <span className="w-8 h-8 rounded-full bg-brand-bg-alt border border-brand-border flex items-center justify-center font-bold text-sm text-brand-text shrink-0 mt-0.5" aria-hidden="true">
                     {idx + 1}
                   </span>
                   <p className="text-sm sm:text-base text-brand-text-body leading-relaxed">
                     {step}
                   </p>
-                </div>
+                </li>
               ))}
-            </div>
+            </ol>
           </div>
 
           {/* What to expect */}
@@ -216,21 +216,21 @@ export const ServiceDetailClientView: React.FC<ServiceDetailClientViewProps> = (
             <h2 className="text-2xl sm:text-3xl font-bold text-brand-text mb-6 leading-[1.4]">
               {copy.expectationsTitle}
             </h2>
-            <div className="space-y-4">
+            <ul className="space-y-4 list-none p-0 m-0">
               {service.expectations.map((exp, idx) => (
-                <div
+                <li
                   key={idx}
                   className="bg-white border border-brand-border rounded-lg p-5 flex items-start gap-4 shadow-sm"
                 >
-                  <span className="w-8 h-8 rounded-full bg-primary-soft text-primary flex items-center justify-center shrink-0 mt-0.5">
+                  <span className="w-8 h-8 rounded-full bg-primary-soft text-primary flex items-center justify-center shrink-0 mt-0.5" aria-hidden="true">
                     <IconCheck size={18} />
                   </span>
                   <p className="text-sm sm:text-base text-brand-text-body leading-relaxed">
                     {exp}
                   </p>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
       </section>
@@ -271,43 +271,44 @@ export const ServiceDetailClientView: React.FC<ServiceDetailClientViewProps> = (
         <h2 className="text-2xl sm:text-3xl font-bold text-brand-text mb-8 text-start">
           {copy.relatedTitle}
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 list-none p-0 m-0">
           {otherServices.map((other) => (
-            <div
-              key={other.slug}
-              className="bg-white border border-brand-border rounded-lg p-6 sm:p-7 flex flex-col justify-between hover:border-brand-border-strong hover:shadow-card transition-all text-start"
-            >
-              <div>
-                <div className="flex items-center gap-3.5 mb-4">
-                  <SenseNode type={other.themeColor} size={50}>
-                    {getIcon(other.iconName)}
-                  </SenseNode>
-                  <div>
-                    <h3 className="text-xl font-bold text-brand-text">
-                      {other.title}
-                    </h3>
-                    <span className="text-xs text-brand-text-muted">
-                      {other.tagline}
-                    </span>
+            <li key={other.slug}>
+              <article
+                className="bg-white border border-brand-border rounded-lg p-6 sm:p-7 flex flex-col justify-between hover:border-brand-border-strong hover:shadow-card transition-all text-start h-full"
+              >
+                <div>
+                  <div className="flex items-center gap-3.5 mb-4">
+                    <SenseNode type={other.themeColor} size={50}>
+                      {getIcon(other.iconName)}
+                    </SenseNode>
+                    <div>
+                      <h3 className="text-xl font-bold text-brand-text">
+                        {other.title}
+                      </h3>
+                      <span className="text-xs text-brand-text-muted">
+                        {other.tagline}
+                      </span>
+                    </div>
                   </div>
+                  <p className="text-sm text-brand-text-body leading-[1.85] mb-5">
+                    {other.summary}
+                  </p>
                 </div>
-                <p className="text-sm text-brand-text-body leading-[1.85] mb-5">
-                  {other.summary}
-                </p>
-              </div>
 
-              <div className="pt-4 border-t border-brand-border/60">
-                <Link
-                  href={`/services/${other.slug}`}
-                  className="font-bold text-sm text-primary hover:underline flex items-center gap-1.5"
-                >
-                  <span>{copy.exploreService} {other.title}</span>
-                  <IconArrowStart size={16} />
-                </Link>
-              </div>
-            </div>
+                <footer className="pt-4 border-t border-brand-border/60">
+                  <Link
+                    href={`/services/${other.slug}`}
+                    className="font-bold text-sm text-primary hover:underline flex items-center gap-1.5"
+                  >
+                    <span>{copy.exploreService} {other.title}</span>
+                    <IconArrowStart size={16} />
+                  </Link>
+                </footer>
+              </article>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
 
       {/* CTA Band */}
@@ -318,6 +319,6 @@ export const ServiceDetailClientView: React.FC<ServiceDetailClientViewProps> = (
 
       {/* Sticky Mobile Booking Bar */}
       <StickyBookingBar serviceTitle={service.title} />
-    </div>
+    </article>
   );
 };

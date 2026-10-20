@@ -79,7 +79,7 @@ export const ArticleDetailClientView: React.FC<ArticleDetailClientViewProps> = (
   return (
     <article className="pb-16">
       {/* Article Header & Breadcrumbs */}
-      <section className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-8 pb-8 text-start">
+      <header className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-8 pb-8 text-start">
         <Breadcrumbs
           items={[
             { title: t.nav.articles, href: "/articles" },
@@ -98,9 +98,9 @@ export const ArticleDetailClientView: React.FC<ArticleDetailClientViewProps> = (
               <IconClock size={15} />
               <span>{article.readTime}</span>
             </span>
-            <span className="text-xs text-brand-text-muted">
+            <time dateTime="2026" className="text-xs text-brand-text-muted">
               {copy.publishedIn}
-            </span>
+            </time>
           </div>
 
           {/* Article Title */}
@@ -113,7 +113,7 @@ export const ArticleDetailClientView: React.FC<ArticleDetailClientViewProps> = (
             {article.content.lead}
           </p>
         </div>
-      </section>
+      </header>
 
       {/* Main Article Body */}
       <section className="max-w-[1200px] mx-auto px-5 sm:px-6 py-6 text-start">
@@ -141,22 +141,22 @@ export const ArticleDetailClientView: React.FC<ArticleDetailClientViewProps> = (
             ))}
 
             {/* Conclusion */}
-            <div className="bg-brand-bg-alt border border-brand-border rounded-lg p-6 mt-8">
+            <aside aria-label={copy.conclusionTitle} className="bg-brand-bg-alt border border-brand-border rounded-lg p-6 mt-8">
               <h3 className="text-lg font-bold text-brand-text mb-2">
                 {copy.conclusionTitle}
               </h3>
               <p className="text-base sm:text-lg leading-[1.9] text-brand-text-body">
                 {article.content.conclusion}
               </p>
-            </div>
+            </aside>
           </div>
 
           {/* Educational Notice */}
-          <div className="mt-12 bg-[#FEF7D9] border border-[#F0DC8A] rounded-lg p-5 text-start">
+          <aside aria-label="تنبيه توعوي" className="mt-12 bg-[#FEF7D9] border border-[#F0DC8A] rounded-lg p-5 text-start">
             <p className="text-xs sm:text-sm text-[#604818] leading-relaxed">
               {copy.notice}
             </p>
-          </div>
+          </aside>
 
           {/* Share on WhatsApp */}
           <div className="mt-8 pt-6 border-t border-brand-border flex items-center justify-between gap-4 flex-wrap">
@@ -182,42 +182,43 @@ export const ArticleDetailClientView: React.FC<ArticleDetailClientViewProps> = (
           <h2 className="text-2xl sm:text-3xl font-bold text-brand-text mb-8 text-start">
             {copy.relatedTitle}
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 list-none p-0 m-0">
             {otherArticles.slice(0, 2).map((other) => (
-              <div
-                key={other.slug}
-                className="bg-white border border-brand-border rounded-lg p-6 flex flex-col justify-between hover:border-brand-border-strong hover:shadow-card transition-all text-start"
-              >
-                <div>
-                  <div className="flex items-center justify-between gap-4 mb-4">
-                    <SenseNode type={other.themeColor} size={48}>
-                      {getIcon(other.categorySlug)}
-                    </SenseNode>
-                    <Badge variant={other.themeColor} className="text-xs">
-                      {other.category}
-                    </Badge>
+              <li key={other.slug}>
+                <article
+                  className="bg-white border border-brand-border rounded-lg p-6 flex flex-col justify-between hover:border-brand-border-strong hover:shadow-card transition-all text-start h-full"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-4 mb-4">
+                      <SenseNode type={other.themeColor} size={48}>
+                        {getIcon(other.categorySlug)}
+                      </SenseNode>
+                      <Badge variant={other.themeColor} className="text-xs">
+                        {other.category}
+                      </Badge>
+                    </div>
+                    <h3 className="text-lg font-bold text-brand-text mb-2 leading-snug">
+                      <Link href={`/articles/${other.slug}`} className="hover:text-primary">
+                        {other.title}
+                      </Link>
+                    </h3>
+                    <p className="text-sm text-brand-text-body leading-[1.8] mb-4">
+                      {other.excerpt}
+                    </p>
                   </div>
-                  <h3 className="text-lg font-bold text-brand-text mb-2 leading-snug">
-                    <Link href={`/articles/${other.slug}`} className="hover:text-primary">
-                      {other.title}
+                  <footer className="pt-3 border-t border-brand-border/60">
+                    <Link
+                      href={`/articles/${other.slug}`}
+                      className="text-xs font-bold text-primary hover:underline flex items-center gap-1"
+                    >
+                      <span>{copy.readArticle}</span>
+                      <IconArrowStart size={14} />
                     </Link>
-                  </h3>
-                  <p className="text-sm text-brand-text-body leading-[1.8] mb-4">
-                    {other.excerpt}
-                  </p>
-                </div>
-                <div className="pt-3 border-t border-brand-border/60">
-                  <Link
-                    href={`/articles/${other.slug}`}
-                    className="text-xs font-bold text-primary hover:underline flex items-center gap-1"
-                  >
-                    <span>{copy.readArticle}</span>
-                    <IconArrowStart size={14} />
-                  </Link>
-                </div>
-              </div>
+                  </footer>
+                </article>
+              </li>
             ))}
-          </div>
+          </ul>
         </section>
       )}
 

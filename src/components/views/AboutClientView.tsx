@@ -127,9 +127,9 @@ export const AboutClientView: React.FC = () => {
   ];
 
   return (
-    <div>
+    <article className="pb-16 md:pb-0">
       {/* Header & Breadcrumb */}
-      <section className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-8 pb-6">
+      <header className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-8 pb-6">
         <Breadcrumbs items={[{ title: t.nav.about }]} className="mb-6" />
 
         <div className="max-w-3xl text-start">
@@ -143,7 +143,7 @@ export const AboutClientView: React.FC = () => {
             {content.intro}
           </p>
         </div>
-      </section>
+      </header>
 
       {/* Story & Philosophy Section */}
       <section className="bg-white border-y border-brand-border py-14 sm:py-20">
@@ -171,7 +171,7 @@ export const AboutClientView: React.FC = () => {
               <ul className="space-y-4">
                 {content.principles.map((pr, idx) => (
                   <li key={idx} className="flex items-start gap-3">
-                    <span className="w-6 h-6 rounded-full bg-primary-soft text-primary flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">
+                    <span className="w-6 h-6 rounded-full bg-primary-soft text-primary flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs" aria-hidden="true">
                       ✓
                     </span>
                     <span className="text-sm sm:text-base text-brand-text-body leading-relaxed">
@@ -187,41 +187,42 @@ export const AboutClientView: React.FC = () => {
 
       {/* Values Grid */}
       <section className="max-w-[1200px] mx-auto px-5 sm:px-6 py-14 sm:py-20">
-        <div className="max-w-2xl text-start mb-12">
+        <header className="max-w-2xl text-start mb-12">
           <span className="text-primary font-bold text-sm tracking-wide block mb-2">
             {content.valuesTag}
           </span>
           <h2 className="text-2xl sm:text-3xl font-bold text-brand-text leading-[1.4]">
             {content.valuesTitle}
           </h2>
-        </div>
+        </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 list-none p-0 m-0">
           {values.map((val, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-lg border border-brand-border p-6 sm:p-8 flex items-start gap-5 shadow-sm text-start"
-            >
-              <SenseNode type={val.node} size={56} className="shrink-0">
-                {val.icon}
-              </SenseNode>
-              <div>
-                <h3 className="text-xl font-bold text-brand-text mb-2">
-                  {val.title}
-                </h3>
-                <p className="text-sm sm:text-base text-brand-text-body leading-[1.85]">
-                  {val.desc}
-                </p>
-              </div>
-            </div>
+            <li key={idx}>
+              <article
+                className="bg-white rounded-lg border border-brand-border p-6 sm:p-8 flex items-start gap-5 shadow-sm text-start h-full"
+              >
+                <SenseNode type={val.node} size={56} className="shrink-0">
+                  {val.icon}
+                </SenseNode>
+                <div>
+                  <h3 className="text-xl font-bold text-brand-text mb-2">
+                    {val.title}
+                  </h3>
+                  <p className="text-sm sm:text-base text-brand-text-body leading-[1.85]">
+                    {val.desc}
+                  </p>
+                </div>
+              </article>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
 
       {/* Team Section */}
       <section className="bg-white border-y border-brand-border py-14 sm:py-20">
         <div className="max-w-[1200px] mx-auto px-5 sm:px-6">
-          <div className="max-w-2xl text-start mb-8">
+          <header className="max-w-2xl text-start mb-8">
             <span className="text-primary font-bold text-sm tracking-wide block mb-2">
               {content.teamTag}
             </span>
@@ -231,37 +232,38 @@ export const AboutClientView: React.FC = () => {
             <p className="mt-3 text-base text-brand-text-body leading-[1.85]">
               {content.teamDesc}
             </p>
-          </div>
+          </header>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <ul className="grid grid-cols-1 md:grid-cols-3 gap-6 list-none p-0 m-0">
             {specialists.map((spec, i) => (
-              <div
-                key={i}
-                className="bg-brand-bg rounded-lg border border-brand-border p-6 flex flex-col justify-between text-start"
-              >
-                <div>
-                  <Badge variant={spec.color} className="text-xs mb-3">
-                    {content.teamBadge}
-                  </Badge>
-                  <h3 className="text-lg font-bold text-brand-text mb-2">
-                    {spec.role}
-                  </h3>
-                  <p className="text-sm text-brand-text-body leading-[1.8]">
-                    {spec.focus}
-                  </p>
-                </div>
-                <div className="pt-4 mt-4 border-t border-brand-border/60 text-xs text-brand-text-muted">
-                  {content.teamCertified}
-                </div>
-              </div>
+              <li key={i}>
+                <article
+                  className="bg-brand-bg rounded-lg border border-brand-border p-6 flex flex-col justify-between text-start h-full"
+                >
+                  <div>
+                    <Badge variant={spec.color} className="text-xs mb-3">
+                      {content.teamBadge}
+                    </Badge>
+                    <h3 className="text-lg font-bold text-brand-text mb-2">
+                      {spec.role}
+                    </h3>
+                    <p className="text-sm text-brand-text-body leading-[1.8]">
+                      {spec.focus}
+                    </p>
+                  </div>
+                  <footer className="pt-4 mt-4 border-t border-brand-border/60 text-xs text-brand-text-muted">
+                    {content.teamCertified}
+                  </footer>
+                </article>
+              </li>
             ))}
-          </div>
+          </ul>
 
-          <div className="mt-8 bg-[#FEF7D9] border border-[#F0DC8A] rounded-lg p-4 text-start max-w-2xl">
+          <aside aria-label="تنبيه توثيق الكوادر" className="mt-8 bg-[#FEF7D9] border border-[#F0DC8A] rounded-lg p-4 text-start max-w-2xl">
             <p className="text-xs sm:text-sm text-[#604818] leading-relaxed">
               {content.teamNotice}
             </p>
-          </div>
+          </aside>
         </div>
       </section>
 
@@ -270,6 +272,6 @@ export const AboutClientView: React.FC = () => {
         title={content.ctaTitle}
         subtitle={content.ctaSubtitle}
       />
-    </div>
+    </article>
   );
 };

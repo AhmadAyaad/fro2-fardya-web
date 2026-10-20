@@ -29,9 +29,9 @@ export const ArticlesClientView: React.FC = () => {
   };
 
   return (
-    <div>
+    <article className="pb-16 md:pb-0">
       {/* Page Header */}
-      <section className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-8 pb-4">
+      <header className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-8 pb-4">
         <Breadcrumbs items={[{ title: t.nav.articles }]} className="mb-6" />
 
         <div className="max-w-2xl text-start">
@@ -45,7 +45,7 @@ export const ArticlesClientView: React.FC = () => {
             {copy.intro}
           </p>
         </div>
-      </section>
+      </header>
 
       {/* Main Articles List & Filter */}
       <section className="max-w-[1200px] mx-auto px-5 sm:px-6 py-6">
@@ -53,19 +53,19 @@ export const ArticlesClientView: React.FC = () => {
       </section>
 
       {/* Educational Notice */}
-      <section className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-6 pb-10">
+      <aside aria-label="تنبيه توعوي" className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-6 pb-10">
         <div className="bg-[#FEF7D9] border border-[#F0DC8A] rounded-lg p-5 text-start">
           <p className="text-xs sm:text-sm text-[#604818] leading-relaxed">
             {copy.notice}
           </p>
         </div>
-      </section>
+      </aside>
 
       {/* CTA Band */}
       <CtaBand
         title={copy.ctaTitle}
         subtitle={copy.ctaSubtitle}
       />
-    </div>
+    </article>
   );
 };

@@ -32,7 +32,7 @@ export const FaqSection: React.FC = () => {
       <div className="max-w-[1200px] mx-auto px-5 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
           {/* Header Column (5 cols on lg) */}
-          <div className="lg:col-span-5 text-start">
+          <header className="lg:col-span-5 text-start">
             <span className="text-primary font-bold text-sm tracking-wide block mb-2">
               {t.faqSection.tag}
             </span>
@@ -64,7 +64,7 @@ export const FaqSection: React.FC = () => {
                 {t.faqSection.moreQuestions}
               </Link>
             </div>
-          </div>
+          </header>
 
           {/* Accordion Column (7 cols on lg) */}
           <div className="lg:col-span-7">

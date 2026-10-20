@@ -72,9 +72,9 @@ export const CtaBand: React.FC<CtaBandProps> = ({
             </a>
           </div>
 
-          <p className="mt-6 text-xs text-brand-text-muted">
+          <small className="block mt-6 text-xs text-brand-text-muted">
             {site.disclaimer}
-          </p>
+          </small>
         </div>
       </div>
     </section>

@@ -44,9 +44,9 @@ export const FaqClientView: React.FC = () => {
   };
 
   return (
-    <div>
+    <article className="pb-16 md:pb-0">
       {/* Header & Breadcrumb */}
-      <section className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-8 pb-8 text-start">
+      <header className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-8 pb-8 text-start">
         <Breadcrumbs items={[{ title: t.nav.faq }]} className="mb-6" />
 
         <div className="max-w-2xl">
@@ -60,14 +60,14 @@ export const FaqClientView: React.FC = () => {
             {copy.intro}
           </p>
         </div>
-      </section>
+      </header>
 
       {/* Accordion Section */}
       <section className="max-w-[860px] mx-auto px-5 sm:px-6 py-6 text-start">
         <Accordion items={currentFaqs} defaultOpenIndex={0} allowMultiple={true} />
 
         {/* Direct Ask Box */}
-        <div className="mt-12 bg-white rounded-xl border border-brand-border p-6 sm:p-8 text-center sm:text-start flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
+        <aside aria-label={copy.notFoundTitle} className="mt-12 bg-white rounded-xl border border-brand-border p-6 sm:p-8 text-center sm:text-start flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
           <div>
             <h2 className="text-xl font-bold text-brand-text mb-1">
               {copy.notFoundTitle}
@@ -86,7 +86,7 @@ export const FaqClientView: React.FC = () => {
             <IconWhatsapp size={18} />
             <span>{copy.askWhatsapp}</span>
           </a>
-        </div>
+        </aside>
       </section>
 
       {/* CTA Band */}
@@ -94,6 +94,6 @@ export const FaqClientView: React.FC = () => {
         title={copy.ctaTitle}
         subtitle={copy.ctaSubtitle}
       />
-    </div>
+    </article>
   );
 };

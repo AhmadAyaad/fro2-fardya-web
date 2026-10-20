@@ -33,7 +33,7 @@ export const ArticlesSection: React.FC = () => {
     >
       <div className="max-w-[1200px] mx-auto px-5 sm:px-6">
         {/* Header with Title and "All Articles" link */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+        <header className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
           <div className="max-w-xl text-start">
             <span className="text-primary font-bold text-sm tracking-wide block mb-2">
               {t.articlesSection.tag}
@@ -53,52 +53,57 @@ export const ArticlesSection: React.FC = () => {
             <span>{t.articlesSection.viewAll}</span>
             <IconArrowStart size={16} />
           </Link>
-        </div>
+        </header>
 
         {/* 3 Articles Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+        <ul className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 list-none p-0 m-0">
           {currentArticles.slice(0, 3).map((article) => (
-            <article
-              key={article.slug}
-              className="bg-white rounded-lg border border-brand-border p-6 sm:p-7 flex flex-col justify-between hover:border-brand-border-strong hover:shadow-card transition-all duration-200 group"
-            >
-              <div>
-                {/* Node & Metadata */}
-                <div className="flex items-center justify-between gap-4 mb-5">
-                  <SenseNode type={article.themeColor} size={52}>
-                    {getIcon(article.categorySlug)}
-                  </SenseNode>
-                  <div className="text-start">
-                    <Badge variant={article.themeColor} className="text-xs">
-                      {article.category}
-                    </Badge>
+            <li key={article.slug} className="flex">
+              <article
+                className="w-full bg-white rounded-lg border border-brand-border p-6 sm:p-7 flex flex-col justify-between hover:border-brand-border-strong hover:shadow-card transition-all duration-200 group"
+              >
+                <div>
+                  {/* Node & Metadata */}
+                  <div className="flex items-center justify-between gap-4 mb-5">
+                    <SenseNode type={article.themeColor} size={52}>
+                      {getIcon(article.categorySlug)}
+                    </SenseNode>
+                    <div className="text-start">
+                      <Badge variant={article.themeColor} className="text-xs">
+                        {article.category}
+                      </Badge>
+                    </div>
                   </div>
+
+                  <h3 className="text-xl font-bold text-brand-text mb-3 leading-snug group-hover:text-primary transition-colors">
+                    <Link href={`/articles/${article.slug}`}>
+                      {article.title}
+                    </Link>
+                  </h3>
+
+                  <p className="text-sm text-brand-text-body leading-[1.85] mb-5">
+                    {article.excerpt}
+                  </p>
                 </div>
 
-                <h3 className="text-xl font-bold text-brand-text mb-3 leading-snug group-hover:text-primary transition-colors">
-                  <Link href={`/articles/${article.slug}`}>
-                    {article.title}
+                <footer className="pt-4 border-t border-brand-border/60 flex items-center justify-between text-xs text-brand-text-muted">
+                  <span className="flex items-center gap-1.5">
+                    <time dateTime="2026">{article.date}</time>
+                    <span aria-hidden="true">•</span>
+                    <span>{article.readTime}</span>
+                  </span>
+                  <Link
+                    href={`/articles/${article.slug}`}
+                    className="font-bold text-primary hover:underline flex items-center gap-1"
+                  >
+                    <span>{t.articlesSection.readArticle}</span>
+                    <IconArrowStart size={14} />
                   </Link>
-                </h3>
-
-                <p className="text-sm text-brand-text-body leading-[1.85] mb-5">
-                  {article.excerpt}
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-brand-border/60 flex items-center justify-between text-xs text-brand-text-muted">
-                <span>{article.readTime}</span>
-                <Link
-                  href={`/articles/${article.slug}`}
-                  className="font-bold text-primary hover:underline flex items-center gap-1"
-                >
-                  <span>{t.articlesSection.readArticle}</span>
-                  <IconArrowStart size={14} />
-                </Link>
-              </div>
-            </article>
+                </footer>
+              </article>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

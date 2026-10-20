@@ -1,7 +1,8 @@
 import React from "react";
 import type { Metadata } from "next";
 import { siteConfig } from "@/data/site";
-import { generateBreadcrumbSchema } from "@/lib/seo";
+import { articles } from "@/data/articles";
+import { generateBreadcrumbSchema, generateCollectionSchema } from "@/lib/seo";
 import { ArticlesClientView } from "@/components/views/ArticlesClientView";
 
 export const metadata: Metadata = {
@@ -48,11 +49,25 @@ export default function ArticlesPage() {
     { name: "المقالات والمراجع", url: `${siteConfig.url}/articles/` },
   ]);
 
+  const collectionSchema = generateCollectionSchema(
+    "المقالات والمراجع التوعوية للأسرة",
+    "دليل مقالات وإرشادات التخاطب وصعوبات التعلم وتنمية المهارات للأطفال من مركز فروق فردية",
+    articles.map((a) => ({
+      name: a.title,
+      url: `${siteConfig.url}/articles/${a.slug}/`,
+      description: a.excerpt,
+    }))
+  );
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
       />
       <ArticlesClientView />
     </>

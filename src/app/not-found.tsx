@@ -10,12 +10,18 @@ export default function NotFound() {
   const isAr = locale === "ar";
 
   return (
-    <div className="max-w-[600px] mx-auto px-5 py-24 text-center">
-      <div className="w-24 h-24 rounded-full bg-primary-soft text-primary font-bold text-4xl flex items-center justify-center mx-auto mb-6 border-4 border-primary">
+    <article
+      aria-labelledby="not-found-title"
+      className="max-w-[600px] mx-auto px-5 py-24 text-center"
+    >
+      <div
+        className="w-24 h-24 rounded-full bg-primary-soft text-primary font-bold text-4xl flex items-center justify-center mx-auto mb-6 border-4 border-primary"
+        aria-hidden="true"
+      >
         {isAr ? "٤٠٤" : "404"}
       </div>
 
-      <h1 className="text-3xl sm:text-4xl font-bold text-brand-text mb-4">
+      <h1 id="not-found-title" className="text-3xl sm:text-4xl font-bold text-brand-text mb-4">
         {t.common.pageNotFound}
       </h1>
 
@@ -23,7 +29,10 @@ export default function NotFound() {
         {t.common.pageNotFoundDesc}
       </p>
 
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <nav
+        aria-label={isAr ? "روابط بديلة" : "Alternative navigation"}
+        className="flex flex-col sm:flex-row items-center justify-center gap-4"
+      >
         <Link
           href="/"
           className="w-full sm:w-auto px-8 py-3.5 bg-primary hover:bg-primary-hover text-white rounded-full font-bold text-base shadow-cta flex items-center justify-center gap-2"
@@ -38,7 +47,7 @@ export default function NotFound() {
         >
           {t.common.services}
         </Link>
-      </div>
-    </div>
+      </nav>
+    </article>
   );
 }
