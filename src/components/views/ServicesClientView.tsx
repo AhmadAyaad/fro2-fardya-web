@@ -86,7 +86,7 @@ export const ServicesClientView: React.FC = () => {
   };
 
   return (
-    <article className="pb-16 md:pb-0">
+    <div className="pb-16 md:pb-0">
       {/* Page Header & Breadcrumb */}
       <header className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-8 pb-4">
         <Breadcrumbs items={[{ title: t.nav.services }]} className="mb-6" />
@@ -214,7 +214,7 @@ export const ServicesClientView: React.FC = () => {
           </div>
 
           {/* Educational notice card */}
-          <aside aria-label="تنبيه توعوي" className="bg-[#FEF7D9] border border-[#F0DC8A] rounded-lg p-5 sm:p-6 mb-10 text-start">
+          <aside aria-label={isAr ? "تنبيه توعوي" : "Educational Notice"} className="bg-[#FEF7D9] border border-[#F0DC8A] rounded-lg p-5 sm:p-6 mb-10 text-start">
             <p className="text-sm sm:text-base text-[#604818] leading-relaxed font-medium">
               {copy.notice}
             </p>
@@ -223,7 +223,10 @@ export const ServicesClientView: React.FC = () => {
           {/* 3 Step Evaluation Journey */}
           <ol className="grid grid-cols-1 md:grid-cols-3 gap-6 list-none p-0 m-0">
             <li className="bg-brand-bg rounded-lg border border-brand-border p-6 text-start">
-              <span className="text-2xl font-bold text-primary block mb-2">{copy.step1Num}</span>
+              <span className="text-2xl font-bold text-primary block mb-2">
+                <span className="sr-only">{isAr ? "الخطوة " : "Step "}</span>
+                {copy.step1Num}
+              </span>
               <h3 className="text-lg font-bold text-brand-text mb-2">
                 {copy.step1Title}
               </h3>
@@ -233,7 +236,10 @@ export const ServicesClientView: React.FC = () => {
             </li>
 
             <li className="bg-brand-bg rounded-lg border border-brand-border p-6 text-start">
-              <span className="text-2xl font-bold text-primary block mb-2">{copy.step2Num}</span>
+              <span className="text-2xl font-bold text-primary block mb-2">
+                <span className="sr-only">{isAr ? "الخطوة " : "Step "}</span>
+                {copy.step2Num}
+              </span>
               <h3 className="text-lg font-bold text-brand-text mb-2">
                 {copy.step2Title}
               </h3>
@@ -243,7 +249,10 @@ export const ServicesClientView: React.FC = () => {
             </li>
 
             <li className="bg-brand-bg rounded-lg border border-brand-border p-6 text-start">
-              <span className="text-2xl font-bold text-primary block mb-2">{copy.step3Num}</span>
+              <span className="text-2xl font-bold text-primary block mb-2">
+                <span className="sr-only">{isAr ? "الخطوة " : "Step "}</span>
+                {copy.step3Num}
+              </span>
               <h3 className="text-lg font-bold text-brand-text mb-2">
                 {copy.step3Title}
               </h3>
@@ -263,6 +272,6 @@ export const ServicesClientView: React.FC = () => {
 
       {/* Mobile Sticky Booking Bar */}
       <StickyBookingBar />
-    </article>
+    </div>
   );
 };

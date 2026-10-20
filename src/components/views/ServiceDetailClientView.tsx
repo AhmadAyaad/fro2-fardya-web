@@ -162,7 +162,7 @@ export const ServiceDetailClientView: React.FC<ServiceDetailClientViewProps> = (
           </div>
 
           {/* Educational notice */}
-          <aside aria-label="تنبيه توعوي" className="bg-[#FEF7D9] border border-[#F0DC8A] rounded-lg p-4 sm:p-5 mb-8 text-start max-w-3xl">
+          <aside aria-label={isAr ? "تنبيه توعوي" : "Educational Notice"} className="bg-[#FEF7D9] border border-[#F0DC8A] rounded-lg p-4 sm:p-5 mb-8 text-start max-w-3xl">
             <p className="text-xs sm:text-sm text-[#604818] leading-relaxed">
               ℹ {service.indicationsNotice}
             </p>
@@ -190,8 +190,8 @@ export const ServiceDetailClientView: React.FC<ServiceDetailClientViewProps> = (
       <section className="max-w-[1200px] mx-auto px-5 sm:px-6 py-14 sm:py-18">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           {/* How it works */}
-          <div className="text-start">
-            <h2 className="text-2xl sm:text-3xl font-bold text-brand-text mb-6 leading-[1.4]">
+          <section aria-labelledby="how-it-works-title" className="text-start">
+            <h2 id="how-it-works-title" className="text-2xl sm:text-3xl font-bold text-brand-text mb-6 leading-[1.4]">
               {copy.howItWorksTitle}
             </h2>
             <ol className="space-y-4 list-none p-0 m-0">
@@ -209,11 +209,11 @@ export const ServiceDetailClientView: React.FC<ServiceDetailClientViewProps> = (
                 </li>
               ))}
             </ol>
-          </div>
+          </section>
 
           {/* What to expect */}
-          <div className="text-start">
-            <h2 className="text-2xl sm:text-3xl font-bold text-brand-text mb-6 leading-[1.4]">
+          <section aria-labelledby="expectations-title" className="text-start">
+            <h2 id="expectations-title" className="text-2xl sm:text-3xl font-bold text-brand-text mb-6 leading-[1.4]">
               {copy.expectationsTitle}
             </h2>
             <ul className="space-y-4 list-none p-0 m-0">
@@ -231,7 +231,7 @@ export const ServiceDetailClientView: React.FC<ServiceDetailClientViewProps> = (
                 </li>
               ))}
             </ul>
-          </div>
+          </section>
         </div>
       </section>
 
@@ -267,8 +267,8 @@ export const ServiceDetailClientView: React.FC<ServiceDetailClientViewProps> = (
       )}
 
       {/* Related Services */}
-      <section className="max-w-[1200px] mx-auto px-5 sm:px-6 py-14 sm:py-18">
-        <h2 className="text-2xl sm:text-3xl font-bold text-brand-text mb-8 text-start">
+      <aside aria-labelledby="related-services-title" className="max-w-[1200px] mx-auto px-5 sm:px-6 py-14 sm:py-18">
+        <h2 id="related-services-title" className="text-2xl sm:text-3xl font-bold text-brand-text mb-8 text-start">
           {copy.relatedTitle}
         </h2>
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 list-none p-0 m-0">
@@ -309,7 +309,7 @@ export const ServiceDetailClientView: React.FC<ServiceDetailClientViewProps> = (
             </li>
           ))}
         </ul>
-      </section>
+      </aside>
 
       {/* CTA Band */}
       <CtaBand

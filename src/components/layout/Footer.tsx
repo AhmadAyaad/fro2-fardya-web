@@ -7,6 +7,7 @@ import { getSiteConfig } from "@/data/site";
 import { getServices } from "@/data/services";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { IconWhatsapp, IconPhone, IconPin, IconClock, IconGlobe } from "@/components/ui/Icons";
+import { trackWhatsAppClick, trackPhoneClick } from "@/lib/analytics";
 
 export const Footer: React.FC = () => {
   const { locale, toggleLocale, t } = useLanguage();
@@ -57,6 +58,7 @@ export const Footer: React.FC = () => {
                 href={`https://wa.me/${site.contact.whatsapp.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(whatsappMessage)}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick("footer")}
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#25D366] text-white font-semibold text-sm hover:bg-[#1EBE5D] transition-all shadow-sm"
               >
                 <IconWhatsapp size={18} />
@@ -146,6 +148,7 @@ export const Footer: React.FC = () => {
                 <IconPhone size={18} className="text-accent-yellow shrink-0 mt-0.5" />
                 <a
                   href={`tel:${site.contact.phone}`}
+                  onClick={() => trackPhoneClick(site.contact.phone, "footer")}
                   className="hover:text-white hover:underline transition-colors"
                   dir="ltr"
                 >

@@ -172,7 +172,7 @@ export const OctoberClientView: React.FC<OctoberClientViewProps> = () => {
   ];
 
   return (
-    <article className="pb-16 md:pb-0">
+    <div className="pb-16 md:pb-0">
       {/* ── SEO JSON-LD Schemas ───────────────────────────────────── */}
       <script
         type="application/ld+json"
@@ -292,8 +292,8 @@ export const OctoberClientView: React.FC<OctoberClientViewProps> = () => {
                   </h3>
                 </div>
 
-                <div className="space-y-3.5 text-sm text-brand-text">
-                  <div className="flex items-start gap-3">
+                <ul className="space-y-3.5 text-sm text-brand-text list-none p-0 m-0">
+                  <li className="flex items-start gap-3">
                     <div className="p-2 rounded-lg bg-[#FAF7F0] text-brand-primary shrink-0 mt-0.5" aria-hidden="true">
                       <IconPin size={18} />
                     </div>
@@ -305,9 +305,9 @@ export const OctoberClientView: React.FC<OctoberClientViewProps> = () => {
                           : "4th District, 6th of October City, Giza, Egypt"}
                       </div>
                     </div>
-                  </div>
+                  </li>
 
-                  <div className="flex items-start gap-3">
+                  <li className="flex items-start gap-3">
                     <div className="p-2 rounded-lg bg-[#FAF7F0] text-brand-primary shrink-0 mt-0.5" aria-hidden="true">
                       <IconClock size={18} />
                     </div>
@@ -319,9 +319,9 @@ export const OctoberClientView: React.FC<OctoberClientViewProps> = () => {
                           : "Saturday to Thursday: 12:00 PM – 9:00 PM"}
                       </div>
                     </div>
-                  </div>
+                  </li>
 
-                  <div className="flex items-start gap-3">
+                  <li className="flex items-start gap-3">
                     <div className="p-2 rounded-lg bg-[#FAF7F0] text-brand-primary shrink-0 mt-0.5" aria-hidden="true">
                       <IconPhone size={18} />
                     </div>
@@ -331,8 +331,8 @@ export const OctoberClientView: React.FC<OctoberClientViewProps> = () => {
                         {site.contact.phone}
                       </div>
                     </div>
-                  </div>
-                </div>
+                  </li>
+                </ul>
 
                 <div className="pt-2 border-t border-brand-border/60">
                   <a
@@ -359,16 +359,16 @@ export const OctoberClientView: React.FC<OctoberClientViewProps> = () => {
               <span className="w-2 h-2 rounded-full bg-brand-primary inline-block" />
               {isAr ? "الأحياء والمناطق القريبة المخدومة:" : "Nearby Neighborhoods Served:"}
             </span>
-            <div className="flex flex-wrap items-center gap-2">
+            <ul className="flex flex-wrap items-center gap-2 list-none p-0 m-0">
               {neighborhoodTags.map((tag) => (
-                <span
+                <li
                   key={tag}
                   className="px-2.5 py-1 text-xs rounded-md bg-[#FAF7F0] text-brand-text-body border border-brand-border/60"
                 >
                   {tag}
-                </span>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
       </section>
@@ -511,7 +511,7 @@ export const OctoberClientView: React.FC<OctoberClientViewProps> = () => {
             }))}
           />
 
-          <aside aria-label="استفسار إضافي" className="mt-10 p-6 rounded-2xl bg-white border border-brand-border text-center space-y-3">
+          <aside aria-label={isAr ? "استفسار إضافي" : "Additional Inquiry"} className="mt-10 p-6 rounded-2xl bg-white border border-brand-border text-center space-y-3">
             <h3 className="font-bold text-brand-text">
               {isAr ? "هل لديكم استفسار آخر لم تجدوا إجابته؟" : "Have another specific question?"}
             </h3>
@@ -548,6 +548,6 @@ export const OctoberClientView: React.FC<OctoberClientViewProps> = () => {
             : "Schedule an initial evaluation session to discover your child's strengths and design their custom roadmap."
         }
       />
-    </article>
+    </div>
   );
 };

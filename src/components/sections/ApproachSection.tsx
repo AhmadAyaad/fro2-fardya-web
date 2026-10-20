@@ -55,19 +55,18 @@ export const ApproachSection: React.FC = () => {
         {/* 3 Pillar Cards */}
         <ul className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 list-none p-0 m-0">
           {pillars.map((pillar, idx) => (
-            <li
-              key={idx}
-              className="bg-brand-bg rounded-lg border border-brand-border p-6 sm:p-7 flex flex-col items-start hover:border-brand-border-strong hover:shadow-card transition-all duration-200"
-            >
-              <SenseNode type={pillar.nodeType} size={60} className="mb-5">
-                {pillar.icon}
-              </SenseNode>
-              <h3 className="text-xl sm:text-2xl font-bold text-brand-text mb-3">
-                {pillar.title}
-              </h3>
-              <p className="text-base text-brand-text-body leading-[1.85]">
-                {pillar.desc}
-              </p>
+            <li key={idx} className="flex">
+              <article className="w-full bg-brand-bg rounded-lg border border-brand-border p-6 sm:p-7 flex flex-col items-start hover:border-brand-border-strong hover:shadow-card transition-all duration-200">
+                <SenseNode type={pillar.nodeType} size={60} className="mb-5">
+                  {pillar.icon}
+                </SenseNode>
+                <h3 className="text-xl sm:text-2xl font-bold text-brand-text mb-3">
+                  {pillar.title}
+                </h3>
+                <p className="text-base text-brand-text-body leading-[1.85]">
+                  {pillar.desc}
+                </p>
+              </article>
             </li>
           ))}
         </ul>

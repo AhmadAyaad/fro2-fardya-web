@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { getSiteConfig } from "@/data/site";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { IconWhatsapp } from "@/components/ui/Icons";
+import { trackFormSubmission, trackWhatsAppClick, trackEvent } from "@/lib/analytics";
 
 interface EvaluationFormProps {
   initialService?: string;
@@ -24,6 +25,8 @@ export const EvaluationForm: React.FC<EvaluationFormProps> = ({
   const [notes, setNotes] = useState("");
   const [consent, setConsent] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submittedUrl, setSubmittedUrl] = useState<string | null>(null);
 
   const validate = () => {
     const errs: Record<string, string> = {};
@@ -47,7 +50,21 @@ export const EvaluationForm: React.FC<EvaluationFormProps> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!validate()) return;
+    if (!validate()) {
+      trackEvent("form_validation_error", { form_name: "evaluation_assessment_form" });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    // Track Form Submission & WhatsApp Hand-off
+    trackFormSubmission({
+      formName: "evaluation_assessment_form",
+      service: service || "general",
+      childAge: childAge || undefined,
+      success: true,
+    });
+    trackWhatsAppClick("evaluation_form_submit");
 
     const messageLines = [
       t.form.whatsappMessagePrefix,
@@ -65,7 +82,28 @@ export const EvaluationForm: React.FC<EvaluationFormProps> = ({
       fullMessage
     )}`;
 
-    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    setSubmittedUrl(whatsappUrl);
+
+    // Attempt to open in a new tab first without restrictive windowFeatures that trigger popup blockers
+    let opened = false;
+    try {
+      const newWin = window.open(whatsappUrl, "_blank");
+      if (newWin && !newWin.closed && typeof newWin.closed !== "undefined") {
+        newWin.focus();
+        opened = true;
+      }
+    } catch {
+      opened = false;
+    }
+
+    // Fallback: If blocked by browser popup blocker, redirect directly in current window
+    if (!opened) {
+      window.location.href = whatsappUrl;
+    }
+
+    setTimeout(() => {
+      setIsSubmitting(false);
+    }, 1500);
   };
 
   return (
@@ -232,15 +270,45 @@ export const EvaluationForm: React.FC<EvaluationFormProps> = ({
       </div>
       </fieldset>
 
-      {/* Submit Button */}
-      <div className="pt-2">
+      {/* Submit Button & Direct Link */}
+      <div className="pt-2 space-y-3">
         <button
           type="submit"
-          className="w-full py-4 text-center text-lg font-bold text-white bg-primary hover:bg-primary-hover rounded-full shadow-cta transition-transform active:scale-[0.99] flex items-center justify-center gap-3 cursor-pointer"
+          disabled={isSubmitting}
+          className={`w-full py-4 text-center text-lg font-bold text-white rounded-full shadow-cta transition-all flex items-center justify-center gap-3 cursor-pointer ${
+            isSubmitting
+              ? "bg-primary/80 opacity-90 cursor-wait"
+              : "bg-primary hover:bg-primary-hover active:scale-[0.99]"
+          }`}
         >
-          <IconWhatsapp size={22} />
-          <span>{t.form.submitButton}</span>
+          <IconWhatsapp size={22} className={isSubmitting ? "animate-pulse" : ""} />
+          <span>
+            {isSubmitting
+              ? (locale === "ar" ? "جاري فتح واتساب..." : "Opening WhatsApp...")
+              : t.form.submitButton}
+          </span>
         </button>
+
+        {submittedUrl && (
+          <div className="p-3.5 bg-[#E4F8FA] border border-[#83DDE6] rounded-xl text-brand-text text-xs sm:text-sm text-center">
+            <span className="font-bold text-primary block mb-1">
+              ✓ {locale === "ar" ? "تم تجهيز الرسالة بنجاح!" : "Your message is ready!"}
+            </span>
+            <a
+              href={submittedUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#25D366] hover:underline font-bold inline-flex items-center gap-1.5"
+            >
+              <IconWhatsapp size={16} />
+              <span>
+                {locale === "ar"
+                  ? "إذا لم يفتح تطبيق واتساب تلقائيًا، اضغط هنا للمتابعة مباشرة"
+                  : "If WhatsApp didn't open automatically, click here to continue"}
+              </span>
+            </a>
+          </div>
+        )}
       </div>
 
       <small className="block text-center text-xs text-brand-text-muted pt-1">

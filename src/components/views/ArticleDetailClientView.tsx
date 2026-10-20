@@ -98,9 +98,14 @@ export const ArticleDetailClientView: React.FC<ArticleDetailClientViewProps> = (
               <IconClock size={15} />
               <span>{article.readTime}</span>
             </span>
-            <time dateTime="2026" className="text-xs text-brand-text-muted">
+            <time dateTime={article.isoDate} className="text-xs text-brand-text-muted">
               {copy.publishedIn}
             </time>
+            <span aria-hidden="true" className="text-brand-border-strong text-xs">•</span>
+            <address className="not-italic text-xs text-brand-text-muted inline-flex items-center gap-1">
+              <span>{isAr ? "إعداد:" : "By:"}</span>
+              <span className="font-semibold text-brand-text">{site.name}</span>
+            </address>
           </div>
 
           {/* Article Title */}
@@ -152,14 +157,14 @@ export const ArticleDetailClientView: React.FC<ArticleDetailClientViewProps> = (
           </div>
 
           {/* Educational Notice */}
-          <aside aria-label="تنبيه توعوي" className="mt-12 bg-[#FEF7D9] border border-[#F0DC8A] rounded-lg p-5 text-start">
+          <aside aria-label={isAr ? "تنبيه توعوي" : "Educational notice"} className="mt-12 bg-[#FEF7D9] border border-[#F0DC8A] rounded-lg p-5 text-start">
             <p className="text-xs sm:text-sm text-[#604818] leading-relaxed">
               {copy.notice}
             </p>
           </aside>
 
           {/* Share on WhatsApp */}
-          <div className="mt-8 pt-6 border-t border-brand-border flex items-center justify-between gap-4 flex-wrap">
+          <aside aria-label={isAr ? "مشاركة المقال" : "Share article"} className="mt-8 pt-6 border-t border-brand-border flex items-center justify-between gap-4 flex-wrap">
             <span className="text-sm font-semibold text-brand-text">
               {copy.sharePrompt}
             </span>
@@ -172,14 +177,14 @@ export const ArticleDetailClientView: React.FC<ArticleDetailClientViewProps> = (
               <IconWhatsapp size={16} />
               <span>{copy.shareBtn}</span>
             </a>
-          </div>
+          </aside>
         </div>
       </section>
 
       {/* Related Articles */}
       {otherArticles.length > 0 && (
-        <section className="max-w-[1200px] mx-auto px-5 sm:px-6 py-14 border-t border-brand-border mt-10">
-          <h2 className="text-2xl sm:text-3xl font-bold text-brand-text mb-8 text-start">
+        <aside aria-labelledby="related-articles-title" className="max-w-[1200px] mx-auto px-5 sm:px-6 py-14 border-t border-brand-border mt-10">
+          <h2 id="related-articles-title" className="text-2xl sm:text-3xl font-bold text-brand-text mb-8 text-start">
             {copy.relatedTitle}
           </h2>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 list-none p-0 m-0">
@@ -219,7 +224,7 @@ export const ArticleDetailClientView: React.FC<ArticleDetailClientViewProps> = (
               </li>
             ))}
           </ul>
-        </section>
+        </aside>
       )}
 
       {/* CTA Band */}

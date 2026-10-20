@@ -127,7 +127,7 @@ export const AboutClientView: React.FC = () => {
   ];
 
   return (
-    <article className="pb-16 md:pb-0">
+    <div className="pb-16 md:pb-0">
       {/* Header & Breadcrumb */}
       <header className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-8 pb-6">
         <Breadcrumbs items={[{ title: t.nav.about }]} className="mb-6" />
@@ -164,8 +164,8 @@ export const AboutClientView: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-brand-bg rounded-xl border border-brand-border p-8 sm:p-10 shadow-sm text-start">
-              <h3 className="text-xl font-bold text-brand-text mb-4">
+            <aside aria-labelledby="principles-title" className="bg-brand-bg rounded-xl border border-brand-border p-8 sm:p-10 shadow-sm text-start">
+              <h3 id="principles-title" className="text-xl font-bold text-brand-text mb-4">
                 {content.principlesTitle}
               </h3>
               <ul className="space-y-4">
@@ -180,7 +180,7 @@ export const AboutClientView: React.FC = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </aside>
           </div>
         </div>
       </section>
@@ -259,7 +259,7 @@ export const AboutClientView: React.FC = () => {
             ))}
           </ul>
 
-          <aside aria-label="تنبيه توثيق الكوادر" className="mt-8 bg-[#FEF7D9] border border-[#F0DC8A] rounded-lg p-4 text-start max-w-2xl">
+          <aside aria-label={isAr ? "تنبيه توثيق الكوادر" : "Clinical Staff Accreditation Notice"} className="mt-8 bg-[#FEF7D9] border border-[#F0DC8A] rounded-lg p-4 text-start max-w-2xl">
             <p className="text-xs sm:text-sm text-[#604818] leading-relaxed">
               {content.teamNotice}
             </p>
@@ -272,6 +272,6 @@ export const AboutClientView: React.FC = () => {
         title={content.ctaTitle}
         subtitle={content.ctaSubtitle}
       />
-    </article>
+    </div>
   );
 };

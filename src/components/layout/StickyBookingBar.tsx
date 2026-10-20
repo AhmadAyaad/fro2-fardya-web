@@ -33,7 +33,10 @@ export const StickyBookingBar: React.FC<StickyBookingBarProps> = ({ serviceTitle
       aria-label={locale === "ar" ? "شريط الحجز السريع" : "Quick Booking Bar"}
       className="lg:hidden fixed bottom-0 inset-x-0 z-30 bg-white/95 backdrop-blur-md border-t border-brand-border p-3 shadow-hover"
     >
-      <div className="flex items-center gap-3 max-w-md mx-auto">
+      <nav
+        aria-label={locale === "ar" ? "أزرار الحجز السريع" : "Quick Booking Actions"}
+        className="flex items-center gap-3 max-w-md mx-auto"
+      >
         <Link
           href="/contact"
           className="flex-1 py-3 text-center text-base font-bold text-white bg-primary hover:bg-primary-hover rounded-full shadow-cta"
@@ -49,7 +52,7 @@ export const StickyBookingBar: React.FC<StickyBookingBarProps> = ({ serviceTitle
         >
           <IconWhatsapp size={24} />
         </a>
-      </div>
+      </nav>
     </aside>
   );
 };

@@ -44,7 +44,7 @@ export const FaqClientView: React.FC = () => {
   };
 
   return (
-    <article className="pb-16 md:pb-0">
+    <div className="pb-16 md:pb-0">
       {/* Header & Breadcrumb */}
       <header className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-8 pb-8 text-start">
         <Breadcrumbs items={[{ title: t.nav.faq }]} className="mb-6" />
@@ -63,7 +63,7 @@ export const FaqClientView: React.FC = () => {
       </header>
 
       {/* Accordion Section */}
-      <section className="max-w-[860px] mx-auto px-5 sm:px-6 py-6 text-start">
+      <section className="max-w-[860px] mx-auto px-5 sm:px-6 py-6 text-start" aria-label={copy.title}>
         <Accordion items={currentFaqs} defaultOpenIndex={0} allowMultiple={true} />
 
         {/* Direct Ask Box */}
@@ -94,6 +94,6 @@ export const FaqClientView: React.FC = () => {
         title={copy.ctaTitle}
         subtitle={copy.ctaSubtitle}
       />
-    </article>
+    </div>
   );
 };

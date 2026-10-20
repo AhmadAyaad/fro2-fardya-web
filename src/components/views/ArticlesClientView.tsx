@@ -29,7 +29,7 @@ export const ArticlesClientView: React.FC = () => {
   };
 
   return (
-    <article className="pb-16 md:pb-0">
+    <div className="pb-16 md:pb-0">
       {/* Page Header */}
       <header className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-8 pb-4">
         <Breadcrumbs items={[{ title: t.nav.articles }]} className="mb-6" />
@@ -48,12 +48,12 @@ export const ArticlesClientView: React.FC = () => {
       </header>
 
       {/* Main Articles List & Filter */}
-      <section className="max-w-[1200px] mx-auto px-5 sm:px-6 py-6">
+      <section className="max-w-[1200px] mx-auto px-5 sm:px-6 py-6" aria-label={copy.title}>
         <ArticlesFilterList />
       </section>
 
       {/* Educational Notice */}
-      <aside aria-label="تنبيه توعوي" className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-6 pb-10">
+      <aside aria-label={isAr ? "تنبيه توعوي" : "Educational notice"} className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-6 pb-10">
         <div className="bg-[#FEF7D9] border border-[#F0DC8A] rounded-lg p-5 text-start">
           <p className="text-xs sm:text-sm text-[#604818] leading-relaxed">
             {copy.notice}
@@ -66,6 +66,6 @@ export const ArticlesClientView: React.FC = () => {
         title={copy.ctaTitle}
         subtitle={copy.ctaSubtitle}
       />
-    </article>
+    </div>
   );
 };

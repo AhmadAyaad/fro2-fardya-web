@@ -38,9 +38,9 @@ const siteBaseUrl =
 export const siteConfigAr: SiteConfig = {
   name: "فروق فردية",
   title: "فروق فردية — مركز تأهيل وتنمية مهارات الطفل",
-  subtitle: "مركز لدعم الأطفال في التخاطب وصعوبات التعلم وتنمية المهارات",
+  subtitle: "مركز لدعم الأطفال في التخاطب وصعوبات التعلم وتنمية المهارات بمدينة ٦ أكتوبر والشيخ زايد",
   description:
-    "في فروق فردية نتعرّف على احتياجات طفلك بهدوء، ونضع له خطة تناسب أسلوبه وقدراته، ونمشي معكم خطوة بخطوة في التخاطب وصعوبات التعلم وتنمية المهارات للأطفال من عمر سنتين فأكثر.",
+    "في فروق فردية نتعرّف على احتياجات طفلك بهدوء، ونضع له خطة تناسب أسلوبه وقدراته، ونمشي معكم خطوة بخطوة في التخاطب وصعوبات التعلم وتنمية المهارات للأطفال من عمر سنتين فأكثر في مدينة ٦ أكتوبر والشيخ زايد.",
   url: siteBaseUrl,
   ogImage: "/images/for2-fardya-logo.jpg",
   contact: {
@@ -48,7 +48,7 @@ export const siteConfigAr: SiteConfig = {
     phoneDisplay: "01554778990",
     whatsapp: "+201554778990",
     whatsappDisplay: "01554778990",
-    address: "مدينة ٦ أكتوبر — الحي الرابع",
+    address: "مدينة ٦ أكتوبر — الحي الرابع (يخدم ٦ أكتوبر والشيخ زايد)",
     workingHours: "السبت إلى الخميس — من ١٢:٠٠ ظهرًا حتى ٩:٠٠ مساءً",
     email: "contact@forooqfardaya.com",
   },
@@ -115,9 +115,9 @@ export const siteConfigEn: SiteConfig = {
   name: "Forooq Fardya",
   title: "Forooq Fardya — Child Rehabilitation & Skills Development Center",
   subtitle:
-    "A specialized center supporting children in Speech Therapy, Learning Difficulties, and Skills Development",
+    "A specialized center supporting children in Speech Therapy, Learning Difficulties, and Skills Development in 6th of October & Sheikh Zayed",
   description:
-    "At Forooq Fardya, we calmly identify your child's needs, design an individualized plan suited to their abilities and pace, and guide you step by step in speech therapy, learning difficulties, and skills development for children aged 2 and above.",
+    "At Forooq Fardya, we calmly identify your child's needs, design an individualized plan suited to their abilities and pace, and guide you step by step in speech therapy, learning difficulties, and skills development for children aged 2 and above in 6th of October City and Sheikh Zayed.",
   url: siteBaseUrl,
   ogImage: "/images/for2-fardya-logo.jpg",
   contact: {
@@ -125,7 +125,7 @@ export const siteConfigEn: SiteConfig = {
     phoneDisplay: "01554778990",
     whatsapp: "+201554778990",
     whatsappDisplay: "01554778990",
-    address: "6th of October City — 4th District",
+    address: "6th of October City — 4th District (Serving 6th of October & Sheikh Zayed)",
     workingHours: "Saturday to Thursday — 12:00 PM to 9:00 PM",
     email: "contact@forooqfardaya.com",
   },

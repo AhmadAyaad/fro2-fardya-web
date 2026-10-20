@@ -5,6 +5,7 @@ import Link from "next/link";
 import { getSiteConfig } from "@/data/site";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { IconWhatsapp, IconArrowStart } from "@/components/ui/Icons";
+import { trackCtaClick, trackWhatsAppClick } from "@/lib/analytics";
 
 interface CtaBandProps {
   title?: string;
@@ -52,9 +53,10 @@ export const CtaBand: React.FC<CtaBandProps> = ({
             {finalSubtitle}
           </p>
 
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <nav aria-label={locale === "ar" ? "خيارات الحجز والتواصل" : "Booking and contact actions"} className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/contact"
+              onClick={() => trackCtaClick("book_assessment", "cta_band")}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 text-lg font-semibold text-white bg-primary hover:bg-primary-hover rounded-full shadow-cta transition-transform active:scale-[0.98] min-h-[52px]"
             >
               <span>{t.ctaBand.bookButton}</span>
@@ -65,12 +67,13 @@ export const CtaBand: React.FC<CtaBandProps> = ({
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick("cta_band")}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3 text-lg font-semibold text-white bg-[#25D366] hover:bg-[#1EBE5D] rounded-full shadow-sm transition-transform active:scale-[0.98] min-h-[52px]"
             >
               <IconWhatsapp size={22} />
               <span>{t.ctaBand.whatsappButton}</span>
             </a>
-          </div>
+          </nav>
 
           <small className="block mt-6 text-xs text-brand-text-muted">
             {site.disclaimer}

@@ -5,6 +5,7 @@ export interface Article {
   categorySlug: "speech-therapy" | "learning-difficulties" | "skills-development";
   readTime: string;
   date: string;
+  isoDate: string;
   excerpt: string;
   themeColor: "cyan" | "purple" | "green";
   content: {
@@ -26,6 +27,7 @@ export const articlesAr: Article[] = [
     categorySlug: "speech-therapy",
     readTime: "٥ دقائق قراءة",
     date: "٢٠٢٦",
+    isoDate: "2026-01-10",
     excerpt:
       "ملاحظات هادئة ومؤشرات واضحة تساعد الأسرة على معرفة التوقيت المناسب لطلب استشارة التخاطب دون قلق مفرط أو انتظار طويل.",
     themeColor: "cyan",
@@ -74,6 +76,7 @@ export const articlesAr: Article[] = [
     categorySlug: "learning-difficulties",
     readTime: "٦ دقائق قراءة",
     date: "٢٠٢٦",
+    isoDate: "2026-01-18",
     excerpt:
       "خطوات واقعية لتحويل وقت المذاكرة من معركة يومية إلى تجربة مريحة، وفهم النمط الخاص الذي يستوعب به طفلك المعلومات.",
     themeColor: "purple",
@@ -116,6 +119,7 @@ export const articlesAr: Article[] = [
     categorySlug: "skills-development",
     readTime: "٤ دقائق قراءة",
     date: "٢٠٢٦",
+    isoDate: "2026-01-25",
     excerpt:
       "أفكار وألعاب منزلية غير معقدة تدعم تركيز طفلك وتساعده على تنظيم انتباهه ومهاراته الحركية والإدراكية خلال روتينه اليومي.",
     themeColor: "green",
@@ -158,6 +162,7 @@ export const articlesAr: Article[] = [
     categorySlug: "speech-therapy",
     readTime: "٦ دقائق قراءة",
     date: "٢٠٢٦",
+    isoDate: "2026-02-05",
     excerpt:
       "دليل شامل ومطمئن للأمهات والآباء للتعرف على الأسباب البيئية والنمائية لتأخر النطق، وكيفية بناء بيئة لغوية محفزة للطفل في البيت.",
     themeColor: "cyan",
@@ -213,6 +218,7 @@ export const articlesAr: Article[] = [
     categorySlug: "learning-difficulties",
     readTime: "٥ دقائق قراءة",
     date: "٢٠٢٦",
+    isoDate: "2026-02-12",
     excerpt:
       "توضيح الفروق الجوهرية بين المفاهيم الثلاثة من حيث نسبة الذكاء وطريقة التدخل، لمساعدة الأهل على اختيار الدعم الأكاديمي والتربوي الصحيح لطفلهم.",
     themeColor: "purple",
@@ -256,6 +262,7 @@ export const articlesAr: Article[] = [
     categorySlug: "skills-development",
     readTime: "٥ دقائق قراءة",
     date: "٢٠٢٦",
+    isoDate: "2026-02-20",
     excerpt:
       "استراتيجيات علمية هادئة للتعامل مع صعوبات التركيز وكثرة الحركة عند الأطفال، وتحويل طاقتهم إلى إنجازات وتفاعل إيجابي.",
     themeColor: "green",
@@ -301,6 +308,7 @@ export const articlesEn: Article[] = [
     categorySlug: "speech-therapy",
     readTime: "5 min read",
     date: "2026",
+    isoDate: "2026-01-10",
     excerpt:
       "Gentle observations and clear indicators to help families identify the ideal timing to seek speech guidance without undue anxiety or prolonged delay.",
     themeColor: "cyan",
@@ -349,6 +357,7 @@ export const articlesEn: Article[] = [
     categorySlug: "learning-difficulties",
     readTime: "6 min read",
     date: "2026",
+    isoDate: "2026-01-18",
     excerpt:
       "Practical techniques to transform homework time from a daily battle into a positive experience by embracing your child's natural learning modality.",
     themeColor: "purple",
@@ -391,6 +400,7 @@ export const articlesEn: Article[] = [
     categorySlug: "skills-development",
     readTime: "4 min read",
     date: "2026",
+    isoDate: "2026-01-25",
     excerpt:
       "Accessible home games and routines that strengthen concentration, working memory, and sensory-motor regulation throughout the day.",
     themeColor: "green",
@@ -433,6 +443,7 @@ export const articlesEn: Article[] = [
     categorySlug: "speech-therapy",
     readTime: "6 min read",
     date: "2026",
+    isoDate: "2026-02-05",
     excerpt:
       "A comprehensive, reassuring guide for parents exploring developmental and environmental causes of speech delay, and how to create a rich speech-stimulating environment at home.",
     themeColor: "cyan",
@@ -488,6 +499,7 @@ export const articlesEn: Article[] = [
     categorySlug: "learning-difficulties",
     readTime: "5 min read",
     date: "2026",
+    isoDate: "2026-02-12",
     excerpt:
       "Clarifying the fundamental distinctions between learning difficulties, slow learning, and academic delay regarding cognitive profiles and intervention methods.",
     themeColor: "purple",
@@ -531,6 +543,7 @@ export const articlesEn: Article[] = [
     categorySlug: "skills-development",
     readTime: "5 min read",
     date: "2026",
+    isoDate: "2026-02-20",
     excerpt:
       "Evidence-based strategies for navigating focus challenges and hyperactivity in children, turning high energy into positive engagement and accomplishment.",
     themeColor: "green",

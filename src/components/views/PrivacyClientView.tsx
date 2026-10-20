@@ -56,6 +56,9 @@ export const PrivacyClientView: React.FC = () => {
           <p className="mt-4 text-base sm:text-lg text-brand-text-body leading-[1.85]">
             {copy.intro}
           </p>
+          <time dateTime="2026-01-01" className="text-xs text-brand-text-muted block mt-3">
+            {isAr ? "تاريخ آخر تحديث: يناير ٢٠٢٦" : "Last updated: January 2026"}
+          </time>
         </div>
       </header>
 

@@ -113,14 +113,14 @@ export const ServicesSection: React.FC = () => {
         </ul>
 
         {/* Explore all services link */}
-        <div className="mt-10 text-center sm:text-start">
+        <nav aria-label={locale === "ar" ? "تصفح جميع الخدمات" : "Explore all services"} className="mt-10 text-center sm:text-start">
           <Link
             href="/services"
             className="inline-flex items-center gap-2 text-base font-bold text-brand-text hover:text-primary transition-colors underline underline-offset-8"
           >
             <span>{t.servicesSection.viewAllServices}</span>
           </Link>
-        </div>
+        </nav>
       </div>
     </section>
   );

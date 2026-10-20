@@ -46,13 +46,15 @@ export const ArticlesSection: React.FC = () => {
             </h2>
           </div>
 
-          <Link
-            href="/articles"
-            className="inline-flex items-center gap-1.5 font-bold text-base text-primary hover:text-primary-hover transition-colors whitespace-nowrap self-start sm:self-end"
-          >
-            <span>{t.articlesSection.viewAll}</span>
-            <IconArrowStart size={16} />
-          </Link>
+          <nav aria-label={locale === "ar" ? "تصفح كافة المقالات" : "Browse all articles"}>
+            <Link
+              href="/articles"
+              className="inline-flex items-center gap-1.5 font-bold text-base text-primary hover:text-primary-hover transition-colors whitespace-nowrap self-start sm:self-end"
+            >
+              <span>{t.articlesSection.viewAll}</span>
+              <IconArrowStart size={16} />
+            </Link>
+          </nav>
         </header>
 
         {/* 3 Articles Grid */}
@@ -88,7 +90,7 @@ export const ArticlesSection: React.FC = () => {
 
                 <footer className="pt-4 border-t border-brand-border/60 flex items-center justify-between text-xs text-brand-text-muted">
                   <span className="flex items-center gap-1.5">
-                    <time dateTime="2026">{article.date}</time>
+                    <time dateTime={article.isoDate}>{article.date}</time>
                     <span aria-hidden="true">•</span>
                     <span>{article.readTime}</span>
                   </span>

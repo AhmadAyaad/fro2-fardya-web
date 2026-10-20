@@ -45,6 +45,8 @@ export function generateLocalBusinessSchema() {
       "مركز فروق فردية",
       "فروق فردية للتخاطب وتنمية المهارات",
       "Forooq Fardya Child Rehabilitation Center",
+      "مركز فروق فردية — ٦ أكتوبر والشيخ زايد",
+      "Forooq Fardya — October & Sheikh Zayed",
     ],
     description: siteConfig.description,
     url: siteConfig.url,
@@ -149,6 +151,12 @@ export function generateLocalBusinessSchema() {
       "فرط الحركة وتشتت الانتباه",
       "تأسيس ما قبل المدرسة",
       "إرشاد أولياء الأمور",
+      "تخاطب الشيخ زايد",
+      "مركز تخاطب الشيخ زايد",
+      "صعوبات تعلم الشيخ زايد",
+      "تنمية مهارات الشيخ زايد",
+      "جلسات تخاطب في الشيخ زايد",
+      "Speech Therapy Sheikh Zayed",
     ],
     areaServed: [
       {
@@ -307,6 +315,81 @@ export function generateOctoberBranchSchema() {
   };
 }
 
+// ── Sheikh Zayed Serving Schema ──────────────────────────────────
+
+export function generateSheikhZayedBranchSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": ["MedicalBusiness", "LocalBusiness", "MedicalClinic"],
+    "@id": `${siteConfig.url}/sheikh-zayed/#service-area`,
+    name: "مركز فروق فردية للتخاطب وتأهيل الأطفال — يخدم مدينة الشيخ زايد",
+    alternateName: [
+      "Forooq Fardya Center — Sheikh Zayed Area",
+      "مركز تخاطب الشيخ زايد — فروق فردية",
+      "صعوبات تعلم وتنمية مهارات الشيخ زايد",
+    ],
+    description:
+      "خدمات تخاطب، علاج تأخر الكلام، صعوبات التعلم، وتنمية مهارات الأطفال لسكان مدينة الشيخ زايد. المركز يقع بالحي الرابع بمدينة ٦ أكتوبر على بعد دقائق معدودة عبر محور ٢٦ يوليو ووصلة دهشور وميدان جهينة.",
+    url: `${siteConfig.url}/sheikh-zayed/`,
+    logo: `${siteConfig.url}/images/logo.jpg`,
+    image: `${siteConfig.url}/images/for2-fardya-logo.jpg`,
+    telephone: siteConfig.contact.phone,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "الحي الرابع، بالقرب من ميدان جهينة ومحور ٢٦ يوليو ووصلة دهشور",
+      addressLocality: "مدينة الشيخ زايد و٦ أكتوبر",
+      addressRegion: "محافظة الجيزة",
+      postalCode: "12566",
+      addressCountry: "EG",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 29.9602,
+      longitude: 30.9274,
+    },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Saturday",
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+        ],
+        opens: "12:00",
+        closes: "21:00",
+      },
+    ],
+    priceRange: "$$",
+    currenciesAccepted: "EGP",
+    paymentAccepted: ["Cash", "Mobile Payment", "InstaPay", "Vodafone Cash"],
+    isAcceptingNewPatients: true,
+    areaServed: [
+      "مدينة الشيخ زايد",
+      "Sheikh Zayed City",
+      "الحي الأول",
+      "الحي الثاني",
+      "الحي الرابع",
+      "الحي السابع",
+      "الحي الثامن",
+      "الحي التاسع",
+      "الحي الحادي عشر",
+      "الحي الرابع عشر",
+      "الحي السادس عشر",
+      "بيفرلي هيلز",
+      "الخمائل",
+      "زايد ٢٠٠٠",
+      "زايد ديونز",
+      "الكرمة",
+      "الربوة",
+      "محور ٢٦ يوليو",
+      "وصلة دهشور",
+    ],
+  };
+}
+
 // ── Service Page Schema ──────────────────────────────────────────
 
 export function generateServiceSchema(service: Service) {
@@ -449,6 +532,7 @@ export function generateArticleSchema(article: Article | {
   excerpt: string;
   slug: string;
   date: string;
+  isoDate?: string;
   category?: string;
   content?: {
     lead?: string;
@@ -477,6 +561,7 @@ export function generateArticleSchema(article: Article | {
   }
 
   const wordCount = bodyText.split(/\s+/).filter(Boolean).length;
+  const publishDate = "isoDate" in article && article.isoDate ? article.isoDate : "2026-01-01";
 
   return {
     "@context": "https://schema.org",
@@ -492,7 +577,7 @@ export function generateArticleSchema(article: Article | {
       `${siteConfig.url}/images/for2-fardya-logo.jpg`,
       `${siteConfig.url}/images/logo.jpg`,
     ],
-    datePublished: "2026-01-01",
+    datePublished: publishDate,
     dateModified: new Date().toISOString().split("T")[0],
     author: {
       "@type": "Organization",
@@ -525,24 +610,24 @@ export function generateArticleSchema(article: Article | {
 
 const serviceMetaMap: Record<string, { ar: string; en: string }> = {
   "speech-therapy": {
-    ar: "جلسات تخاطب فردية للأطفال في مركز فروق فردية بمدينة ٦ أكتوبر — تقييم مبدئي ودعم متخصص في اللغة والنطق والتواصل. أخصائي تخاطب أطفال — علاج تأخر الكلام وصعوبات النطق.",
-    en: "Individual speech therapy sessions for children at Forooq Fardya Center in 6th of October City, Giza — initial assessment and specialized support in language, articulation, and communication development.",
+    ar: "جلسات تخاطب فردية للأطفال في مركز فروق فردية بمدينة ٦ أكتوبر والشيخ زايد — تقييم مبدئي ودعم متخصص في اللغة والنطق والتواصل. أخصائي تخاطب أطفال — علاج تأخر الكلام وصعوبات النطق.",
+    en: "Individual speech therapy sessions for children at Forooq Fardya Center in 6th of October City & Sheikh Zayed, Giza — initial assessment and specialized support in language, articulation, and communication development.",
   },
   "learning-difficulties": {
-    ar: "دعم متخصص لصعوبات التعلم في القراءة والكتابة والحساب بمركز فروق فردية — ٦ أكتوبر. تقييم أكاديمي فردي واستراتيجيات تعليمية تناسب نمط تعلّم طفلك.",
-    en: "Specialized learning difficulties support for reading, writing, and math at Forooq Fardya — 6th of October City. Individualized academic assessment and teaching strategies tailored to your child's learning style.",
+    ar: "دعم متخصص لصعوبات التعلم في القراءة والكتابة والحساب بمركز فروق فردية — ٦ أكتوبر والشيخ زايد. تقييم أكاديمي فردي واستراتيجيات تعليمية تناسب نمط تعلّم طفلك.",
+    en: "Specialized learning difficulties support for reading, writing, and math at Forooq Fardya — 6th of October City & Sheikh Zayed. Individualized academic assessment and teaching strategies tailored to your child's learning style.",
   },
   "skills-development": {
-    ar: "برنامج تنمية مهارات الأطفال في الانتباه والتركيز والتفاعل الاجتماعي والمهارات الحركية — مركز فروق فردية، ٦ أكتوبر. خطط فردية تناسب كل طفل.",
-    en: "Child skills development program for attention, focus, social interaction, and motor skills at Forooq Fardya Center, 6th of October City. Individualized plans for every child.",
+    ar: "برنامج تنمية مهارات الأطفال في الانتباه والتركيز والتفاعل الاجتماعي والمهارات الحركية — مركز فروق فردية، ٦ أكتوبر والشيخ زايد. خطط فردية تناسب كل طفل.",
+    en: "Child skills development program for attention, focus, social interaction, and motor skills at Forooq Fardya Center, 6th of October City & Sheikh Zayed. Individualized plans for every child.",
   },
   foundation: {
-    ar: "برنامج تأسيس وتهيئة أكاديمية للأطفال قبل المدرسة في مركز فروق فردية — ٦ أكتوبر. تدريب على مسكة القلم والحروف والأرقام والمهارات المدرسية الأولى.",
-    en: "Early academic foundation and school readiness program for preschoolers at Forooq Fardya — 6th of October City. Pencil grip training, letter and number recognition, and first school skills.",
+    ar: "برنامج تأسيس وتهيئة أكاديمية للأطفال قبل المدرسة في مركز فروق فردية — ٦ أكتوبر والشيخ زايد. تدريب على مسكة القلم والحروف والأرقام والمهارات المدرسية الأولى.",
+    en: "Early academic foundation and school readiness program for preschoolers at Forooq Fardya — 6th of October City & Sheikh Zayed. Pencil grip training, letter and number recognition, and first school skills.",
   },
   "parent-guidance": {
-    ar: "جلسات إرشاد ودعم أولياء الأمور في مركز فروق فردية — ٦ أكتوبر. استشارات أسرية متخصصة واستراتيجيات عملية لتعديل السلوك وتخفيف التوتر الأسري.",
-    en: "Parental guidance and family support consultations at Forooq Fardya Center — 6th of October City. Evidence-based behavioral strategies for calmer, more connected parenting.",
+    ar: "جلسات إرشاد ودعم أولياء الأمور في مركز فروق فردية — ٦ أكتوبر والشيخ زايد. استشارات أسرية متخصصة واستراتيجيات عملية لتعديل السلوك وتخفيف التوتر الأسري.",
+    en: "Parental guidance and family support consultations at Forooq Fardya Center — 6th of October City & Sheikh Zayed. Evidence-based behavioral strategies for calmer, more connected parenting.",
   },
 };
 

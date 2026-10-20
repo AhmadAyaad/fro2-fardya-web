@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { Locale, Translations, translations } from "./translations";
+import { trackLanguageChange } from "@/lib/analytics";
 
 interface LanguageContextType {
   locale: Locale;
@@ -40,6 +41,7 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
     }
     document.documentElement.lang = newLocale;
     document.documentElement.dir = newLocale === "ar" ? "rtl" : "ltr";
+    trackLanguageChange(newLocale);
   };
 
   const toggleLocale = () => {

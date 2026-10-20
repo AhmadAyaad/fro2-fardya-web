@@ -56,21 +56,20 @@ export const WhyUsSection: React.FC = () => {
         {/* 4 Cards Grid */}
         <ul className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 list-none p-0 m-0">
           {reasons.map((item, idx) => (
-            <li
-              key={idx}
-              className="bg-white/5 border border-white/10 rounded-lg p-6 sm:p-7 flex flex-col justify-between hover:bg-white/10 hover:border-white/20 transition-all duration-200"
-            >
-              <div>
-                <div className="w-12 h-12 rounded-full bg-white/10 border border-white/15 flex items-center justify-center mb-5 shrink-0" aria-hidden="true">
-                  {item.icon}
+            <li key={idx} className="flex">
+              <article className="w-full bg-white/5 border border-white/10 rounded-lg p-6 sm:p-7 flex flex-col justify-between hover:bg-white/10 hover:border-white/20 transition-all duration-200">
+                <div>
+                  <div className="w-12 h-12 rounded-full bg-white/10 border border-white/15 flex items-center justify-center mb-5 shrink-0" aria-hidden="true">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm sm:text-base text-[#D4DAE5] leading-[1.85]">
+                    {item.desc}
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-sm sm:text-base text-[#D4DAE5] leading-[1.85]">
-                  {item.desc}
-                </p>
-              </div>
+              </article>
             </li>
           ))}
         </ul>

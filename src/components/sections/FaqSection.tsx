@@ -46,7 +46,7 @@ export const FaqSection: React.FC = () => {
               {t.faqSection.description}
             </p>
 
-            <div className="mt-6 flex flex-col sm:flex-row gap-3">
+            <nav aria-label={locale === "ar" ? "خيارات التواصل والأسئلة" : "Contact and FAQ actions"} className="mt-6 flex flex-col sm:flex-row gap-3">
               <a
                 href={whatsappUrl}
                 target="_blank"
@@ -63,7 +63,7 @@ export const FaqSection: React.FC = () => {
               >
                 {t.faqSection.moreQuestions}
               </Link>
-            </div>
+            </nav>
           </header>
 
           {/* Accordion Column (7 cols on lg) */}

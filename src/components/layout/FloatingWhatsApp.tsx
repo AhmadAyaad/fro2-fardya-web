@@ -4,6 +4,7 @@ import React from "react";
 import { getSiteConfig } from "@/data/site";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { IconWhatsapp } from "@/components/ui/Icons";
+import { trackWhatsAppClick } from "@/lib/analytics";
 
 export const FloatingWhatsApp: React.FC = () => {
   const { locale, t } = useLanguage();
@@ -26,6 +27,7 @@ export const FloatingWhatsApp: React.FC = () => {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={t.common.whatsappUs}
+        onClick={() => trackWhatsAppClick("floating_button")}
         className="fixed bottom-6 start-6 z-40 w-14 h-14 bg-[#25D366] hover:bg-[#1EBE5D] text-white rounded-full flex items-center justify-center shadow-floating transition-transform duration-200 hover:scale-110 active:scale-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#25D366]/40"
       >
         <IconWhatsapp size={32} />

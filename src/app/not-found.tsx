@@ -10,7 +10,7 @@ export default function NotFound() {
   const isAr = locale === "ar";
 
   return (
-    <article
+    <section
       aria-labelledby="not-found-title"
       className="max-w-[600px] mx-auto px-5 py-24 text-center"
     >
@@ -48,6 +48,6 @@ export default function NotFound() {
           {t.common.services}
         </Link>
       </nav>
-    </article>
+    </section>
   );
 }

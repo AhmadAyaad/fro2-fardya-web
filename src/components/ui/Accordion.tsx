@@ -37,14 +37,14 @@ export const Accordion: React.FC<AccordionProps> = ({
   };
 
   return (
-    <div className={`space-y-4 ${className}`}>
+    <ul className={`space-y-4 list-none p-0 m-0 ${className}`}>
       {items.map((item, index) => {
         const isOpen = openIndices.includes(index);
         const buttonId = `faq-btn-${item.id}`;
         const regionId = `faq-panel-${item.id}`;
 
         return (
-          <div
+          <li
             key={item.id}
             className="bg-white border border-brand-border rounded-md overflow-hidden transition-all duration-200 hover:border-brand-border-strong"
           >
@@ -82,9 +82,9 @@ export const Accordion: React.FC<AccordionProps> = ({
             >
               <p className="border-t border-brand-border/60 pt-4">{item.a}</p>
             </div>
-          </div>
+          </li>
         );
       })}
-    </div>
+    </ul>
   );
 };

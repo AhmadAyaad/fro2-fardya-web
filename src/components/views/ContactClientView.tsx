@@ -12,6 +12,7 @@ import {
   IconPin,
   IconClock,
 } from "@/components/ui/Icons";
+import { trackWhatsAppClick, trackPhoneClick } from "@/lib/analytics";
 
 export const ContactClientView: React.FC = () => {
   const { locale, t } = useLanguage();
@@ -77,7 +78,7 @@ export const ContactClientView: React.FC = () => {
   };
 
   return (
-    <article className="pb-16">
+    <div className="pb-16">
       {/* Header & Breadcrumb */}
       <header className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-8 pb-8 text-start">
         <Breadcrumbs items={[{ title: t.nav.contact }]} className="mb-6" />
@@ -120,6 +121,7 @@ export const ContactClientView: React.FC = () => {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick("contact_page_card")}
                 className="w-full py-3.5 px-6 bg-[#25D366] hover:bg-[#1EBE5D] text-white rounded-full font-bold text-base flex items-center justify-center gap-2.5 shadow-sm transition-transform active:scale-[0.98]"
               >
                 <IconWhatsapp size={22} />
@@ -133,60 +135,63 @@ export const ContactClientView: React.FC = () => {
                 {copy.officialDetailsTitle}
               </h2>
 
-              <div className="flex items-start gap-3.5">
-                <span className="w-10 h-10 rounded-full bg-brand-bg-alt border border-brand-border flex items-center justify-center text-primary shrink-0 mt-0.5">
-                  <IconPhone size={20} />
-                </span>
-                <div>
-                  <span className="text-xs text-brand-text-muted block">
-                    {copy.phoneLabel}
+              <ul className="space-y-5 list-none p-0 m-0">
+                <li className="flex items-start gap-3.5">
+                  <span className="w-10 h-10 rounded-full bg-brand-bg-alt border border-brand-border flex items-center justify-center text-primary shrink-0 mt-0.5" aria-hidden="true">
+                    <IconPhone size={20} />
                   </span>
-                  <a
-                    href={`tel:${site.contact.phone}`}
-                    className="text-base font-bold text-brand-text hover:text-primary transition-colors inline-block"
-                    dir="ltr"
-                  >
-                    {site.contact.phone}
-                  </a>
-                  <span className="text-xs text-brand-text-muted block mt-0.5">
-                    {isAr ? "متاح اتصال ومحادثة واتساب" : "Available for calls & WhatsApp"}
-                  </span>
-                </div>
-              </div>
+                  <div>
+                    <span className="text-xs text-brand-text-muted block">
+                      {copy.phoneLabel}
+                    </span>
+                    <a
+                      href={`tel:${site.contact.phone}`}
+                      onClick={() => trackPhoneClick(site.contact.phone, "contact_page")}
+                      className="text-base font-bold text-brand-text hover:text-primary transition-colors inline-block"
+                      dir="ltr"
+                    >
+                      {site.contact.phone}
+                    </a>
+                    <span className="text-xs text-brand-text-muted block mt-0.5">
+                      {isAr ? "متاح اتصال ومحادثة واتساب" : "Available for calls & WhatsApp"}
+                    </span>
+                  </div>
+                </li>
 
-              <div className="flex items-start gap-3.5">
-                <span className="w-10 h-10 rounded-full bg-brand-bg-alt border border-brand-border flex items-center justify-center text-primary shrink-0 mt-0.5">
-                  <IconPin size={20} />
-                </span>
-                <div>
-                  <span className="text-xs text-brand-text-muted block">
-                    {copy.addressLabel}
+                <li className="flex items-start gap-3.5">
+                  <span className="w-10 h-10 rounded-full bg-brand-bg-alt border border-brand-border flex items-center justify-center text-primary shrink-0 mt-0.5" aria-hidden="true">
+                    <IconPin size={20} />
                   </span>
-                  <span className="text-base font-bold text-brand-text block">
-                    {site.contact.address}
-                  </span>
-                  <span className="text-xs text-brand-text-muted block mt-0.5">
-                    {isAr ? "الجيزة، مصر" : "Giza, Egypt"}
-                  </span>
-                </div>
-              </div>
+                  <div>
+                    <span className="text-xs text-brand-text-muted block">
+                      {copy.addressLabel}
+                    </span>
+                    <span className="text-base font-bold text-brand-text block">
+                      {site.contact.address}
+                    </span>
+                    <span className="text-xs text-brand-text-muted block mt-0.5">
+                      {isAr ? "الجيزة، مصر" : "Giza, Egypt"}
+                    </span>
+                  </div>
+                </li>
 
-              <div className="flex items-start gap-3.5">
-                <span className="w-10 h-10 rounded-full bg-brand-bg-alt border border-brand-border flex items-center justify-center text-primary shrink-0 mt-0.5">
-                  <IconClock size={20} />
-                </span>
-                <div>
-                  <span className="text-xs text-brand-text-muted block">
-                    {copy.hoursLabel}
+                <li className="flex items-start gap-3.5">
+                  <span className="w-10 h-10 rounded-full bg-brand-bg-alt border border-brand-border flex items-center justify-center text-primary shrink-0 mt-0.5" aria-hidden="true">
+                    <IconClock size={20} />
                   </span>
-                  <span className="text-base font-bold text-brand-text block">
-                    {site.contact.workingHours}
-                  </span>
-                  <span className="text-xs text-brand-text-muted block mt-0.5">
-                    {isAr ? "الجمعة: عطلة أسبوعية" : "Friday: Closed"}
-                  </span>
-                </div>
-              </div>
+                  <div>
+                    <span className="text-xs text-brand-text-muted block">
+                      {copy.hoursLabel}
+                    </span>
+                    <span className="text-base font-bold text-brand-text block">
+                      {site.contact.workingHours}
+                    </span>
+                    <span className="text-xs text-brand-text-muted block mt-0.5">
+                      {isAr ? "الجمعة: عطلة أسبوعية" : "Friday: Closed"}
+                    </span>
+                  </div>
+                </li>
+              </ul>
             </address>
 
             {/* What happens next? (3 Steps) */}
@@ -208,6 +213,6 @@ export const ContactClientView: React.FC = () => {
           </div>
         </div>
       </section>
-    </article>
+    </div>
   );
 };

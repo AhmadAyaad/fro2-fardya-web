@@ -21,6 +21,7 @@ import {
   IconBlocks,
   IconFamily,
 } from "@/components/ui/Icons";
+import { trackCtaClick, trackWhatsAppClick } from "@/lib/analytics";
 
 const getServiceIcon = (iconName: string, size = 18, color?: string) => {
   switch (iconName) {
@@ -113,7 +114,7 @@ export const Header: React.FC = () => {
       {/* Skip to main content link for accessibility */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:start-4 focus:z-50 focus:px-4 focus:py-2.5 focus:bg-brand-text focus:text-white focus:rounded-sm focus:shadow-lg"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:start-4 focus:z-50 focus:px-4 focus:py-2.5 focus:bg-brand-text focus:text-white focus:rounded-lg focus:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 font-semibold text-sm transition-all"
       >
         {t.nav.skipToContent}
       </a>
@@ -315,6 +316,7 @@ export const Header: React.FC = () => {
           {/* Desktop CTA Button */}
           <Link
             href="/contact"
+            onClick={() => trackCtaClick("book_assessment", "header_desktop")}
             className="hidden lg:inline-flex items-center justify-center font-bold text-white bg-primary hover:bg-primary-hover px-4 xl:px-5 py-2.5 rounded-full shadow-cta hover:shadow-lg transition-all text-xs xl:text-sm focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-secondary whitespace-nowrap active:scale-95 shrink-0"
           >
             {t.nav.bookAssessment}
@@ -460,6 +462,7 @@ export const Header: React.FC = () => {
             <div className="space-y-2.5 pt-2">
               <Link
                 href="/contact"
+                onClick={() => trackCtaClick("book_assessment", "header_mobile")}
                 className="w-full py-3.5 text-center text-sm sm:text-base font-bold text-white bg-primary hover:bg-primary-hover rounded-full shadow-cta block transition-transform active:scale-98"
               >
                 {t.nav.bookAssessment}
@@ -473,6 +476,7 @@ export const Header: React.FC = () => {
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick("header_mobile_menu")}
                 className="w-full py-3 text-center text-sm font-bold text-white bg-[#25D366] hover:bg-[#1EBE5D] rounded-full shadow-sm flex items-center justify-center gap-2 transition-transform active:scale-98"
               >
                 <IconWhatsapp size={18} />

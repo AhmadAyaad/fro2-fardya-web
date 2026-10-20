@@ -135,7 +135,7 @@ export const ArticlesFilterList: React.FC = () => {
 
                 <footer className="pt-4 border-t border-brand-border/60 flex items-center justify-between text-xs text-brand-text-muted">
                   <span className="flex items-center gap-1.5">
-                    <time dateTime="2026">{article.date}</time>
+                    <time dateTime={article.isoDate}>{article.date}</time>
                     <span aria-hidden="true">•</span>
                     <span>{article.readTime}</span>
                   </span>
