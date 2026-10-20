@@ -12,9 +12,12 @@ import { Accordion } from "@/components/ui/Accordion";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { StickyBookingBar } from "@/components/layout/StickyBookingBar";
 import {
+  IconSenseMouth,
   IconSpeech,
   IconBook,
   IconSprout,
+  IconBlocks,
+  IconFamily,
   IconArrowStart,
   IconCheck,
 } from "@/components/ui/Icons";
@@ -38,11 +41,16 @@ export const ServiceDetailClientView: React.FC<ServiceDetailClientViewProps> = (
   const getIcon = (iconName: string) => {
     switch (iconName) {
       case "speech":
-        return <IconSpeech size={36} color="#2C384D" />;
+      case "taste":
+        return <IconSenseMouth size={38} color="#206B8F" />;
       case "book":
         return <IconBook size={36} color="#2C384D" />;
       case "sprout":
         return <IconSprout size={36} color="#2C384D" />;
+      case "blocks":
+        return <IconBlocks size={36} color="#2C384D" />;
+      case "family":
+        return <IconFamily size={36} color="#2C384D" />;
       default:
         return null;
     }

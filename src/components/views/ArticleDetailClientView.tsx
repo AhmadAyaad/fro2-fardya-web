@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/Badge";
 import { SenseNode } from "@/components/ui/SenseNode";
 import { CtaBand } from "@/components/sections/CtaBand";
 import {
+  IconSenseMouth,
   IconSpeech,
   IconBook,
   IconSprout,
@@ -43,7 +44,7 @@ export const ArticleDetailClientView: React.FC<ArticleDetailClientViewProps> = (
   const getIcon = (categorySlug: string) => {
     switch (categorySlug) {
       case "speech-therapy":
-        return <IconSpeech size={32} color="#2C384D" />;
+        return <IconSenseMouth size={34} color="#206B8F" />;
       case "learning-difficulties":
         return <IconBook size={32} color="#2C384D" />;
       case "skills-development":

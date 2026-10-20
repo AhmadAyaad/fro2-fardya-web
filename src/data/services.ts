@@ -12,14 +12,14 @@ export interface Service {
   slug: string;
   title: string;
   tagline: string;
-  themeColor: "cyan" | "purple" | "green";
+  themeColor: "cyan" | "purple" | "green" | "yellow" | "pink";
   colors: {
     fill: string;
     border: string;
     soft: string;
     badgeText: string;
   };
-  iconName: "speech" | "book" | "sprout";
+  iconName: "speech" | "book" | "sprout" | "blocks" | "family";
   summary: string;
   purpose: string;
   indicationsNotice: string;
@@ -182,6 +182,110 @@ export const servicesAr: Service[] = [
       },
     ],
   },
+  {
+    slug: "foundation",
+    title: "تأسيس",
+    tagline: "التهيئة الأكاديمية والمهارات المدرسية الأولى",
+    themeColor: "yellow",
+    colors: {
+      fill: "#F8D940",
+      border: "#8F660F",
+      soft: "#FEF7D9",
+      badgeText: "#604818",
+    },
+    iconName: "blocks",
+    summary:
+      "بناء اللبنات الأساسية للتعلم في مرحلة ما قبل المدرسة والصفوف الأولى، من مسكة القلم والتهيئة للأحرف والأرقام، إلى تقبل الروتين الصفي بثقة.",
+    purpose:
+      "تهيئة الطفل نفسيًا ومهاريًا للانتقال إلى الروضة والمدرسة، عبر ترسيخ المفاهيم الأولية (الحروف، الأرقام، المفاهيم المكانية، مسكة القلم والتحكم الحركي) بأسلوب قائم على اللعب والاستكشاف، ليقبل على التعلم بحب وشغف دون خوف أو رهبة.",
+    indicationsNotice:
+      "مرحلة التأسيس ليست لضغط الطفل أو استباق المراحل، بل هي جسر لطيف يمنح طفلكم الثقة والاستعداد الذي يحتاجه لينطلق في رحلته الدراسية بارتياح.",
+    indications: [
+      "صعوبة في مسك القلم أو استخدام الأدوات المدرسية والورق والمقص بشكل متزن ومريح",
+      "تردد أو مقاومة ملحوظة عند محاولة التعرف على الحروف والأشكال والأرقام الأساسية",
+      "صعوبة في الجلوس والتركيز في نشاط تعليمي هادف لمدة تتناسب مع مرحلته العمرية",
+      "قلق أو رهبة من فكرة الذهاب إلى الحضانة أو المدرسة والانفصال المؤقت عن الأهل",
+      "تأخر في استيعاب التعليمات البسيطة الخاصة بالمواقف والأنشطة الصفية المشتركة",
+      "صعوبة في التمييز البصري والسمعي بين أصوات الحروف المتشابهة وأشكالها الأولية",
+    ],
+    howItWorks: [
+      "تقييم مستوى النضج النمائي والمهارات ما قبل الأكاديمية للطفل برفق ومن خلال ألعاب تفاعلية هادفة.",
+      "تصميم برنامج تأسيسي مرحلي يركز على تقوية عضلات اليدين الدقيقة والتآزر البصري الحركي.",
+      "تقديم المفاهيم المعرفية (الحروف، الأرقام، الألوان، العلاقات المكانية) بأدوات حسية ومحسوسات عملية ممتعة.",
+      "تدريب الطفل على مهارات الاستقلالية واتباع روتين اليوم المدرسي وبناء ثقته بذاته.",
+    ],
+    expectations: [
+      "تحسن ملحوظ في التحكم بالحركات الدقيقة ومسكة القلم بطريقة مريحة وسلسة.",
+      "استيعاب أسرع للمفاهيم الأساسية وتكوين علاقة إيجابية ومحفزة مع فكرة التعلم والبيئة المدرسية.",
+      "إرشادات أسبوعية للأسرة لألعاب وتطبيقات منزلية ممتعة تدعم ما يتعلمه الطفل دون تكليف أو إرهاق.",
+    ],
+    faqs: [
+      {
+        q: "ما هو العمر المناسب للبدء في برنامج التأسيس؟",
+        a: "نستقبل الأطفال للتهيئة والتأسيس من عمر ٣ سنوات ونصف إلى ٦ سنوات (مرحلة ما قبل المدرسة والصفوف التمهيدية)، حيث نركز على المهارات النمائية والتهيئة المعرفية دون أي ضغط مدرسي مبكر.",
+      },
+      {
+        q: "هل برنامج التأسيس بديل عن الروضة أم مكمل لها؟",
+        a: "البرنامج مكمل وداعم؛ فهو يوفر جلسات فردية مركزة للطفل الذي يحتاج إلى وقت إضافي أو أسلوب حسي خاص لإتقان مهارات التهيئة قبل أو أثناء التحاقه بالروضة والمدرسة.",
+      },
+      {
+        q: "كيف تختلف خدمة التأسيس عن خدمة صعوبات التعلم؟",
+        a: "التأسيس يركز على التهيئة المبكرة واكتساب المفاهيم الأولى لسن الروضة والمراحل التمهيدية، بينما صعوبات التعلم موجهة للأطفال في السن المدرسي الذين يواجهون تحديات محددة في القراءة أو الكتابة أو الحساب بعد بدء الدراسة الرسمية.",
+      },
+    ],
+  },
+  {
+    slug: "parent-guidance",
+    title: "إرشاد ودعم أولياء الأمور",
+    tagline: "استشارات أسرية واستراتيجيات التعامل المنزلي",
+    themeColor: "pink",
+    colors: {
+      fill: "#F6598B",
+      border: "#921B48",
+      soft: "#FDE3EC",
+      badgeText: "#921B48",
+    },
+    iconName: "family",
+    summary:
+      "جلسات استشارية متخصصة للأمهات والآباء لفهم سلوكيات واحتياجات أطفالهم، واكتساب استراتيجيات عملية لتعديل السلوك وتخفيف التوتر الأسري في البيت.",
+    purpose:
+      "تمكين الأسرة وتزويد الوالدين بأدوات تربوية وسلوكية علمية ومجربة للتعامل مع التحديات اليومية (العناد، نوبات الغضب، الشاشات، روتين النوم والمذاكرة)، وتحويل بيئة المنزل إلى مساحة هادئة وداعمة ومحفزة لنمو الطفل.",
+    indicationsNotice:
+      "طلب الاستشارة الأسرية دليل حرص ووعي وليس نقصًا في التربية. كل مرحلة نمائية للطفل تحمل تحديات جديدة تستحق استشارة مختص لاختصار الوقت والجهد وتجنب الصراعات اليومية.",
+    indications: [
+      "تكرار نوبات الغضب الشديدة أو العناد وصعوبة السيطرة على المواقف بالهدوء والتفاهم",
+      "الشعور بالحيرة والضغط النفسي حول الأسلوب الأمثل لتعديل سلوك طفلكم دون صراخ أو عقاب مستمر",
+      "صعوبة في ضبط وقت الشاشات والأجهزة الإلكترونية وبدء صراعات يومية متكررة حولها",
+      "اختلاف وجهات النظر بين الوالدين في أسلوب التربية والحاجة لخطة متفق عليها وواضحة المعالم",
+      "تحديات التعامل مع الغيرة بين الإخوة أو صعوبة التأقلم مع قدوم مولود جديد أو تغييرات أسرية",
+      "الحاجة إلى توجيه متخصص حول كيفية مساعدة الطفل في البيت بناءً على خطته التأهيلية",
+    ],
+    howItWorks: [
+      "جلسة استماع وتفريغ هادئة مع المختص للتعرف على تفاصيل الروتين اليومي وأسباب التوتر والشكاوى الرئيسية.",
+      "تحليل المثيرات السلوكية وفهم الرسائل والاحتياجات التي يعبر عنها الطفل من خلال سلوكياته وتصرفاته.",
+      "وضع خطة تعديل سلوك تدريجية واضحة ومحددة الخطوات يسهل على الوالدين تطبيقها في البيت.",
+      "متابعة دورية ومرنة لتقييم النتائج وتعديل الاستراتيجيات حتى تصبح بيئة البيت أكثر هدوءًا وتوافقًا.",
+    ],
+    expectations: [
+      "اكتساب مهارات عملية لإدارة نوبات الغضب والمواقف الصعبة بحكمة وهدوء دون انفعال أو توتر.",
+      "انخفاض ملحوظ في التوتر اليومي والصراعات الأسرية وتحسن العلاقة والترابط العاطفي بين الطفل ووالديه.",
+      "وضوح تام في أسلوب التربية المشترك بين الوالدين واستراتيجيات ثابتة ومتوازنة.",
+    ],
+    faqs: [
+      {
+        q: "هل يحضر الطفل جلسة إرشاد ودعم أولياء الأمور؟",
+        a: "في الغالب تكون الجلسات مخصصة للوالدين فقط (أو أحدهما)، ليتحدثا بحرية وراحة وشفافية تامة دون وجود الطفل، وقد يُطلب حضور الطفل في جلسة لاحقة إذا استدعت الحاجة ملاحظته في موقف تفاعلي محدد.",
+      },
+      {
+        q: "هل يمكن عقد جلسات الاستشارة الأسرية عبر الإنترنت؟",
+        a: "نعم، نوفر جلسات إرشاد أولياء الأمور حضوريًا داخل المركز أو عن بُعد عبر مكالمات الفيديو المرئية لتسهيل الحضور على الأسر وتوفير وقتهم.",
+      },
+      {
+        q: "كم جلسة يحتاجها ولي الأمر لملاحظة نتيجة ملموسة؟",
+        a: "كثير من الأسر تلاحظ تغيرًا إيجابيًا فارقًا منذ الجلسة الأولى والثانية بعد تطبيق التوجيهات والاستراتيجيات المتفق عليها، وتُحدد الحاجة للمتابعة وفق رغبة الأسرة ونوع التحديات.",
+      },
+    ],
+  },
 ];
 
 export const servicesEn: Service[] = [
@@ -335,6 +439,110 @@ export const servicesEn: Service[] = [
       {
         q: "How will I know my child is making progress?",
         a: "We begin by setting clear, observable targets and hold regular progress reviews to monitor improvements in everyday behavior and focus.",
+      },
+    ],
+  },
+  {
+    slug: "foundation",
+    title: "Academic Foundation",
+    tagline: "Early Academic Readiness & School Preparation",
+    themeColor: "yellow",
+    colors: {
+      fill: "#F8D940",
+      border: "#8F660F",
+      soft: "#FEF7D9",
+      badgeText: "#604818",
+    },
+    iconName: "blocks",
+    summary:
+      "Building foundational learning blocks for preschool and early school stages—from comfortable pencil grasp and early cognitive readiness to confident classroom adaptation.",
+    purpose:
+      "Preparing children psychologically and developmentally for a smooth transition to preschool and kindergarten by cementing core early concepts (phonics, numeracy, spatial relationships, fine motor control) through playful, experiential discovery without pressure or fear.",
+    indicationsNotice:
+      "Early foundation is not about rushing milestones; it provides a reassuring developmental bridge that empowers your child to step into school with joyful self-assurance.",
+    indications: [
+      "Difficulty maintaining an ergonomic pencil grip or handling scissors and early school supplies",
+      "Persistent hesitation or reluctance when introduced to fundamental letters, shapes, and numbers",
+      "Challenges sustaining seated focus in structured learning games for age-appropriate durations",
+      "Noticeable anxiety or apprehension regarding school entry or separating briefly from parents",
+      "Difficulty processing and executing simple multi-step classroom instructions",
+      "Struggles with visual or auditory discrimination between similar-sounding letters or symbols",
+    ],
+    howItWorks: [
+      "A gentle assessment observing pre-academic maturity, fine motor milestones, and sensory processing through structured play.",
+      "A step-by-step curriculum strengthening hand muscles, dexterity, bilateral coordination, and hand-eye integration.",
+      "Multisensory introduction to letters, numbers, colors, and spatial concepts using interactive, tactile materials.",
+      "Classroom routine simulation fostering independence, patience, turn-taking, and joyful self-efficacy.",
+    ],
+    expectations: [
+      "Noticeable improvement in fine motor endurance and relaxed, natural pencil grip.",
+      "Faster assimilation of early learning concepts and an intrinsically positive attitude toward education.",
+      "Empowering weekly parent guidance with quick, playful home activities reinforcing progress effortlessly.",
+    ],
+    faqs: [
+      {
+        q: "What is the recommended age for the Academic Foundation program?",
+        a: "We welcome children aged 3.5 to 6 years (preschool and kindergarten prep). Our focus is entirely on foundational milestones and cognitive readiness without premature formal drills.",
+      },
+      {
+        q: "Is this program a replacement for kindergarten or a supporting intervention?",
+        a: "It is a supportive individual intervention providing focused, sensory-rich reinforcement for children who need extra time and personalized guidance before or during school entry.",
+      },
+      {
+        q: "How does Foundation differ from Learning Difficulties support?",
+        a: "Foundation nurtures developmental precursors and school readiness in the early preschool years, whereas Learning Difficulties addresses formal diagnostic obstacles in reading, writing, or mathematics during elementary school.",
+      },
+    ],
+  },
+  {
+    slug: "parent-guidance",
+    title: "Parental Guidance & Support",
+    tagline: "Family Consultations & Empowering Home Strategies",
+    themeColor: "pink",
+    colors: {
+      fill: "#F6598B",
+      border: "#921B48",
+      soft: "#FDE3EC",
+      badgeText: "#921B48",
+    },
+    iconName: "family",
+    summary:
+      "Specialized consultative guidance for mothers and fathers to understand developmental behaviors, de-escalate tantrums, and establish serene, cooperative home routines.",
+    purpose:
+      "Empowering families with evidence-based behavioral strategies to navigate everyday parenting hurdles (defiance, emotional meltdowns, screen dependencies, bedtime battles), turning home into a calm, nurturing haven where every child thrives.",
+    indicationsNotice:
+      "Seeking parental guidance reflects dedication and foresight, not parenting inadequacy. Every growth phase brings fresh challenges where specialist insights bring swift relief and enduring harmony.",
+    indications: [
+      "Frequent, intense temper tantrums or defiance with difficulty re-establishing calm through dialogue",
+      "Feelings of parental exhaustion, stress, or self-doubt regarding disciplinary approaches without shouting",
+      "Daily friction and power struggles over screen time, digital devices, and transitions",
+      "Differing disciplinary philosophies between parents requiring a unified, clear family roadmap",
+      "Sibling conflicts, jealousy, or behavioral regressions following life changes or a new baby",
+      "Seeking professional direction on how best to support your child's developmental therapies at home",
+    ],
+    howItWorks: [
+      "A calm, confidential listening consultation mapping daily family routines, pain points, and parenting goals.",
+      "Behavioral functional analysis identifying underlying triggers and emotional signals driving the child's conduct.",
+      "Formulation of a practical, progressive positive discipline roadmap that is easy to sustain at home.",
+      "Flexible ongoing reviews to evaluate outcomes, tweak techniques, and celebrate calmer family days.",
+    ],
+    expectations: [
+      "Practical mastery of calm de-escalation tools that dissolve tantrums respectfully without emotional friction.",
+      "Substantial decline in everyday domestic friction and deepened parent-child emotional connection.",
+      "Clear, consistent parental alignment grounded in confident, loving, and balanced boundaries.",
+    ],
+    faqs: [
+      {
+        q: "Does the child need to attend Parental Guidance consultations?",
+        a: "These consultations are designed exclusively for parents (either or both) to speak openly, transparently, and comfortably without the child present. Direct observation of the child may be arranged only if specifically helpful.",
+      },
+      {
+        q: "Are family consultation sessions available online?",
+        a: "Yes, we provide parental guidance sessions both in-person at our clinic and virtually via video calls to accommodate busy schedules.",
+      },
+      {
+        q: "How many sessions are typically required to see tangible results?",
+        a: "Many families notice a palpable positive change after the very first 1 to 2 sessions once targeted home strategies are implemented consistently.",
       },
     ],
   },

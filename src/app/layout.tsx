@@ -116,7 +116,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased flex flex-col min-h-screen bg-brand-bg text-brand-text">
+      <body suppressHydrationWarning className="antialiased flex flex-col min-h-screen bg-brand-bg text-brand-text">
         <LanguageProvider>
           <Header />
           <main id="main-content" className="flex-1">

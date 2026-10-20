@@ -6,7 +6,7 @@ import { getArticles } from "@/data/articles";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { SenseNode } from "@/components/ui/SenseNode";
 import { Badge } from "@/components/ui/Badge";
-import { IconSearch, IconArrowStart, IconSpeech, IconBook, IconSprout } from "@/components/ui/Icons";
+import { IconSearch, IconArrowStart, IconSenseMouth, IconSpeech, IconBook, IconSprout } from "@/components/ui/Icons";
 
 export const ArticlesFilterList: React.FC = () => {
   const { locale, t } = useLanguage();
@@ -39,7 +39,7 @@ export const ArticlesFilterList: React.FC = () => {
   const getIcon = (categorySlug: string) => {
     switch (categorySlug) {
       case "speech-therapy":
-        return <IconSpeech size={28} color="#2C384D" />;
+        return <IconSenseMouth size={30} color="#206B8F" />;
       case "learning-difficulties":
         return <IconBook size={28} color="#2C384D" />;
       case "skills-development":

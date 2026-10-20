@@ -5,7 +5,15 @@ import Link from "next/link";
 import { getServices } from "@/data/services";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { SenseNode } from "@/components/ui/SenseNode";
-import { IconSpeech, IconBook, IconSprout, IconArrowStart } from "@/components/ui/Icons";
+import {
+  IconSenseMouth,
+  IconSpeech,
+  IconBook,
+  IconSprout,
+  IconBlocks,
+  IconFamily,
+  IconArrowStart,
+} from "@/components/ui/Icons";
 
 export const ServicesSection: React.FC = () => {
   const { locale, t } = useLanguage();
@@ -14,11 +22,16 @@ export const ServicesSection: React.FC = () => {
   const getIcon = (name: string) => {
     switch (name) {
       case "speech":
-        return <IconSpeech size={32} color="#2C384D" />;
+      case "taste":
+        return <IconSenseMouth size={36} color="#206B8F" />;
       case "book":
         return <IconBook size={32} color="#2C384D" />;
       case "sprout":
         return <IconSprout size={32} color="#2C384D" />;
+      case "blocks":
+        return <IconBlocks size={32} color="#2C384D" />;
+      case "family":
+        return <IconFamily size={32} color="#2C384D" />;
       default:
         return null;
     }
@@ -47,13 +60,21 @@ export const ServicesSection: React.FC = () => {
           </p>
         </div>
 
-        {/* 3 Service Cards */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-          {currentServices.map((service) => (
-            <div
-              key={service.slug}
-              className="bg-white rounded-lg border border-brand-border p-6 sm:p-8 flex flex-col justify-between hover:border-brand-border-strong hover:shadow-card transition-all duration-200 group"
-            >
+        {/* 5 Service Cards */}
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 sm:gap-8">
+          {currentServices.map((service, index) => {
+            const colSpanClasses =
+              index === 3
+                ? "lg:col-span-2 lg:col-start-2"
+                : index === 4
+                ? "lg:col-span-2 md:col-span-2 md:max-w-md md:mx-auto lg:max-w-none w-full"
+                : "lg:col-span-2";
+
+            return (
+              <div
+                key={service.slug}
+                className={`bg-white rounded-lg border border-brand-border p-6 sm:p-8 flex flex-col justify-between hover:border-brand-border-strong hover:shadow-card transition-all duration-200 group ${colSpanClasses}`}
+              >
               <div>
                 <SenseNode
                   type={service.themeColor}
@@ -86,7 +107,8 @@ export const ServicesSection: React.FC = () => {
                 </Link>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Explore all services link */}

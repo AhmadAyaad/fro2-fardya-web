@@ -117,6 +117,8 @@ export interface Translations {
     serviceSpeech: string;
     serviceLearning: string;
     serviceSkills: string;
+    serviceFoundation: string;
+    serviceParenting: string;
     serviceUnsure: string;
     notesLabel: string;
     notesPlaceholder: string;
@@ -169,6 +171,15 @@ export interface Translations {
     forAges2Plus: string;
     educationalNotice: string;
   };
+  senses: {
+    sight: string;
+    hearing: string;
+    smell: string;
+    taste: string;
+    touch: string;
+    center: string;
+    alt: string;
+  };
 }
 
 export const translations: Record<Locale, Translations> = {
@@ -220,7 +231,7 @@ export const translations: Record<Locale, Translations> = {
     },
     servicesSection: {
       tag: "خدماتنا",
-      title: "ثلاث خدمات تدعم نمو طفلك",
+      title: "خدماتنا المتخصصة لدعم نمو طفلك",
       description:
         "نحدّد معكم ما يحتاجه طفلك بعد التقييم، فقد تكفيه خدمة واحدة وقد يستفيد من أكثر من خدمة متكاملة.",
       learnMore: "اعرف المزيد عن الخدمة",
@@ -308,6 +319,8 @@ export const translations: Record<Locale, Translations> = {
       serviceSpeech: "التخاطب (النطق واللغة والتواصل)",
       serviceLearning: "صعوبات التعلم (القراءة والكتابة والحساب)",
       serviceSkills: "تنمية المهارات (الانتباه والتركيز والإدراك)",
+      serviceFoundation: "التأسيس (التهيئة الأكاديمية والمهارات المدرسية الأولى)",
+      serviceParenting: "إرشاد ودعم أولياء الأمور (الاستشارات الأسرية وتعديل السلوك)",
       serviceUnsure: "لست متأكدًا — أرغب في مشورة المختص بعد التقييم",
       notesLabel: "ملاحظات بسيطة تودون مشاركتها (اختياري)",
       notesPlaceholder: "مثل: ما الذي تلاحظونه على كلام الطفل أو دراسته أو تركيزه؟",
@@ -333,7 +346,7 @@ export const translations: Record<Locale, Translations> = {
     },
     footer: {
       tagline:
-        "مركز لدعم الأطفال في التخاطب وصعوبات التعلم وتنمية المهارات. نؤمن بأن كل طفل حالة فريدة تستحق فهمًا خاصًا وخطة تناسب قدراته وإيقاعه.",
+        "مركز لدعم الأطفال والأسرة في التخاطب وصعوبات التعلم وتنمية المهارات والتأسيس وإرشاد أولياء الأمور. نؤمن بأن كل طفل حالة فريدة تستحق فهمًا خاصًا وخطة تناسب قدراته وإيقاعه.",
       servicesTitle: "الخدمات",
       quickLinksTitle: "روابط سريعة",
       allServicesLink: "جميع الخدمات ومقارنتها",
@@ -363,6 +376,15 @@ export const translations: Record<Locale, Translations> = {
       forAges2Plus: "للأطفال من عمر سنتين فأكثر",
       educationalNotice:
         "المقالات المنشورة في هذه الصفحة مخصصة للتوعية العامة والإرشاد الأسري، ولا تغني عن استشارة المختص أو إجراء التقييم الفردي للطفل.",
+    },
+    senses: {
+      sight: "البصر",
+      hearing: "السمع",
+      smell: "الشم",
+      taste: "التذوق",
+      touch: "اللمس",
+      center: "فروق فردية",
+      alt: "رسم تعبيري لشعار فروق فردية: الحواس الخمس (البصر، السمع، الشم، التذوق، اللمس) تحيط بالقدرات الفردية للطفل",
     },
   },
   en: {
@@ -413,7 +435,7 @@ export const translations: Record<Locale, Translations> = {
     },
     servicesSection: {
       tag: "Our Services",
-      title: "Three dedicated services supporting your child's growth",
+      title: "Dedicated services supporting your child's growth",
       description:
         "Following the initial assessment, we determine together what best serves your child—whether a single focused service or an integrated multi-disciplinary path.",
       learnMore: "Learn more about this service",
@@ -502,6 +524,8 @@ export const translations: Record<Locale, Translations> = {
       serviceSpeech: "Speech Therapy (Language, Articulation & Communication)",
       serviceLearning: "Learning Difficulties (Reading, Writing & Math)",
       serviceSkills: "Skills Development (Attention, Focus & Cognition)",
+      serviceFoundation: "Academic Foundation (Early Readiness & School Preparation)",
+      serviceParenting: "Parental Guidance (Family Counseling & Home Strategies)",
       serviceUnsure: "Not sure — seeking specialist recommendation upon assessment",
       notesLabel: "Initial Observations (Optional)",
       notesPlaceholder: "e.g., What have you observed regarding your child's speech, schoolwork, or focus?",
@@ -527,7 +551,7 @@ export const translations: Record<Locale, Translations> = {
     },
     footer: {
       tagline:
-        "A dedicated center supporting children in Speech Therapy, Learning Difficulties, and Skills Development. We believe every child is a unique individual worthy of personalized understanding and tailored support.",
+        "A dedicated center supporting children and families in Speech Therapy, Learning Difficulties, Skills Development, Foundation, and Parental Guidance. We believe every child is a unique individual worthy of personalized understanding and tailored support.",
       servicesTitle: "Services",
       quickLinksTitle: "Quick Links",
       allServicesLink: "All Services & Comparisons",
@@ -558,6 +582,15 @@ export const translations: Record<Locale, Translations> = {
       forAges2Plus: "For children aged 2 years and above",
       educationalNotice:
         "The articles published here are for family guidance and general education only, and do not substitute for a clinical evaluation by a certified specialist.",
+    },
+    senses: {
+      sight: "Sight",
+      hearing: "Hearing",
+      smell: "Smell",
+      taste: "Taste",
+      touch: "Touch",
+      center: "Forooq Fardya",
+      alt: "Illustration of Forooq Fardya logo: The five senses (Sight, Hearing, Smell, Taste, Touch) surrounding the child's individual abilities",
     },
   },
 };

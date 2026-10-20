@@ -184,6 +184,8 @@ export const EvaluationForm: React.FC<EvaluationFormProps> = ({
           <option value={t.form.serviceSpeech}>{t.form.serviceSpeech}</option>
           <option value={t.form.serviceLearning}>{t.form.serviceLearning}</option>
           <option value={t.form.serviceSkills}>{t.form.serviceSkills}</option>
+          <option value={t.form.serviceFoundation}>{t.form.serviceFoundation}</option>
+          <option value={t.form.serviceParenting}>{t.form.serviceParenting}</option>
           <option value={t.form.serviceUnsure}>{t.form.serviceUnsure}</option>
         </select>
       </div>

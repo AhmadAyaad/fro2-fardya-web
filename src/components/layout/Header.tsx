@@ -14,19 +14,27 @@ import {
   IconArrowStart,
   IconWhatsapp,
   IconGlobe,
+  IconSenseMouth,
   IconSpeech,
   IconBook,
   IconSprout,
+  IconBlocks,
+  IconFamily,
 } from "@/components/ui/Icons";
 
 const getServiceIcon = (iconName: string, size = 18, color?: string) => {
   switch (iconName) {
     case "speech":
-      return <IconSpeech size={size} color={color} />;
+    case "taste":
+      return <IconSenseMouth size={size} color={color || "#206B8F"} />;
     case "book":
       return <IconBook size={size} color={color} />;
     case "sprout":
       return <IconSprout size={size} color={color} />;
+    case "blocks":
+      return <IconBlocks size={size} color={color} />;
+    case "family":
+      return <IconFamily size={size} color={color} />;
     default:
       return null;
   }
@@ -41,6 +49,18 @@ export const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleMouseEnter = () => {
+    if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
+    setServicesDropdownOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setServicesDropdownOpen(false);
+    }, 150);
+  };
 
   // Close dropdown on outside click or Escape key
   useEffect(() => {
@@ -60,6 +80,7 @@ export const Header: React.FC = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("keydown", handleKeyDown);
+      if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
     };
   }, []);
 
@@ -88,7 +109,7 @@ export const Header: React.FC = () => {
   const isContactActive = pathname === "/contact";
 
   return (
-    <header className="sticky top-0 z-40 bg-brand-bg/95 backdrop-blur-md border-b border-brand-border/80 shadow-[0_2px_12px_rgba(44,56,77,0.04)]">
+    <header className="sticky top-0 z-40 bg-brand-bg border-b border-brand-border/80 shadow-[0_2px_12px_rgba(44,56,77,0.04)]">
       {/* Skip to main content link for accessibility */}
       <a
         href="#main-content"
@@ -118,7 +139,7 @@ export const Header: React.FC = () => {
             <span className="text-lg sm:text-xl font-bold leading-tight text-brand-text tracking-tight group-hover:text-primary transition-colors truncate">
               {site.name}
             </span>
-            <span className="text-[11px] sm:text-xs text-brand-text-muted leading-tight hidden md:block max-w-[210px] xl:max-w-none truncate xl:whitespace-normal">
+            <span className="text-[11px] sm:text-xs text-brand-text-muted leading-tight hidden md:block max-w-[290px] xl:max-w-none truncate xl:whitespace-normal">
               {t.nav.centerSubtitle}
             </span>
           </div>
@@ -130,7 +151,12 @@ export const Header: React.FC = () => {
           aria-label={t.nav.menuOpen}
         >
           {/* Services with Dropdown */}
-          <div className="relative" ref={dropdownRef}>
+          <div
+            className="relative"
+            ref={dropdownRef}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
             <button
               onClick={() => setServicesDropdownOpen((prev) => !prev)}
               aria-expanded={servicesDropdownOpen}
@@ -154,13 +180,13 @@ export const Header: React.FC = () => {
 
             {/* Dropdown Menu */}
             {servicesDropdownOpen && (
-              <div className="absolute start-0 top-full mt-2 w-[340px] bg-white/98 backdrop-blur-xl rounded-2xl border border-brand-border shadow-[0_12px_36px_rgba(44,56,77,0.12)] p-2 z-50 animate-fadeIn">
+              <div className="absolute start-0 top-full mt-2 w-[340px] bg-white rounded-2xl border border-brand-border shadow-[0_14px_38px_rgba(44,56,77,0.15)] p-2 z-50 animate-fadeIn">
                 <div className="px-3 py-2 border-b border-brand-border/50 flex items-center justify-between">
                   <span className="text-[11px] font-bold text-brand-text-muted tracking-wider uppercase">
                     {t.servicesSection.tag}
                   </span>
                   <span className="text-[11px] font-medium text-brand-text-muted/70">
-                    {locale === "ar" ? "٣ خدمات أساسية" : "3 Core Services"}
+                    {locale === "ar" ? `${currentServices.length} خدمات متخصصة` : `${currentServices.length} Specialized Services`}
                   </span>
                 </div>
                 <div className="py-1 space-y-1">
@@ -295,7 +321,7 @@ export const Header: React.FC = () => {
 
       {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (
-        <div className="fixed inset-x-0 bottom-0 top-[65px] sm:top-[73px] z-50 bg-brand-bg/98 backdrop-blur-xl flex flex-col lg:hidden overflow-y-auto px-5 py-6 animate-fadeIn pb-32">
+        <div className="fixed inset-x-0 bottom-0 top-[65px] sm:top-[73px] z-50 bg-[#FBF5E2] flex flex-col lg:hidden overflow-y-auto px-5 py-6 animate-fadeIn pb-32">
           <div className="w-full max-w-lg mx-auto flex flex-col gap-4">
             {/* Mobile Language Switcher Card */}
             <div className="p-3.5 bg-white rounded-2xl border border-brand-border shadow-xs flex items-center justify-between">

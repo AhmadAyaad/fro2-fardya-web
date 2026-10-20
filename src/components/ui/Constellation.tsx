@@ -1,174 +1,196 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { IconSpeech, IconBook, IconSprout, IconClipboard, IconTarget, IconHeart } from "./Icons";
 
 interface ConstellationProps {
   className?: string;
 }
 
 export const Constellation: React.FC<ConstellationProps> = ({ className = "" }) => {
-  const { locale, t } = useLanguage();
-
-  const labels = {
-    speech: t.nav.speechTherapy,
-    learning: t.nav.learningDifficulties,
-    skills: t.nav.skillsDevelopment,
-    assessment: locale === "ar" ? "تقييم فردي" : "Individual Assessment",
-    alt:
-      locale === "ar"
-        ? "رسم تعبيري: طفل في المنتصف تحيط به دوائر ملوّنة ترمز إلى التخاطب وصعوبات التعلم وتنمية المهارات والتقييم الفردي"
-        : "Illustration: Child at the center surrounded by colored nodes representing speech therapy, learning difficulties, skills development, and individualized evaluation",
-  };
+  const { t } = useLanguage();
 
   return (
     <div
       role="img"
-      aria-label={labels.alt}
-      className={`relative w-full max-w-[520px] aspect-[520/460] select-none ${className}`}
+      aria-label={t.senses.alt}
+      className={`relative w-full max-w-[520px] aspect-[520/480] select-none ${className}`}
     >
       {/* Organic blob background */}
       <div
-        className="absolute inset-[3%_4%] bg-brand-bg-alt border border-brand-border"
+        className="absolute inset-[2%_3%] bg-brand-bg-alt border border-brand-border"
         style={{
           borderRadius: "48% 52% 46% 54% / 52% 46% 54% 48%",
         }}
       />
 
-      {/* Dotted connector threads */}
+      {/* Connector threads inspired by the logo constellation */}
       <svg
-        viewBox="0 0 520 460"
+        viewBox="0 0 520 480"
         width="100%"
         height="100%"
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
         fill="none"
-        stroke="#D9C27E"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        strokeDasharray="1 9"
       >
-        <path d="M260 230L120 130M260 230L400 110M260 230L415 320M260 230L130 345M260 230L265 38" />
+        {/* Radial lines from center head to 5 senses */}
+        <g stroke="#D4B870" strokeWidth="2.5" strokeDasharray="2 7" strokeLinecap="round">
+          <line x1="260" y1="240" x2="145" y2="110" />
+          <line x1="260" y1="240" x2="375" y2="110" />
+          <line x1="260" y1="240" x2="430" y2="290" />
+          <line x1="260" y1="240" x2="260" y2="400" />
+          <line x1="260" y1="240" x2="90" y2="290" />
+        </g>
+        {/* Outer pentagon connector threads */}
+        <g stroke="#D4B870" strokeWidth="2" strokeDasharray="1 8" strokeLinecap="round">
+          <line x1="145" y1="110" x2="375" y2="110" />
+          <line x1="375" y1="110" x2="430" y2="290" />
+          <line x1="430" y1="290" x2="260" y2="400" />
+          <line x1="260" y1="400" x2="90" y2="290" />
+          <line x1="90" y1="290" x2="145" y2="110" />
+        </g>
       </svg>
 
-      {/* Center Node: Child / Heart */}
+      {/* Center Node: Head & Brain (فروق فردية) */}
       <div
-        className="absolute rounded-full bg-white border-4 border-brand-border-strong flex items-center justify-center shadow-hover hover:scale-105 transition-transform"
+        className="absolute flex flex-col items-center gap-1.5 group hover:scale-108 transition-all duration-300 cursor-pointer z-10"
         style={{
-          left: "36.2%",
-          top: "34.3%",
-          width: "27.7%",
-          aspectRatio: "1",
+          left: "36%",
+          top: "34%",
+          width: "28%",
         }}
       >
-        <IconHeart size="46%" color="#B0285C" className="fill-primary-soft" />
-      </div>
-
-      {/* Top-Right in RTL / Left visually: Speech Therapy (Cyan) */}
-      <div
-        className="absolute flex flex-col items-center gap-2 group hover:scale-105 transition-transform cursor-pointer"
-        style={{
-          left: "11.9%",
-          top: "15.7%",
-          width: "22.3%",
-        }}
-      >
-        <div
-          className="w-full aspect-square rounded-full flex items-center justify-center shadow-card"
-          style={{
-            backgroundColor: "#83DDE6",
-            border: "4px solid #327790",
-          }}
-        >
-          <IconSpeech size="50%" color="#2C384D" />
+        <div className="w-full aspect-square rounded-full overflow-hidden shadow-card group-hover:shadow-hover transition-shadow bg-white flex items-center justify-center">
+          <Image
+            src="/images/senses/center_head.png"
+            alt={t.senses.center}
+            width={146}
+            height={146}
+            priority
+            className="w-full h-full object-contain"
+          />
         </div>
-        <span className="bg-white border border-brand-border rounded-full px-3 py-0.5 text-xs sm:text-sm font-semibold whitespace-nowrap leading-relaxed shadow-sm text-brand-text">
-          {labels.speech}
+        <span className="bg-brand-bg border border-[#D4B870] rounded-full px-3 py-0.5 text-xs sm:text-sm font-bold text-brand-text whitespace-nowrap leading-relaxed shadow-sm">
+          {t.senses.center}
         </span>
       </div>
 
-      {/* Top-Left in RTL / Right visually: Learning Difficulties (Purple) */}
+      {/* Sense 1: Top-Left: Eye / البصر (Pink) */}
       <div
-        className="absolute flex flex-col items-center gap-2 group hover:scale-105 transition-transform cursor-pointer"
+        className="absolute flex flex-col items-center gap-1.5 group hover:scale-108 transition-all duration-300 cursor-pointer z-20"
         style={{
-          left: "67.3%",
-          top: "13%",
-          width: "19.2%",
+          left: "17%",
+          top: "11%",
+          width: "20%",
         }}
       >
-        <div
-          className="w-full aspect-square rounded-full flex items-center justify-center shadow-card"
-          style={{
-            backgroundColor: "#AF89F6",
-            border: "4px solid #5E378F",
-          }}
-        >
-          <IconBook size="50%" color="#2C384D" />
+        <div className="w-full aspect-square rounded-full overflow-hidden shadow-card group-hover:shadow-hover transition-shadow bg-white flex items-center justify-center">
+          <Image
+            src="/images/senses/eye.png"
+            alt={t.senses.sight}
+            width={104}
+            height={104}
+            priority
+            className="w-full h-full object-contain"
+          />
         </div>
-        <span className="bg-white border border-brand-border rounded-full px-3 py-0.5 text-xs sm:text-sm font-semibold whitespace-nowrap leading-relaxed shadow-sm text-brand-text">
-          {labels.learning}
+        <span className="bg-white border border-brand-border rounded-full px-3 py-0.5 text-xs sm:text-sm font-bold text-brand-text whitespace-nowrap leading-relaxed shadow-sm">
+          {t.senses.sight}
         </span>
       </div>
 
-      {/* Bottom-Left in RTL / Right visually: Skills Development (Green) */}
+      {/* Sense 2: Top-Right: Ear / السمع (Yellow) */}
       <div
-        className="absolute flex flex-col items-center gap-2 group hover:scale-105 transition-transform cursor-pointer"
+        className="absolute flex flex-col items-center gap-1.5 group hover:scale-108 transition-all duration-300 cursor-pointer z-20"
         style={{
-          left: "69%",
-          top: "57.4%",
-          width: "21.5%",
+          left: "63%",
+          top: "11%",
+          width: "20%",
         }}
       >
-        <div
-          className="w-full aspect-square rounded-full flex items-center justify-center shadow-card"
-          style={{
-            backgroundColor: "#B1DD30",
-            border: "4px solid #517B11",
-          }}
-        >
-          <IconSprout size="50%" color="#2C384D" />
+        <div className="w-full aspect-square rounded-full overflow-hidden shadow-card group-hover:shadow-hover transition-shadow bg-white flex items-center justify-center">
+          <Image
+            src="/images/senses/ear.png"
+            alt={t.senses.hearing}
+            width={104}
+            height={104}
+            priority
+            className="w-full h-full object-contain"
+          />
         </div>
-        <span className="bg-white border border-brand-border rounded-full px-3 py-0.5 text-xs sm:text-sm font-semibold whitespace-nowrap leading-relaxed shadow-sm text-brand-text">
-          {labels.skills}
+        <span className="bg-white border border-brand-border rounded-full px-3 py-0.5 text-xs sm:text-sm font-bold text-brand-text whitespace-nowrap leading-relaxed shadow-sm">
+          {t.senses.hearing}
         </span>
       </div>
 
-      {/* Bottom-Right in RTL / Left visually: Assessment (Pink) */}
+      {/* Sense 3: Mid-Right: Nose / الشم (Green) */}
       <div
-        className="absolute flex flex-col items-center gap-2 group hover:scale-105 transition-transform cursor-pointer"
+        className="absolute flex flex-col items-center gap-1.5 group hover:scale-108 transition-all duration-300 cursor-pointer z-20"
         style={{
-          left: "15.8%",
-          top: "64.6%",
-          width: "18.5%",
+          left: "73%",
+          top: "50%",
+          width: "20%",
         }}
       >
-        <div
-          className="w-full aspect-square rounded-full flex items-center justify-center shadow-card"
-          style={{
-            backgroundColor: "#F6598B",
-            border: "4px solid #921B48",
-          }}
-        >
-          <IconClipboard size="50%" color="#2C384D" />
+        <div className="w-full aspect-square rounded-full overflow-hidden shadow-card group-hover:shadow-hover transition-shadow bg-white flex items-center justify-center">
+          <Image
+            src="/images/senses/nose.png"
+            alt={t.senses.smell}
+            width={104}
+            height={104}
+            className="w-full h-full object-contain"
+          />
         </div>
-        <span className="bg-white border border-brand-border rounded-full px-3 py-0.5 text-xs sm:text-sm font-semibold whitespace-nowrap leading-relaxed shadow-sm text-brand-text">
-          {labels.assessment}
+        <span className="bg-white border border-brand-border rounded-full px-3 py-0.5 text-xs sm:text-sm font-bold text-brand-text whitespace-nowrap leading-relaxed shadow-sm">
+          {t.senses.smell}
         </span>
       </div>
 
-      {/* Top Center: Goals (Yellow) */}
+      {/* Sense 4: Bottom: Mouth / التذوق (Cyan) */}
       <div
-        className="absolute aspect-square rounded-full flex items-center justify-center shadow-sm"
+        className="absolute flex flex-col items-center gap-1.5 group hover:scale-108 transition-all duration-300 cursor-pointer z-20"
         style={{
-          left: "45.2%",
-          top: "1.7%",
-          width: "11.5%",
-          backgroundColor: "#F8D940",
-          border: "3px solid #8F660F",
+          left: "40%",
+          top: "70%",
+          width: "20%",
         }}
       >
-        <IconTarget size="52%" color="#2C384D" />
+        <div className="w-full aspect-square rounded-full overflow-hidden shadow-card group-hover:shadow-hover transition-shadow bg-white flex items-center justify-center">
+          <Image
+            src="/images/senses/mouth.png"
+            alt={t.senses.taste}
+            width={104}
+            height={104}
+            className="w-full h-full object-contain"
+          />
+        </div>
+        <span className="bg-white border border-brand-border rounded-full px-3 py-0.5 text-xs sm:text-sm font-bold text-brand-text whitespace-nowrap leading-relaxed shadow-sm">
+          {t.senses.taste}
+        </span>
+      </div>
+
+      {/* Sense 5: Mid-Left: Hand / اللمس (Purple) */}
+      <div
+        className="absolute flex flex-col items-center gap-1.5 group hover:scale-108 transition-all duration-300 cursor-pointer z-20"
+        style={{
+          left: "7%",
+          top: "50%",
+          width: "20%",
+        }}
+      >
+        <div className="w-full aspect-square rounded-full overflow-hidden shadow-card group-hover:shadow-hover transition-shadow bg-white flex items-center justify-center">
+          <Image
+            src="/images/senses/hand.png"
+            alt={t.senses.touch}
+            width={104}
+            height={104}
+            className="w-full h-full object-contain"
+          />
+        </div>
+        <span className="bg-white border border-brand-border rounded-full px-3 py-0.5 text-xs sm:text-sm font-bold text-brand-text whitespace-nowrap leading-relaxed shadow-sm">
+          {t.senses.touch}
+        </span>
       </div>
     </div>
   );

@@ -71,6 +71,16 @@ export const siteConfigAr: SiteConfig = {
           href: "/services/skills-development",
           description: "الانتباه والمهارات اليومية",
         },
+        {
+          title: "تأسيس",
+          href: "/services/foundation",
+          description: "التهيئة والمهارات المدرسية الأولى",
+        },
+        {
+          title: "إرشاد ودعم أولياء الأمور",
+          href: "/services/parent-guidance",
+          description: "استشارات أسرية واستراتيجيات منزلية",
+        },
       ],
     },
     {
@@ -138,6 +148,16 @@ export const siteConfigEn: SiteConfig = {
           title: "Skills Development",
           href: "/services/skills-development",
           description: "Attention, Focus & Daily Life Skills",
+        },
+        {
+          title: "Academic Foundation",
+          href: "/services/foundation",
+          description: "Early Readiness & School Preparation",
+        },
+        {
+          title: "Parental Guidance & Support",
+          href: "/services/parent-guidance",
+          description: "Family Counseling & Home Strategies",
         },
       ],
     },
