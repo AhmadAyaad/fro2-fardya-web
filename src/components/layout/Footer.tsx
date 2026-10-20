@@ -128,7 +128,13 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2.5 text-sm text-[#D4DAE5]">
               <li className="flex items-start gap-2.5">
                 <IconPhone size={18} className="text-accent-yellow shrink-0 mt-0.5" />
-                <span>{site.contact.phone}</span>
+                <a
+                  href={`tel:${site.contact.phone}`}
+                  className="hover:text-white hover:underline transition-colors"
+                  dir="ltr"
+                >
+                  {site.contact.phone}
+                </a>
               </li>
               <li className="flex items-start gap-2.5">
                 <IconPin size={18} className="text-accent-yellow shrink-0 mt-0.5" />
@@ -152,7 +158,9 @@ export const Footer: React.FC = () => {
               className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 text-white transition-colors cursor-pointer text-xs"
             >
               <IconGlobe size={14} />
-              <span>{locale === "ar" ? "English" : "العربية"}</span>
+              <span className={locale === "en" ? "font-arabic font-bold text-[13px] leading-none" : ""}>
+                {locale === "ar" ? "English" : "العربية"}
+              </span>
             </button>
             <p className="max-w-md hidden md:block">{site.disclaimer}</p>
           </div>

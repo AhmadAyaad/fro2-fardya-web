@@ -14,7 +14,23 @@ import {
   IconArrowStart,
   IconWhatsapp,
   IconGlobe,
+  IconSpeech,
+  IconBook,
+  IconSprout,
 } from "@/components/ui/Icons";
+
+const getServiceIcon = (iconName: string, size = 18, color?: string) => {
+  switch (iconName) {
+    case "speech":
+      return <IconSpeech size={size} color={color} />;
+    case "book":
+      return <IconBook size={size} color={color} />;
+    case "sprout":
+      return <IconSprout size={size} color={color} />;
+    default:
+      return null;
+  }
+};
 
 export const Header: React.FC = () => {
   const pathname = usePathname();
@@ -26,15 +42,25 @@ export const Header: React.FC = () => {
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdown on outside click
+  // Close dropdown on outside click or Escape key
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setServicesDropdownOpen(false);
       }
     };
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setServicesDropdownOpen(false);
+        setMobileMenuOpen(false);
+      }
+    };
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
   }, []);
 
   // Close mobile drawer on route change
@@ -55,8 +81,14 @@ export const Header: React.FC = () => {
     };
   }, [mobileMenuOpen]);
 
+  const isServicesActive = pathname.startsWith("/services");
+  const isAboutActive = pathname === "/about";
+  const isArticlesActive = pathname.startsWith("/articles");
+  const isFaqActive = pathname === "/faq";
+  const isContactActive = pathname === "/contact";
+
   return (
-    <header className="sticky top-0 z-40 bg-brand-bg border-b border-brand-border">
+    <header className="sticky top-0 z-40 bg-brand-bg/95 backdrop-blur-md border-b border-brand-border/80 shadow-[0_2px_12px_rgba(44,56,77,0.04)]">
       {/* Skip to main content link for accessibility */}
       <a
         href="#main-content"
@@ -65,36 +97,36 @@ export const Header: React.FC = () => {
         {t.nav.skipToContent}
       </a>
 
-      <div className="max-w-[1200px] mx-auto px-5 sm:px-6 py-3.5 flex items-center justify-between gap-4">
+      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between gap-3 lg:gap-5">
         {/* Brand Logo & Name */}
         <Link
           href="/"
-          className="flex items-center gap-3.5 text-brand-text group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary rounded-sm"
+          className="flex items-center gap-3 text-brand-text group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary rounded-xl shrink-0"
           aria-label={`${site.name} — ${t.nav.home}`}
         >
-          <div className="relative w-12 h-12 rounded-sm overflow-hidden shrink-0 border border-brand-border shadow-sm">
+          <div className="relative w-11 h-11 sm:w-12 sm:h-12 rounded-xl overflow-hidden shrink-0 border border-brand-border/80 shadow-xs bg-white transition-transform duration-200 group-hover:scale-105 group-hover:shadow-sm">
             <Image
               src="/images/logo.jpg"
               alt={site.name}
               width={48}
               height={48}
-              className="w-full h-full object-cover transition-transform group-hover:scale-105"
+              className="w-full h-full object-cover"
               priority
             />
           </div>
-          <div>
-            <div className="text-xl font-bold leading-tight text-brand-text">
+          <div className="flex flex-col min-w-0">
+            <span className="text-lg sm:text-xl font-bold leading-tight text-brand-text tracking-tight group-hover:text-primary transition-colors truncate">
               {site.name}
-            </div>
-            <div className="text-xs text-brand-text-muted leading-tight hidden sm:block">
+            </span>
+            <span className="text-[11px] sm:text-xs text-brand-text-muted leading-tight hidden md:block max-w-[210px] xl:max-w-none truncate xl:whitespace-normal">
               {t.nav.centerSubtitle}
-            </div>
+            </span>
           </div>
         </Link>
 
         {/* Desktop Navigation Links */}
         <nav
-          className="hidden md:flex items-center gap-6 lg:gap-7 text-base font-medium text-brand-text"
+          className="hidden lg:flex items-center gap-1 xl:gap-2 text-sm xl:text-[15px] font-medium text-brand-text"
           aria-label={t.nav.menuOpen}
         >
           {/* Services with Dropdown */}
@@ -103,54 +135,77 @@ export const Header: React.FC = () => {
               onClick={() => setServicesDropdownOpen((prev) => !prev)}
               aria-expanded={servicesDropdownOpen}
               aria-haspopup="true"
-              className={`flex items-center gap-1.5 py-2 px-1 hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary rounded ${
-                pathname.startsWith("/services") ? "text-primary font-bold" : ""
+              className={`flex items-center gap-1.5 px-3 py-2 rounded-full whitespace-nowrap transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary cursor-pointer ${
+                isServicesActive
+                  ? "text-primary font-bold bg-primary/10 shadow-xs"
+                  : servicesDropdownOpen
+                  ? "text-primary bg-brand-bg-alt/80"
+                  : "text-brand-text hover:text-primary hover:bg-black/[0.03]"
               }`}
             >
               <span>{t.nav.services}</span>
               <IconChevronDown
-                size={16}
+                size={14}
                 className={`transition-transform duration-200 ${
-                  servicesDropdownOpen ? "rotate-180" : ""
+                  servicesDropdownOpen ? "rotate-180 text-primary" : "opacity-60"
                 }`}
               />
             </button>
 
             {/* Dropdown Menu */}
             {servicesDropdownOpen && (
-              <div className="absolute start-0 top-full mt-2 w-72 bg-white rounded-md border border-brand-border shadow-hover py-2 z-50 animate-fadeIn">
-                <div className="px-4 py-2 border-b border-brand-border/60">
-                  <span className="text-xs font-semibold text-brand-text-muted">
+              <div className="absolute start-0 top-full mt-2 w-[340px] bg-white/98 backdrop-blur-xl rounded-2xl border border-brand-border shadow-[0_12px_36px_rgba(44,56,77,0.12)] p-2 z-50 animate-fadeIn">
+                <div className="px-3 py-2 border-b border-brand-border/50 flex items-center justify-between">
+                  <span className="text-[11px] font-bold text-brand-text-muted tracking-wider uppercase">
                     {t.servicesSection.tag}
                   </span>
+                  <span className="text-[11px] font-medium text-brand-text-muted/70">
+                    {locale === "ar" ? "٣ خدمات أساسية" : "3 Core Services"}
+                  </span>
                 </div>
-                {currentServices.map((service) => (
-                  <Link
-                    key={service.slug}
-                    href={`/services/${service.slug}`}
-                    onClick={() => setServicesDropdownOpen(false)}
-                    className="flex flex-col px-4 py-3 hover:bg-brand-bg transition-colors"
-                  >
-                    <span className="font-bold text-sm text-brand-text flex items-center justify-between">
-                      {service.title}
-                      <span
-                        className="w-2.5 h-2.5 rounded-full"
-                        style={{ backgroundColor: service.colors.fill }}
-                      />
-                    </span>
-                    <span className="text-xs text-brand-text-muted mt-0.5">
-                      {service.tagline}
-                    </span>
-                  </Link>
-                ))}
-                <div className="pt-2 px-4 border-t border-brand-border/60">
+                <div className="py-1 space-y-1">
+                  {currentServices.map((service) => (
+                    <Link
+                      key={service.slug}
+                      href={`/services/${service.slug}`}
+                      onClick={() => setServicesDropdownOpen(false)}
+                      className="group flex items-start gap-3 p-2.5 rounded-xl hover:bg-brand-bg transition-all duration-150"
+                    >
+                      <div
+                        className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 mt-0.5 transition-transform duration-150 group-hover:scale-105 shadow-xs"
+                        style={{
+                          backgroundColor: service.colors.soft,
+                          color: service.colors.border,
+                        }}
+                      >
+                        {getServiceIcon(service.iconName, 18, service.colors.border)}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="font-bold text-sm text-brand-text group-hover:text-primary transition-colors flex items-center justify-between">
+                          <span className="truncate">{service.title}</span>
+                          <span
+                            className="w-2 h-2 rounded-full shrink-0 ms-2"
+                            style={{ backgroundColor: service.colors.fill }}
+                          />
+                        </div>
+                        <div className="text-xs text-brand-text-muted mt-0.5 line-clamp-1">
+                          {service.tagline}
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+                <div className="pt-2 px-3 pb-1 border-t border-brand-border/50">
                   <Link
                     href="/services"
                     onClick={() => setServicesDropdownOpen(false)}
-                    className="text-xs font-bold text-primary hover:underline flex items-center justify-between py-1"
+                    className="group text-xs font-bold text-primary hover:text-primary-hover flex items-center justify-between py-1.5 transition-colors"
                   >
                     <span>{t.footer.allServicesLink}</span>
-                    <IconArrowStart size={14} />
+                    <IconArrowStart
+                      size={14}
+                      className="transition-transform duration-200 group-hover:translate-x-1"
+                    />
                   </Link>
                 </div>
               </div>
@@ -159,8 +214,10 @@ export const Header: React.FC = () => {
 
           <Link
             href="/about"
-            className={`py-2 px-1 hover:text-primary transition-colors rounded ${
-              pathname === "/about" ? "text-primary font-bold" : ""
+            className={`px-3 py-2 rounded-full whitespace-nowrap transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary ${
+              isAboutActive
+                ? "text-primary font-bold bg-primary/10 shadow-xs"
+                : "text-brand-text hover:text-primary hover:bg-black/[0.03]"
             }`}
           >
             {t.nav.about}
@@ -168,8 +225,10 @@ export const Header: React.FC = () => {
 
           <Link
             href="/articles"
-            className={`py-2 px-1 hover:text-primary transition-colors rounded ${
-              pathname.startsWith("/articles") ? "text-primary font-bold" : ""
+            className={`px-3 py-2 rounded-full whitespace-nowrap transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary ${
+              isArticlesActive
+                ? "text-primary font-bold bg-primary/10 shadow-xs"
+                : "text-brand-text hover:text-primary hover:bg-black/[0.03]"
             }`}
           >
             {t.nav.articles}
@@ -177,8 +236,10 @@ export const Header: React.FC = () => {
 
           <Link
             href="/faq"
-            className={`py-2 px-1 hover:text-primary transition-colors rounded ${
-              pathname === "/faq" ? "text-primary font-bold" : ""
+            className={`px-3 py-2 rounded-full whitespace-nowrap transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary ${
+              isFaqActive
+                ? "text-primary font-bold bg-primary/10 shadow-xs"
+                : "text-brand-text hover:text-primary hover:bg-black/[0.03]"
             }`}
           >
             {t.nav.faq}
@@ -186,30 +247,36 @@ export const Header: React.FC = () => {
 
           <Link
             href="/contact"
-            className={`py-2 px-1 hover:text-primary transition-colors rounded ${
-              pathname === "/contact" ? "text-primary font-bold" : ""
+            className={`px-3 py-2 rounded-full whitespace-nowrap transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary ${
+              isContactActive
+                ? "text-primary font-bold bg-primary/10 shadow-xs"
+                : "text-brand-text hover:text-primary hover:bg-black/[0.03]"
             }`}
           >
             {t.nav.contact}
           </Link>
         </nav>
 
-        {/* Desktop CTA & Language Switcher & Mobile Toggle */}
-        <div className="flex items-center gap-2.5 sm:gap-3">
+        {/* Right Actions: Language Switcher, Desktop CTA & Mobile Toggle */}
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           {/* Language Switcher Button (Desktop & Mobile) */}
           <button
             type="button"
             onClick={toggleLocale}
             aria-label={locale === "ar" ? "Switch language to English" : "التبديل إلى اللغة العربية"}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-brand-border bg-white text-xs font-bold text-brand-text hover:border-primary hover:text-primary transition-all shadow-xs cursor-pointer select-none active:scale-95"
+            title={locale === "ar" ? "Switch to English" : "التبديل إلى العربية"}
+            className="group inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-brand-border bg-white text-xs font-semibold text-brand-text hover:border-primary/40 hover:text-primary hover:bg-primary/[0.04] transition-all shadow-xs cursor-pointer select-none active:scale-95 whitespace-nowrap shrink-0"
           >
-            <IconGlobe size={15} color="currentColor" />
-            <span className="font-semibold">{locale === "ar" ? "English" : "العربية"}</span>
+            <IconGlobe size={15} className="text-brand-text-muted group-hover:text-primary transition-colors shrink-0" />
+            <span className={locale === "en" ? "font-arabic font-bold text-[13px] leading-none" : "font-semibold"}>
+              {locale === "ar" ? "English" : "العربية"}
+            </span>
           </button>
 
+          {/* Desktop CTA Button */}
           <Link
             href="/contact"
-            className="hidden md:inline-flex items-center justify-center font-semibold text-white bg-primary hover:bg-primary-hover px-5 lg:px-6 py-2.5 rounded-full shadow-cta transition-all text-sm lg:text-base focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-secondary whitespace-nowrap"
+            className="hidden lg:inline-flex items-center justify-center font-bold text-white bg-primary hover:bg-primary-hover px-4 xl:px-5 py-2.5 rounded-full shadow-cta hover:shadow-lg transition-all text-xs xl:text-sm focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-secondary whitespace-nowrap active:scale-95 shrink-0"
           >
             {t.nav.bookAssessment}
           </Link>
@@ -219,121 +286,156 @@ export const Header: React.FC = () => {
             onClick={() => setMobileMenuOpen((prev) => !prev)}
             aria-label={mobileMenuOpen ? t.nav.menuClose : t.nav.menuOpen}
             aria-expanded={mobileMenuOpen}
-            className="md:hidden w-10 h-10 flex items-center justify-center rounded-sm bg-white border border-brand-border text-brand-text hover:bg-brand-bg transition-colors"
+            className="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-white border border-brand-border text-brand-text hover:bg-brand-bg transition-colors shadow-xs active:scale-95 shrink-0"
           >
-            {mobileMenuOpen ? <IconClose size={22} /> : <IconMenu size={22} />}
+            {mobileMenuOpen ? <IconClose size={20} /> : <IconMenu size={20} />}
           </button>
         </div>
       </div>
 
       {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 top-[73px] z-50 bg-brand-bg flex flex-col md:hidden overflow-y-auto p-6 animate-fadeIn">
-          {/* Mobile Language Switcher Card */}
-          <div className="mb-4 p-3 bg-white rounded-lg border border-brand-border flex items-center justify-between">
-            <span className="text-sm font-semibold text-brand-text flex items-center gap-2">
-              <IconGlobe size={18} />
-              <span>{locale === "ar" ? "اللغة: العربية" : "Language: English"}</span>
-            </span>
-            <button
-              type="button"
-              onClick={() => {
-                toggleLocale();
-                setMobileMenuOpen(false);
-              }}
-              className="text-xs font-bold px-3 py-1.5 rounded-full bg-brand-bg hover:bg-brand-bg-alt text-primary border border-brand-border transition-colors"
-            >
-              {locale === "ar" ? "Switch to English" : "التحويل للعربية"}
-            </button>
-          </div>
+        <div className="fixed inset-x-0 bottom-0 top-[65px] sm:top-[73px] z-50 bg-brand-bg/98 backdrop-blur-xl flex flex-col lg:hidden overflow-y-auto px-5 py-6 animate-fadeIn pb-32">
+          <div className="w-full max-w-lg mx-auto flex flex-col gap-4">
+            {/* Mobile Language Switcher Card */}
+            <div className="p-3.5 bg-white rounded-2xl border border-brand-border shadow-xs flex items-center justify-between">
+              <span className="text-sm font-semibold text-brand-text flex items-center gap-2">
+                <IconGlobe size={18} className="text-primary" />
+                <span>{locale === "ar" ? "اللغة: العربية" : "Language: English"}</span>
+              </span>
+              <button
+                type="button"
+                onClick={() => {
+                  toggleLocale();
+                  setMobileMenuOpen(false);
+                }}
+                className="text-xs font-bold px-3 py-1.5 rounded-full bg-primary/10 hover:bg-primary/15 text-primary border border-primary/20 transition-all active:scale-95"
+              >
+                {locale === "ar" ? (
+                  "Switch to English"
+                ) : (
+                  <span className="font-arabic font-bold text-xs">التحويل للعربية</span>
+                )}
+              </button>
+            </div>
 
-          <nav className="flex flex-col gap-3 text-lg font-semibold text-brand-text">
-            {/* Services Accordion in Mobile */}
-            <div className="border-b border-brand-border pb-4">
-              <div className="text-brand-text-muted text-sm font-normal mb-2">
+            {/* Services Section in Mobile */}
+            <div className="p-4 bg-white rounded-2xl border border-brand-border shadow-xs space-y-3">
+              <div className="text-xs font-bold text-brand-text-muted uppercase tracking-wider">
                 {t.nav.services}
               </div>
-              <div className="space-y-2 ps-3">
+              <div className="space-y-2">
                 {currentServices.map((service) => (
                   <Link
                     key={service.slug}
                     href={`/services/${service.slug}`}
-                    className="flex items-center justify-between py-2 text-base text-brand-text hover:text-primary"
+                    className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-brand-bg transition-colors group"
                   >
-                    <span>{service.title}</span>
-                    <span
-                      className="w-3 h-3 rounded-full"
-                      style={{ backgroundColor: service.colors.fill }}
-                    />
+                    <div
+                      className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 shadow-xs"
+                      style={{
+                        backgroundColor: service.colors.soft,
+                        color: service.colors.border,
+                      }}
+                    >
+                      {getServiceIcon(service.iconName, 18, service.colors.border)}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="font-bold text-sm text-brand-text group-hover:text-primary transition-colors flex items-center justify-between">
+                        <span>{service.title}</span>
+                        <span
+                          className="w-2 h-2 rounded-full"
+                          style={{ backgroundColor: service.colors.fill }}
+                        />
+                      </div>
+                      <div className="text-xs text-brand-text-muted line-clamp-1">
+                        {service.tagline}
+                      </div>
+                    </div>
                   </Link>
                 ))}
-                <Link
-                  href="/services"
-                  className="inline-block pt-1 text-sm text-primary font-bold"
-                >
-                  {t.servicesSection.viewAllServices}
-                </Link>
+                <div className="pt-2 border-t border-brand-border/60">
+                  <Link
+                    href="/services"
+                    className="flex items-center justify-between text-xs font-bold text-primary hover:text-primary-hover py-1"
+                  >
+                    <span>{t.footer.allServicesLink}</span>
+                    <IconArrowStart size={14} />
+                  </Link>
+                </div>
               </div>
             </div>
 
-            <Link
-              href="/about"
-              className="py-3 border-b border-brand-border hover:text-primary"
-            >
-              {t.nav.about}
-            </Link>
+            {/* Main Links Card */}
+            <div className="p-3 bg-white rounded-2xl border border-brand-border shadow-xs flex flex-col divide-y divide-brand-border/50">
+              <Link
+                href="/about"
+                className={`py-3 px-3 rounded-xl hover:bg-brand-bg transition-colors font-semibold text-base ${
+                  isAboutActive ? "text-primary font-bold bg-primary/5" : "text-brand-text"
+                }`}
+              >
+                {t.nav.about}
+              </Link>
 
-            <Link
-              href="/articles"
-              className="py-3 border-b border-brand-border hover:text-primary"
-            >
-              {t.nav.articles}
-            </Link>
+              <Link
+                href="/articles"
+                className={`py-3 px-3 rounded-xl hover:bg-brand-bg transition-colors font-semibold text-base ${
+                  isArticlesActive ? "text-primary font-bold bg-primary/5" : "text-brand-text"
+                }`}
+              >
+                {t.nav.articles}
+              </Link>
 
-            <Link
-              href="/faq"
-              className="py-3 border-b border-brand-border hover:text-primary"
-            >
-              {t.nav.faq}
-            </Link>
+              <Link
+                href="/faq"
+                className={`py-3 px-3 rounded-xl hover:bg-brand-bg transition-colors font-semibold text-base ${
+                  isFaqActive ? "text-primary font-bold bg-primary/5" : "text-brand-text"
+                }`}
+              >
+                {t.nav.faq}
+              </Link>
 
-            <Link
-              href="/contact"
-              className="py-3 border-b border-brand-border hover:text-primary"
-            >
-              {t.nav.contact}
-            </Link>
-          </nav>
+              <Link
+                href="/contact"
+                className={`py-3 px-3 rounded-xl hover:bg-brand-bg transition-colors font-semibold text-base ${
+                  isContactActive ? "text-primary font-bold bg-primary/5" : "text-brand-text"
+                }`}
+              >
+                {t.nav.contact}
+              </Link>
+            </div>
 
-          {/* Mobile CTA Buttons */}
-          <div className="mt-8 space-y-3">
-            <Link
-              href="/contact"
-              className="w-full py-3.5 text-center text-base font-bold text-white bg-primary hover:bg-primary-hover rounded-full shadow-cta block"
-            >
-              {t.nav.bookAssessment}
-            </Link>
+            {/* Mobile CTA Buttons */}
+            <div className="space-y-2.5 pt-2">
+              <Link
+                href="/contact"
+                className="w-full py-3.5 text-center text-sm sm:text-base font-bold text-white bg-primary hover:bg-primary-hover rounded-full shadow-cta block transition-transform active:scale-98"
+              >
+                {t.nav.bookAssessment}
+              </Link>
 
-            <a
-              href={`https://wa.me/${site.contact.whatsapp.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(
-                locale === "ar"
-                  ? "مرحبًا، أود الاستفسار عن حجز تقييم لطفلي في مركز فروق فردية"
-                  : "Hello, I would like to inquire about booking an assessment for my child at Forooq Fardya"
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full py-3 text-center text-sm font-bold text-white bg-[#25D366] hover:bg-[#1EBE5D] rounded-full shadow-sm flex items-center justify-center gap-2"
-            >
-              <IconWhatsapp size={18} />
-              <span>{t.footer.whatsappAction}</span>
-            </a>
-          </div>
+              <a
+                href={`https://wa.me/${site.contact.whatsapp.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(
+                  locale === "ar"
+                    ? "مرحبًا، أود الاستفسار عن حجز تقييم لطفلي في مركز فروق فردية"
+                    : "Hello, I would like to inquire about booking an assessment for my child at Forooq Fardya"
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-3 text-center text-sm font-bold text-white bg-[#25D366] hover:bg-[#1EBE5D] rounded-full shadow-sm flex items-center justify-center gap-2 transition-transform active:scale-98"
+              >
+                <IconWhatsapp size={18} />
+                <span>{t.footer.whatsappAction}</span>
+              </a>
+            </div>
 
-          <div className="mt-auto pt-8 text-center text-xs text-brand-text-muted">
-            {site.disclaimer}
+            <div className="pt-4 text-center text-xs text-brand-text-muted leading-relaxed">
+              {site.disclaimer}
+            </div>
           </div>
         </div>
       )}
     </header>
   );
 };
+

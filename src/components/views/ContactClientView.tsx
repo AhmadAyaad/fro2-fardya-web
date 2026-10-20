@@ -141,8 +141,15 @@ export const ContactClientView: React.FC = () => {
                   <span className="text-xs text-brand-text-muted block">
                     {copy.phoneLabel}
                   </span>
-                  <span className="text-base font-bold text-brand-text">
+                  <a
+                    href={`tel:${site.contact.phone}`}
+                    className="text-base font-bold text-brand-text hover:text-primary transition-colors inline-block"
+                    dir="ltr"
+                  >
                     {site.contact.phone}
+                  </a>
+                  <span className="text-xs text-brand-text-muted block mt-0.5">
+                    {isAr ? "متاح اتصال ومحادثة واتساب" : "Available for calls & WhatsApp"}
                   </span>
                 </div>
               </div>
@@ -155,8 +162,11 @@ export const ContactClientView: React.FC = () => {
                   <span className="text-xs text-brand-text-muted block">
                     {copy.addressLabel}
                   </span>
-                  <span className="text-base font-bold text-brand-text">
+                  <span className="text-base font-bold text-brand-text block">
                     {site.contact.address}
+                  </span>
+                  <span className="text-xs text-brand-text-muted block mt-0.5">
+                    {isAr ? "الجيزة، مصر" : "Giza, Egypt"}
                   </span>
                 </div>
               </div>
@@ -169,8 +179,11 @@ export const ContactClientView: React.FC = () => {
                   <span className="text-xs text-brand-text-muted block">
                     {copy.hoursLabel}
                   </span>
-                  <span className="text-base font-bold text-brand-text">
+                  <span className="text-base font-bold text-brand-text block">
                     {site.contact.workingHours}
+                  </span>
+                  <span className="text-xs text-brand-text-muted block mt-0.5">
+                    {isAr ? "الجمعة: عطلة أسبوعية" : "Friday: Closed"}
                   </span>
                 </div>
               </div>

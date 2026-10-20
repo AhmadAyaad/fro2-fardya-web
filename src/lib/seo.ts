@@ -14,9 +14,11 @@ export function generateLocalBusinessSchema() {
     address: {
       "@type": "PostalAddress",
       streetAddress: siteConfig.contact.address,
+      addressLocality: "6th of October City",
+      addressRegion: "Giza",
       addressCountry: "EG",
     },
-    openingHours: "Su-Th 09:00-17:00",
+    openingHours: "Sa-Th 12:00-21:00",
     priceRange: "$$",
   };
 }

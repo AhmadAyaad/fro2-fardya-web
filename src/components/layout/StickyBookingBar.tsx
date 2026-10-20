@@ -29,7 +29,7 @@ export const StickyBookingBar: React.FC<StickyBookingBarProps> = ({ serviceTitle
   )}?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
-    <div className="md:hidden fixed bottom-0 inset-x-0 z-30 bg-white/95 backdrop-blur-md border-t border-brand-border p-3 shadow-hover">
+    <div className="lg:hidden fixed bottom-0 inset-x-0 z-30 bg-white/95 backdrop-blur-md border-t border-brand-border p-3 shadow-hover">
       <div className="flex items-center gap-3 max-w-md mx-auto">
         <Link
           href="/contact"

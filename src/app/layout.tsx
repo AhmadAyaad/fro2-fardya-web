@@ -107,8 +107,11 @@ export default function RootLayout({
               address: {
                 "@type": "PostalAddress",
                 addressCountry: "EG",
+                addressRegion: "Giza",
+                addressLocality: "6th of October City",
                 streetAddress: siteConfig.contact.address,
               },
+              openingHours: "Sa-Th 12:00-21:00",
             }),
           }}
         />
